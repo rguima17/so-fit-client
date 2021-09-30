@@ -1,31 +1,38 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+# So Fit
 
-# React IronPlate
+<p align='center'> <img src="/"/> Add gif aqui </p>
 
-Esse boilerplate já inclui:
+## About the application
 
-- Pré-configuração do Axios para injeção de cabeçalhos de autenticação e BaseURL
-- Context para armazenar state de usuário logado
-- Forms de Login e Signup
-- Roteamento básico
-- Componente de rota protegida
+So Fit. Your fitness social network. Finally! <br/>
+It is a ...<br/>
+This repository is only for the client (frontend). To see the backend check: <a href="/">So Fit backend</a>.
 
-## Para Começar
+## Test it now!
 
-- Faça o fork e clone deste repositório
+Just follow the live link: <a href="/">So Fit</a>.
 
-## Instalação
+## Installing
 
-```shell
-$ npm install
-```
+Clone or download this repository. Run the 'npm install' and then 'npm start' command and let me know what you think.
 
-## Deploy no Netlify
+## Contributing
 
-1. Faça login no Netlify e selecione seu repositório
-2. Em 'Deploy settings > build command' escreva: CI=false npm run build
-3. Em 'publish directory' escreva: build/
-4. Adicione uma environment variable (variável de ambiente) REACT_APP_API_BASE com a URL da sua API funcionando no Heroku
-5. Adicione a URL do seu app hospedado no Netlify nas variáveis de ambiente do backend no Heroku
+This is an open source project, feel free to fork it, make improvements and submit a pull request.
 
-Happy coding! 💙
+**Feedback are more than welcome!** Just keep in mind that this was a one-week educational project.
+
+## Find more about this project
+
+To see a slide presentation, just follow the link: <a href="......">So Fit presentation</a>.
+For an enhanced experience, watch it in the 'presentation mode'. There are important transitions.
+
+## Disclaimer
+
+The So Fit project was inspired.... , and it was built solely for education purposes. Thus, I do not own any copyrights to xxxxxx nor xxxxx used in this project.
+
+You can find sprites and sounds in the following links:
+
+> - x
+> - x
+> - x

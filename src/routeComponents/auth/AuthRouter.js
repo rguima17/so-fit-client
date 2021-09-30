@@ -6,7 +6,6 @@ import Login from "./Login";
 
 function AuthRouter(props) {
   return (
-    // <> é um alias (apelido) para React.Fragment
     <React.Fragment>
       <Switch>
         <Route path={`${props.match.path}/signup`} component={Signup} />
