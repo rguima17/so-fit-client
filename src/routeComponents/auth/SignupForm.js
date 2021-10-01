@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function LoginForm(props) {
+function SignupForm(props) {
   return (
     <div
       className="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl"
@@ -23,7 +23,7 @@ function LoginForm(props) {
         </h2>
 
         <p className="text-xl text-center text-gray-600 dark:text-gray-200">
-          Welcome!
+          Please, register below:
         </p>
 
         {/* <a
@@ -74,6 +74,24 @@ function LoginForm(props) {
             className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
             htmlFor="LoggingEmailAddress"
           >
+            Your username
+          </label>
+          <input
+            id="LoggingName"
+            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            type="text"
+            name="name"
+            value={props.state.name}
+            error={props.errors.email}
+            onChange={props.handleChange}
+            required
+          />
+        </div>
+        <div className="mt-4">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+            htmlFor="LoggingEmailAddress"
+          >
             Email Address
           </label>
           <input
@@ -118,7 +136,7 @@ function LoginForm(props) {
 
         <div className="mt-8">
           <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-            Login
+            Signup!
           </button>
         </div>
 
@@ -126,10 +144,10 @@ function LoginForm(props) {
           <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
           <NavLink
-            to="/auth/signup"
+            to="/auth/login"
             className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
           >
-            or sign up
+            or Login
           </NavLink>
 
           <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
@@ -139,4 +157,4 @@ function LoginForm(props) {
   );
 }
 
-export default LoginForm;
+export default SignupForm;

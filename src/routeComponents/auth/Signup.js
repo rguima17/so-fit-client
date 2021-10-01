@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 import api from "../../apis/api";
+import SignupForm from "./SignupForm";
 
 function Signup(props) {
   const [state, setState] = useState({ name: "", password: "", email: "" });
@@ -35,53 +36,12 @@ function Signup(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Signup!</h1>
-
-      <div>
-        <label htmlFor="signupFormName">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="signupFormName"
-          value={state.name}
-          error={errors.name}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="signupFormEmail">E-mail Address</label>
-        <input
-          type="email"
-          name="email"
-          id="signupFormEmail"
-          value={state.email}
-          error={errors.email}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="signupFormPassword">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="signupFormPassword"
-          value={state.password}
-          error={errors.password}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        <button type="submit">Signup!</button>
-
-        <Link to="/auth/login">
-          Already have an account? Click here to login.
-        </Link>
-      </div>
-    </form>
+    <SignupForm
+      handleSubmit={handleSubmit}
+      handleChange={handleChange}
+      state={state}
+      errors={errors}
+    />
   );
 }
 
