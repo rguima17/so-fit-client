@@ -8,19 +8,19 @@ import { AuthContextComponent } from "../contexts/authContext";
 import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 
 import WorkoutList from "../components/workout/WorkoutList";
-
+import Navbar from "./structure/nav/Navbar";
 import Footer from "./structure/footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        {/* <Navbar />  NILTON */}
+        {/* <Navbar /> */}
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/auth" component={AuthRouter} />
+          <Route exact path='/' component={Home} />
+          <Route path='/auth' component={AuthRouter} />
         </Switch>
-        <PrivateRoute exact path="/workout" component={WorkoutList} />
+        <PrivateRoute exact path='/workout' component={WorkoutList} />
         <Footer /> {/* NILTON  */}
       </AuthContextComponent>
     </BrowserRouter>
