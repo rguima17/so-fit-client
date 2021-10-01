@@ -9,6 +9,7 @@ import Home from "../routeComponents/Home";
 import Footer from "./structure/footer/Footer";
 
 import WorkoutList from "../components/workout/WorkoutList";
+import Navbar from "./structure/nav/Navbar";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
 import WorkoutEdit from "./workout/WorkoutEdit";
 
@@ -19,24 +20,24 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        {/* <Navbar />  NILTON */}
+        <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/auth" component={AuthRouter} />
+          <Route exact path='/' component={Home} />
+          <Route path='/auth' component={AuthRouter} />
 
-          <PrivateRoute exact path="/profile" component={ProfileDetail} />
+          <PrivateRoute exact path='/profile' component={ProfileDetail} />
           <PrivateRoute
             exact
-            path="/profile/edit/:id"
+            path='/profile/edit/:id'
             component={ProfileEdit}
           />
           <PrivateRoute
             exact
-            path="/workout/edit/:id"
+            path='/workout/edit/:id'
             component={WorkoutEdit}
           />
-          <PrivateRoute exact path="/workout/:id" component={WorkoutDetail} />
-          <PrivateRoute exact path="/workout" component={WorkoutList} />
+          <PrivateRoute exact path='/workout/:id' component={WorkoutDetail} />
+          <PrivateRoute exact path='/workout' component={WorkoutList} />
         </Switch>
         <Footer /> {/* NILTON  */}
       </AuthContextComponent>
