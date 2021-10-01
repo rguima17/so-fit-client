@@ -22,7 +22,7 @@ function WorkoutForm(props) {
         <label className="block">
           <span className="text-gray-700">Workout description</span>
           <textarea
-            class="form-textarea mt-1 block w-full"
+            className="form-textarea mt-1 block w-full"
             rows="3"
             placeholder="You may enter a description"
             maxLength="500"
