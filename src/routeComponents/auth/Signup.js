@@ -27,7 +27,8 @@ function Signup(props) {
     try {
       await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
-      history.push("/auth/login");
+      // history.push("/auth/login");
+      history.push("/auth/login")
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
