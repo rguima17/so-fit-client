@@ -30,10 +30,14 @@ function App() {
             path="/profile/edit/:id"
             component={ProfileEdit}
           />
+          <PrivateRoute
+            exact
+            path="/workout/edit/:id"
+            component={WorkoutEdit}
+          />
+          <PrivateRoute exact path="/workout/:id" component={WorkoutDetail} />
+          <PrivateRoute exact path="/workout" component={WorkoutList} />
         </Switch>
-        <PrivateRoute exact path="/workout/edit/:id" component={WorkoutEdit} />
-        <PrivateRoute exact path="/workout/:id" component={WorkoutDetail} />
-        <PrivateRoute exact path="/workout" component={WorkoutList} />
         <Footer /> {/* NILTON  */}
       </AuthContextComponent>
     </BrowserRouter>
