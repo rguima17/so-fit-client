@@ -11,10 +11,8 @@ function PrivateRoute({ component: Component, ...rest }) {
       {...rest}
       render={(routeProps) => {
         if (loggedInUser.user._id) {
-          console.log("aqui 1");
           return <Component {...routeProps} {...rest} />;
         } else {
-          console.log("aqui 2");
           return (
             <Redirect
               to={{
