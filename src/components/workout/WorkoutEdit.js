@@ -14,7 +14,6 @@ function WorkoutEdit() {
     exercisesId: [],
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const { id } = useParams();
   const history = useHistory();
@@ -31,14 +30,6 @@ function WorkoutEdit() {
       } catch (err) {
         console.error(err);
         setLoading(false);
-        if (!err.response.data) {
-          return setError("Erro desconhecido");
-        }
-
-        if (err.response.data.err) {
-          return setError(err.response.data.err.message);
-        }
-        return setError(err.response.data.msg);
       }
     }
     fetchData();
@@ -64,14 +55,6 @@ function WorkoutEdit() {
       .catch((err) => {
         console.error(err);
         setLoading(false);
-        if (!err.response.data) {
-          return setError("Unkown error");
-        }
-
-        if (err.response.data.err) {
-          return setError(err.response.data.err.message);
-        }
-        return setError(err.response.data.msg);
       });
   }
   return (
@@ -90,9 +73,8 @@ function WorkoutEdit() {
         handleSubmit={handleSubmit}
         workoutState={workoutState}
         loading={loading}
-        error={error}
+        buttonText="Update workout"
       />
-      ;
     </div>
   );
 }
