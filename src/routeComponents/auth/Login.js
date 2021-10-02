@@ -53,12 +53,14 @@ function Login(props) {
   }
 
   return (
-    <LoginForm
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
-      state={state}
-      errors={errors}
-    />
+    <div>
+      <LoginForm
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        state={state}
+        errors={errors}
+      />
+    </div>
   );
 }
 

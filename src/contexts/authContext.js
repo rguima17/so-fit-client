@@ -2,7 +2,6 @@ import React, { useState, createContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 const AuthContext = createContext({ token: "", user: {} });
 
-
 function AuthContextComponent(props) {
   const [loggedInUser, setLoggedInUser] = useState({ token: "", user: {} });
 
@@ -18,15 +17,12 @@ function AuthContextComponent(props) {
     }
   }, []);
 
-
   //Logout Function
   function logout() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser({ user: {}, token: "" });
     history.push("/auth/login");
   }
-
-
 
   return (
     <AuthContext.Provider value={{ loggedInUser, setLoggedInUser, logout }}>
