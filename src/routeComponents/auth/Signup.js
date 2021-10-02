@@ -112,13 +112,14 @@ function Signup(props) {
     //     </div>
     //   </form>
     // </section>
-
-    <SignupForm
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
-      state={state}
-      errors={errors}
-    />
+    <div>
+      <SignupForm
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        state={state}
+        errors={errors}
+      />
+    </div>
   );
 }
 

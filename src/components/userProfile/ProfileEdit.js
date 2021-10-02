@@ -11,8 +11,7 @@ function ProfileEdit() {
     pictureUrl: "",
   });
 
-
-//   const [error, setError] = useState("");
+  //   const [error, setError] = useState("");
 
   const history = useHistory();
 
@@ -40,7 +39,6 @@ function ProfileEdit() {
     fetchProfile();
   }, [id]);
 
-
   function handleChange(event) {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   }
@@ -55,14 +53,13 @@ function ProfileEdit() {
       history.push("/profile");
     } catch (err) {
       console.error(err);
-    //   if (!err.response.data) {
-    //     return setError("Erro desconhecido");
-    //   }
-    //   if (err.response.data.err) {
-    //     return setError(err.response.data.err.message);
-    //   }
-    //   return setError(err.response.data.msg);
-
+      //   if (!err.response.data) {
+      //     return setError("Erro desconhecido");
+      //   }
+      //   if (err.response.data.err) {
+      //     return setError(err.response.data.err.message);
+      //   }
+      //   return setError(err.response.data.msg);
     }
   }
 
@@ -77,11 +74,10 @@ function ProfileEdit() {
       />
 
       <div>
-        <NavLink to={`/profile`} className="">
+        <NavLink to={`/profile`} className=''>
           Back
         </NavLink>
       </div>
-
     </div>
   );
 }
