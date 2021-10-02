@@ -3,7 +3,6 @@ import { useHistory, useParams } from "react-router-dom";
 import api from "../../apis/api";
 import ProfileForm from "./ProfileForm";
 
-
 function ProfileEdit() {
   const [profile, setProfile] = useState({
     name: "",
@@ -11,11 +10,7 @@ function ProfileEdit() {
     // pictureUrl: ""  tem que ser diferente
   });
 
-<<<<<<< HEAD
-  //   const [error, setError] = useState("");
-=======
   const [error, setError] = useState("");
->>>>>>> 4459297e7aa2bf5b91291740b6623da6a3e0b611
 
   const history = useHistory();
 
@@ -43,8 +38,6 @@ function ProfileEdit() {
     fetchProfile();
   }, [id]);
 
-<<<<<<< HEAD
-=======
   async function handleUpload(file) {
     const uploadData = new FormData();
 
@@ -55,7 +48,6 @@ function ProfileEdit() {
     return response.data.url;
   }
 
->>>>>>> 4459297e7aa2bf5b91291740b6623da6a3e0b611
   function handleChange(event) {
     if (event.target.files) {
       console.log("entrou");
@@ -83,15 +75,6 @@ function ProfileEdit() {
       }
     } catch (err) {
       console.error(err);
-<<<<<<< HEAD
-      //   if (!err.response.data) {
-      //     return setError("Erro desconhecido");
-      //   }
-      //   if (err.response.data.err) {
-      //     return setError(err.response.data.err.message);
-      //   }
-      //   return setError(err.response.data.msg);
-=======
       if (!err.response.data) {
         return setError("Erro desconhecido");
       }
@@ -99,30 +82,18 @@ function ProfileEdit() {
         return setError(err.response.data.err.message);
       }
       return setError(err.response.data.msg);
->>>>>>> 4459297e7aa2bf5b91291740b6623da6a3e0b611
     }
   }
 
   return (
     <div>
-     
       <ProfileForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleUpload={handleUpload}
         profile={profile}
       />
-
-<<<<<<< HEAD
-      <div>
-        <NavLink to={`/profile`} className=''>
-          Back
-        </NavLink>
-      </div>
     </div>
-=======
-   </div>
->>>>>>> 4459297e7aa2bf5b91291740b6623da6a3e0b611
   );
 }
 
