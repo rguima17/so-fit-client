@@ -34,7 +34,6 @@ function WorkoutList() {
 
   return (
     <div>
-      <h1>Workout list</h1>
       {loading ? (
         <LoadingSpinner />
       ) : (
