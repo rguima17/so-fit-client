@@ -4,10 +4,13 @@ import { useHistory } from "react-router-dom";
 import api from "../../apis/api";
 
 import LoadingSpinner from "../structure/loading/LoadingSpinner";
+import WorkoutCreate from "./WorkoutCreate";
 
 function WorkoutList() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [workoutCreated, setWorkoutCreated] = useState(false);
 
   const history = useHistory();
 
@@ -18,17 +21,20 @@ function WorkoutList() {
         const response = await api.get("/workout");
         setWorkouts([...response.data]);
         setLoading(false);
+        if (workoutCreated) {
+          setWorkoutCreated(false);
+        }
       } catch (err) {
         console.error(err);
         setLoading(false);
       }
     }
     fetchProjects();
-  }, []);
+  }, [workoutCreated]);
 
   return (
     <div>
-      <h1>workout list</h1>
+      <h1>Workout list</h1>
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -41,19 +47,19 @@ function WorkoutList() {
                     <tr>
                       <th
                         scope="col"
-                        className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center"
                       >
                         Workout name
                       </th>
                       <th
                         scope="col"
-                        className="px-2py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center"
                       >
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-2 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center"
                       >
                         Exercises
                       </th>
@@ -66,34 +72,27 @@ function WorkoutList() {
                     {workouts.map((workoutObj) => {
                       return (
                         <tr
+                          className="hover:bg-gray-100"
                           key={workoutObj._id}
                           onClick={() => {
                             history.push(`/workout/${workoutObj._id}`);
                           }}
                         >
                           <td className="px-4 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-gray-500 ">
                               {workoutObj.name}
                             </div>
                           </td>
-                          <td className="px-4 py-4 whitespace-nowrap">
-                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          <td className="px-4 py-4 whitespace-nowrap text-center">
+                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 ">
                               {workoutObj.status}
                             </span>
                           </td>
                           <td className="px-4 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-gray-500 text-center">
                               {workoutObj.exercisesId.length}
                             </div>
                           </td>
-                          {/* <td className="px-2 py-4 whitespace-nowrap text-left text-sm font-medium">
-                            <NavLink
-                              to={`/workout/${workoutObj._id}`}
-                              className="text-indigo-600 hover:text-indigo-900"
-                            >
-                              Details
-                            </NavLink>
-                          </td> */}
                         </tr>
                       );
                     })}
@@ -101,6 +100,21 @@ function WorkoutList() {
                 </table>
               </div>
             </div>
+          </div>
+          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+            >
+              Add a new workout
+            </button>
+
+            {showForm ? (
+              <WorkoutCreate
+                handleClose={setShowForm}
+                setWorkoutCreated={setWorkoutCreated}
+              />
+            ) : null}
           </div>
         </div>
       )}
