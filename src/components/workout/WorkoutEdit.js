@@ -58,20 +58,23 @@ function WorkoutEdit() {
       });
   }
   return (
-    <div>
-      <span className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-        <NavLink
-          to={`/workout/${id}`}
-          className="text-indigo-600 hover:text-indigo-900"
-        >
-          {"<<"}
-        </NavLink>
-      </span>
-      <h2>Edit your workout</h2>
+    <div className="bg-white px-1 pt-1">
+      <div className="inline flex justify-center items-center pr-4">
+        <span className="pr-2 py-4 whitespace-nowrap text-sm font-medium inline">
+          <NavLink
+            to={`/workout/${id}`}
+            className="text-indigo-600 hover:text-indigo-900"
+          >
+            {"<<"}
+          </NavLink>
+        </span>
+        <h4 className="inline">Edit your workout</h4>
+      </div>
       <WorkoutForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         workoutState={workoutState}
+        statusAvailable={true}
         loading={loading}
         buttonText="Update workout"
       />

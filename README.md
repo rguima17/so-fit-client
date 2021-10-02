@@ -33,6 +33,6 @@ The So Fit project was inspired.... , and it was built solely for education purp
 
 You can find sprites and sounds in the following links:
 
-> - x
+> - https://www.flaticon.com/authors/those-icons
 > - x
 > - x

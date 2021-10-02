@@ -6,6 +6,8 @@ import api from "../../apis/api";
 import LoadingSpinner from "../structure/loading/LoadingSpinner";
 import WorkoutCreate from "./WorkoutCreate";
 
+import renderWorkoutStatus from "../../scripts/renderWorkoutStatus";
+
 function WorkoutList() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,7 +39,7 @@ function WorkoutList() {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className="flex flex-col">
+        <div className="flex flex-col px-1 pt-1">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -62,9 +64,6 @@ function WorkoutList() {
                       >
                         Exercises
                       </th>
-                      {/* <th scope="col" className="relative px-6 py-3">
-                        <span className="sr-only">Edit</span>
-                      </th> */}
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -78,14 +77,12 @@ function WorkoutList() {
                           }}
                         >
                           <td className="px-4 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-500 ">
+                            <div className="text-sm text-gray-500">
                               {workoutObj.name}
                             </div>
                           </td>
                           <td className="px-4 py-4 whitespace-nowrap text-center">
-                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 ">
-                              {workoutObj.status}
-                            </span>
+                            {renderWorkoutStatus(workoutObj)}
                           </td>
                           <td className="px-4 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-500 text-center">
@@ -100,7 +97,14 @@ function WorkoutList() {
               </div>
             </div>
           </div>
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div
+            className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
+            style={{
+              width: "96vw",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
             <button
               onClick={() => setShowForm(!showForm)}
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600"

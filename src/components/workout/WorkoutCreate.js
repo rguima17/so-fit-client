@@ -8,9 +8,7 @@ function WorkoutCreate(props) {
   const [workoutState, setWorkoutState] = useState({
     name: "",
     description: "",
-    status: "",
     weekDay: "",
-    // exercisesId: [],
   });
   const [loading, setLoading] = useState(false);
 
@@ -34,9 +32,7 @@ function WorkoutCreate(props) {
         setWorkoutState({
           name: "",
           description: "",
-          status: "",
           weekDay: "",
-          // exercisesId: [],
         });
         props.handleClose(false);
         props.setWorkoutCreated(true);
@@ -52,6 +48,7 @@ function WorkoutCreate(props) {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         workoutState={workoutState}
+        statusAvailable={false}
         loading={loading}
         buttonText="Create workout"
       />
