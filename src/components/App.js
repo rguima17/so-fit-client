@@ -14,6 +14,7 @@ import WorkoutList from "../components/workout/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
 import WorkoutEdit from "./workout/WorkoutEdit";
 import WorkoutDelete from "./workout/WorkoutDelete";
+import WorkoutDone from "./workout/WorkoutDone";
 
 import ProfileDetail from "./userProfile/ProfileDetail";
 import ProfileEdit from "./userProfile/ProfileEdit";
@@ -25,41 +26,46 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        <div id='main-container'>
+        <div id="main-container">
           <NavRouter />
-          <main id='site-content'>
+          <main id="site-content">
             <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/auth' component={AuthRouter} />
-              <Route path='/chronometer' component={Chronometer} />
+              <Route exact path="/" component={Home} />
+              <Route path="/auth" component={AuthRouter} />
+              <Route path="/chronometer" component={Chronometer} />
 
               {/* User related routes */}
-              <PrivateRoute exact path='/profile' component={ProfileDetail} />
+              <PrivateRoute exact path="/profile" component={ProfileDetail} />
               <PrivateRoute
                 exact
-                path='/profile/edit/:id'
+                path="/profile/edit/:id"
                 component={ProfileEdit}
               />
-              <PrivateRoute exact path='/user-feed' component={UserFeed} />
-              <PrivateRoute exact path='/user/:id' component={ViewUser} />
+              <PrivateRoute exact path="/user-feed" component={UserFeed} />
+              <PrivateRoute exact path="/user/:id" component={ViewUser} />
 
               {/* WOrkout related routes */}
               <PrivateRoute
                 exact
-                path='/workout/edit/:id'
+                path="/workout/edit/:id"
                 component={WorkoutEdit}
               />
               <PrivateRoute
                 exact
-                path='/workout/delete/:id'
+                path="/workout/delete/:id"
                 component={WorkoutDelete}
               />
               <PrivateRoute
                 exact
-                path='/workout/:id'
+                path="/workout/:id"
                 component={WorkoutDetail}
               />
-              <PrivateRoute exact path='/workout' component={WorkoutList} />
+              <PrivateRoute exact path="/workout" component={WorkoutList} />
+              <PrivateRoute
+                exact
+                path="/workout/:id/done/:points"
+                component={WorkoutDone}
+              />
             </Switch>
           </main>
           <Footer />

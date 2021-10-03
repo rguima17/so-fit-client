@@ -22,7 +22,7 @@ function WorkoutForm(props) {
           required
         />
       </label>
-      <div className="mt-4">
+      <div className="mt-2">
         <label className="block">
           <span className="text-gray-700">Workout description</span>
           <textarea
@@ -67,7 +67,7 @@ function WorkoutForm(props) {
           </div>
         </div>
       ) : null}
-      <label className="block mt-4">
+      <label className="block mt-2">
         <span className="text-gray-700">Day of the week</span>
         <select
           className="form-select mt-1 block w-full"
@@ -88,7 +88,7 @@ function WorkoutForm(props) {
           <option value="SUN">Sunday</option>
         </select>
       </label>
-      <div className="mt-8">
+      <div className="mt-3">
         <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
           {props.buttonText}
         </button>

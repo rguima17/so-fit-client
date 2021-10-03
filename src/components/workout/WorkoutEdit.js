@@ -20,7 +20,7 @@ function WorkoutEdit() {
 
   // Fetching the current workout data an storing it in the state
   useEffect(() => {
-    async function fetchData() {
+    async function fetchWorkoutEditData() {
       setLoading(true);
       try {
         const response = await api.get(`/workout/${id}`);
@@ -32,7 +32,7 @@ function WorkoutEdit() {
         setLoading(false);
       }
     }
-    fetchData();
+    fetchWorkoutEditData();
   }, [id]);
 
   function handleChange(event) {
