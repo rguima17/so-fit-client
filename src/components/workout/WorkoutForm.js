@@ -38,34 +38,35 @@ function WorkoutForm(props) {
           {/* <input className="form-input mt-1 block w-full" placeholder="..." /> */}
         </label>
       </div>
-      <div className="mt-4">
-        <span className="text-gray-700">Status</span>
-        <div className="mt-2">
-          <label className="inline-flex items-center">
-            <input
-              type="radio"
-              className="form-radio"
-              name="status"
-              value="Planned"
-              onChange={props.handleChange}
-              checked={props.workoutState.status === "Planned"}
-            />
-            <span className="ml-2">Planned</span>
-          </label>
-          <label className="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              className="form-radio"
-              name="status"
-              value="Done!"
-              onChange={props.handleChange}
-              checked={props.workoutState.status === "Done!"}
-            />
-            <span className="ml-2">Done!</span>
-          </label>
+      {props.statusAvailable ? (
+        <div className="mt-4">
+          <span className="text-gray-700">Status</span>
+          <div className="mt-2">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                className="form-radio"
+                name="status"
+                value="Planned"
+                onChange={props.handleChange}
+                checked={props.workoutState.status === "Planned"}
+              />
+              <span className="ml-2">Planned</span>
+            </label>
+            <label className="inline-flex items-center ml-6">
+              <input
+                type="radio"
+                className="form-radio"
+                name="status"
+                value="Done!"
+                onChange={props.handleChange}
+                checked={props.workoutState.status === "Done!"}
+              />
+              <span className="ml-2">Done!</span>
+            </label>
+          </div>
         </div>
-      </div>
-
+      ) : null}
       <label className="block mt-4">
         <span className="text-gray-700">Day of the week</span>
         <select
@@ -73,7 +74,11 @@ function WorkoutForm(props) {
           name="weekDay"
           value={props.workoutState.weekDay}
           onChange={props.handleChange}
+          required
         >
+          <option value="" disabled hidden>
+            Choose here
+          </option>
           <option value="MON">Monday</option>
           <option value="TUE">Tuesday</option>
           <option value="WED">Wednesday</option>
