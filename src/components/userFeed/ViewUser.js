@@ -24,6 +24,7 @@ function ViewUser() {
   const { id } = useParams();
 
   useEffect(() => {
+    console.log("useeffect2")
     async function fetchUser() {
       try {
         const response = await api.get(`/user/view/${id}`);
