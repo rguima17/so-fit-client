@@ -31,78 +31,78 @@ function ProfileDetail() {
 
   return (
     <div>
-      <div className="max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800">
+      <div className='max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800'>
         <img
-          className="object-fill  object-top w-full h-56 "
+          className='object-fill  object-top w-full h-56 '
           src={profile.pictureUrl}
           alt={`User ${profile.name}`}
         />
-        <div className="text-center  py-3  bg-gray-900">
-          <h1 className="mx-3 mb-0 text-xl font-bold text-white">
+        <div className='text-center  py-3  bg-gray-900'>
+          <h1 className='mx-3 mb-0 text-xl font-bold text-white'>
             Welcome to your profile !
           </h1>
         </div>
 
-        <div className="px-6 py-4">
-          <div className="flex justify-between mb-1">
-            <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+        <div className='px-6 py-4'>
+          <div className='flex justify-between mb-1'>
+            <h1 className='text-2xl font-bold text-gray-800 dark:text-white'>
               {profile.name}
             </h1>
-            <NavLink to={`/profile/edit/${profile._id}`} className="">
+            <NavLink to={`/profile/edit/${profile._id}`} className=''>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-6 w-6'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
                   strokeWidth={2}
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  d='M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z'
                 />
               </svg>
             </NavLink>
           </div>
-          <p className="py-2  font-semibold text-lg text-gray-700 dark:text-gray-400">
+          <p className='py-2  font-semibold text-lg text-gray-700 dark:text-gray-400'>
             About: {profile.description}
           </p>
 
-          <div className="flex items-center mt-4 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
+          <div className='flex items-center mt-4 '>
+            <p className=' font-semibold text-lg text-gray-700 dark:text-gray-400'>
               Level: {profile.level}
             </p>
           </div>
 
-          <div className="flex items-center mt-4">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
+          <div className='flex items-center mt-4'>
+            <p className=' font-semibold text-lg text-gray-700 dark:text-gray-400'>
               {" "}
               SoFit Points: {profile.soFitPoints}
             </p>
           </div>
         </div>
 
-        <div className="flex justify-content-between mr-4">
+        <div className='flex justify-content-between mr-4'>
           <NavLink to={`/user-feed`}>
-            <div className="mb-3 ml-3 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+            <div className='mb-3 ml-3 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600'>
               User Feed
             </div>
           </NavLink>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mr-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-6 w-6 mr-0'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
             onClick={logout}
             style={{ cursor: "pointer" }}
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              strokeLinecap='round'
+              strokeLinejoin='round'
               strokeWidth={2}
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
             />
           </svg>
         </div>
