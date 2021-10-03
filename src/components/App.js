@@ -17,6 +17,9 @@ import WorkoutDelete from "./workout/WorkoutDelete";
 import ProfileDetail from "./userProfile/ProfileDetail";
 import ProfileEdit from "./userProfile/ProfileEdit";
 
+import UserFeed from "./userFeed/UserFeed";
+import ViewUser from "./userFeed/ViewUser";
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,13 +31,17 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route path="/auth" component={AuthRouter} />
 
+              {/* User related routes */}
               <PrivateRoute exact path="/profile" component={ProfileDetail} />
-
               <PrivateRoute
                 exact
                 path="/profile/edit/:id"
                 component={ProfileEdit}
               />
+              <PrivateRoute exact path="/user-feed" component={UserFeed} />
+              <PrivateRoute exact path="/user/:id" component={ViewUser} />
+
+              {/* WOrkout related routes */}
               <PrivateRoute
                 exact
                 path="/workout/edit/:id"

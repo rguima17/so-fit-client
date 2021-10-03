@@ -7,7 +7,7 @@ function ProfileEdit() {
   const [profile, setProfile] = useState({
     name: "",
     description: "",
-    // pictureUrl: ""  tem que ser diferente
+    pictureUrl: "" 
   });
 
   const [error, setError] = useState("");
@@ -50,7 +50,7 @@ function ProfileEdit() {
 
   function handleChange(event) {
     if (event.target.files) {
-      console.log("entrou");
+      // console.log("entrou");
 
       return setProfile({
         ...profile,
@@ -92,6 +92,7 @@ function ProfileEdit() {
         handleSubmit={handleSubmit}
         handleUpload={handleUpload}
         profile={profile}
+        error={error}
       />
     </div>
   );
