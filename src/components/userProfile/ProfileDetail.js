@@ -6,7 +6,14 @@ import { NavLink } from "react-router-dom";
 
 function ProfileDetail() {
   const { logout } = useContext(AuthContext);
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState({
+    name: "",
+    description: "",
+    pictureUrl: "",
+    soFitPoints: 0,
+    level: 0,
+    _id: "",
+  });
 
   useEffect(() => {
     async function fetchProfile() {
@@ -76,7 +83,12 @@ function ProfileDetail() {
           </div>
         </div>
 
-        <div className='flex justify-content-end mr-4'>
+        <div className='flex justify-content-between mr-4'>
+          <NavLink to={`/user-feed`}>
+            <div className='mb-3 ml-3 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600'>
+              User Feed
+            </div>
+          </NavLink>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6 mr-0'

@@ -4,8 +4,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
 
 function ConfirmationModal(props) {
-  // const [open, setOpen] = useState(false);
-
   const cancelButtonRef = useRef(null);
 
   return (
@@ -59,13 +57,12 @@ function ConfirmationModal(props) {
                       as="h3"
                       className="text-lg leading-6 font-medium text-gray-900"
                     >
-                      Deleting exercise
+                      Deleting {props.modalTexts.title}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
                         Are you sure you want to delete '
-                        {props.clickedExercise.exerciseReps} x{" "}
-                        {props.clickedExercise.exerciseName}'?
+                        {props.modalTexts.description}'?
                       </p>
                     </div>
                   </div>
