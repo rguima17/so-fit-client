@@ -2,16 +2,17 @@
 import { Link } from "react-router-dom";
 import "./home.css";
 
-import imgRunning from "../img/Running.jpeg";
-import imgPushUp from "../img/Push-up.jpg";
-import imgBiking from "../img/Biking.jpg";
+import imgBiking from "../img/slides/Bike.png";
+import imgRunning from "../img/slides/Running.jpg";
+import imgPullUp from "../img/slides/Pull-Up.jpg";
+import imgExercise from "../img/slides/Exercise.jpg";
 
 function Home() {
   return (
     <div>
       <div className='relative bg-white overflow-hidden'>
         <div className='max-w-7xl mx-auto'>
-          <div className='relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32'>
+          <div className='z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32'>
             <svg
               className='hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2'
               fill='currentColor'
@@ -21,7 +22,7 @@ function Home() {
             >
               <polygon points='50,0 100,0 50,100 0,100' />
             </svg>
-            {/* navbar off */}
+
             <main className='mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28'>
               <div className='sm:text-center lg:text-left'>
                 <h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl'>
@@ -49,16 +50,16 @@ function Home() {
             </main>
           </div>
         </div>
+
         {/* slider */}
-        <div className='lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-cover'>
+        <div className='lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2'>
           <div id='slider'>
             <figure>
-              <img className='bg-cover' src={imgPushUp} alt='' />
-              <img className='bg-cover' src={imgBiking} alt='' />
-              <img className='bg-cover' src={imgRunning} alt='' />
-              <img className='bg-cover' src={imgBiking} alt='' />
-
-              <img src='austin-fireworks.jpg' alt='' />
+              <img src={imgPullUp} alt='' />
+              <img src={imgBiking} alt='' />
+              <img src={imgRunning} alt='' />
+              <img src={imgExercise} alt='' />
+              <img src={imgPullUp} alt='' />
             </figure>
           </div>
         </div>

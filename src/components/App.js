@@ -8,6 +8,7 @@ import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 import Home from "../routeComponents/Home";
 import Footer from "./structure/footer/Footer";
 import NavRouter from "./structure/nav/NavRouter";
+import Chronometer from "./chronometer/Chronometer";
 
 import WorkoutList from "../components/workout/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
@@ -24,7 +25,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/auth' component={AuthRouter} />
-
+          <Route path='/chronometer' component={Chronometer} />
           <PrivateRoute exact path='/profile' component={ProfileDetail} />
 
           <PrivateRoute
