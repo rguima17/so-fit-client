@@ -78,7 +78,8 @@ function ProfileDetail() {
           <div className="flex items-center mt-4">
             <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
               {" "}
-              SoFit Points: {profile.soFitPoints}
+              SoFit Points:{" "}
+              {Number(profile.soFitPoints.toFixed(0)).toLocaleString("pt-BR")}
             </p>
           </div>
         </div>

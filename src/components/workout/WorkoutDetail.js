@@ -120,7 +120,7 @@ function WorkoutDetail() {
                   to={`/workout`}
                   className="text-indigo-600 hover:text-indigo-900"
                 >
-                  {"<<"}
+                  <i className="fas fa-arrow-circle-left"></i>
                 </NavLink>
               </span>
               <span className="pl-3 pr-2">{workout.name}</span>
@@ -160,12 +160,24 @@ function WorkoutDetail() {
                 <dt className="text-sm font-medium text-gray-500">Status</dt>
                 <div className="flex justify-between">
                   {renderWorkoutStatus(workout)}
-                  <i
-                    className="fas fa-check-square text-green-600"
-                    onClick={() =>
-                      history.push(`/workout/${id}/done/${workoutTotalPoints}`)
-                    }
-                  ></i>
+                  {workout.status === "Done!" ? (
+                    <div>
+                      <i className="fas fa-share-square pr-3 text-green-600 animate-pulse"></i>
+                      <i
+                        className="fas fa-copy text-green-600 animate-pulse"
+                        onClick={() => history.push(`/workout/duplicate/${id}`)}
+                      ></i>
+                    </div>
+                  ) : (
+                    <i
+                      className="fas fa-check-square text-green-600 animate-pulse"
+                      onClick={() =>
+                        history.push(
+                          `/workout/${id}/done/${workoutTotalPoints}`
+                        )
+                      }
+                    ></i>
+                  )}
                 </div>
               </div>
               <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -181,7 +193,7 @@ function WorkoutDetail() {
                   Amount of points to be earned
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {workoutTotalPoints.toFixed(3).toLocaleString("pt-BR")}
+                  {workoutTotalPoints.toFixed(0).toLocaleString("pt-BR")}
                 </dd>
               </div>
 

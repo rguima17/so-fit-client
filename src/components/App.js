@@ -15,6 +15,7 @@ import WorkoutDetail from "../components/workout/WorkoutDetail";
 import WorkoutEdit from "./workout/WorkoutEdit";
 import WorkoutDelete from "./workout/WorkoutDelete";
 import WorkoutDone from "./workout/WorkoutDone";
+import WorkoutDuplicate from "./workout/WorkoutDuplicate";
 
 import ProfileDetail from "./userProfile/ProfileDetail";
 import ProfileEdit from "./userProfile/ProfileEdit";
@@ -44,11 +45,16 @@ function App() {
               <PrivateRoute exact path="/user-feed" component={UserFeed} />
               <PrivateRoute exact path="/user/:id" component={ViewUser} />
 
-              {/* WOrkout related routes */}
+              {/* Workout related routes */}
               <PrivateRoute
                 exact
                 path="/workout/edit/:id"
                 component={WorkoutEdit}
+              />
+              <PrivateRoute
+                exact
+                path="/workout/duplicate/:id"
+                component={WorkoutDuplicate}
               />
               <PrivateRoute
                 exact
