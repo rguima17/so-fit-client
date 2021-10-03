@@ -10,9 +10,9 @@ function ProfileDetail() {
     name: "",
     description: "",
     pictureUrl: "",
-    soFitPoints:0,
-    level:0,
-    _id:""
+    soFitPoints: 0,
+    level: 0,
+    _id: "",
   });
 
   useEffect(() => {
@@ -83,14 +83,19 @@ function ProfileDetail() {
           </div>
         </div>
 
-        <div className="flex justify-content-between mr-4" >
-         <NavLink to={`/user-feed`}>
+        <div className="flex justify-content-between mr-4">
+          <NavLink to={`/user-feed`}>
+            <div className="mb-3 ml-3 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+              User Feed
+            </div>
+          </NavLink>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 mr-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            onClick={logout}
             style={{ cursor: "pointer" }}
           >
             <path
@@ -100,27 +105,6 @@ function ProfileDetail() {
               d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
             />
           </svg>
-</NavLink>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mr-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            onClick={logout} style={{ cursor: "pointer" }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
-          </svg>
-
-
-
-
-
         </div>
       </div>
     </div>
