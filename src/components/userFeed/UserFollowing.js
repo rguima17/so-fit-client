@@ -26,8 +26,7 @@ function UserFollowing() {
     fetchUsers();
   }, []);
 
-  
- 
+   
   return (
     <div>
       <div className="flex justify-content-end mr-3">
@@ -39,8 +38,6 @@ function UserFollowing() {
         </NavLink>
       </div>
       <h3>Your Folllowing</h3>
-
-    
       {following.map((user) => {
         return (
           <div key={user._id}>

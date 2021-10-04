@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, NavLink} from "react-router-dom";
+import { useParams, NavLink, useHistory} from "react-router-dom";
 
 
 import api from "../../apis/api";
@@ -7,7 +7,7 @@ import api from "../../apis/api";
 function PostingEdit() {
 
   const { id } = useParams();
- 
+  const history = useHistory()
 
   const [posting, setPosting] = useState({
       name:"",
@@ -117,7 +117,11 @@ function PostingEdit() {
           </div>
           <div className="flex justify-content-end mr-3">
         <div
-          onClick ={handlePosting}
+            onClick={() => {
+            handlePosting();
+            history.push("/profile")
+          }}
+            
           className=" w-25 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
         >
           Post
@@ -129,3 +133,8 @@ function PostingEdit() {
 }
 
 export default PostingEdit;
+
+
+ 
+    
+ 

@@ -38,7 +38,7 @@ function FollowingPosts() {
     (post) => following.indexOf(post.postedBy._id) > 0 
   );
 
-
+  
   return (
     <div>
       <div className="flex justify-content-end mr-3">
