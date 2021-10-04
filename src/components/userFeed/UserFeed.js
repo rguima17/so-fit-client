@@ -5,6 +5,7 @@ import FollowingPosts from "../posting/FollowingPosts";
 import LikedPosts from "../posting/LikedPosts";
 
 function UserFeed() {
+
    
    return (
        <div>
@@ -20,5 +21,4 @@ function UserFeed() {
    )
 }
 
-export default UserFeed
-
+export default UserFeed;
