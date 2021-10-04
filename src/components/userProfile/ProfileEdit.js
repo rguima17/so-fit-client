@@ -17,6 +17,7 @@ function ProfileEdit() {
   const { id } = useParams();
 
   useEffect(() => {
+    
     async function fetchProfile() {
       try {
         const response = await api.get("/profile");

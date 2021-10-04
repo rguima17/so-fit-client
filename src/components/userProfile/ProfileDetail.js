@@ -13,6 +13,8 @@ function ProfileDetail() {
     soFitPoints: 0,
     level: 0,
     _id: "",
+    followersId: [],
+    followingId: [],
   });
 
   useEffect(() => {
@@ -33,10 +35,11 @@ function ProfileDetail() {
     <div>
       <div className="max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800">
         <img
-          className="object-fill  object-top w-full h-56 "
+          className="mx-auto object-top object-cover w-full h-56 "
           src={profile.pictureUrl}
           alt={`User ${profile.name}`}
         />
+
         <div className="text-center  py-3  bg-gray-900">
           <h1 className="mx-3 mb-0 text-xl font-bold text-white">
             Welcome to your profile !
@@ -74,12 +77,22 @@ function ProfileDetail() {
               Level: {profile.level}
             </p>
           </div>
-
-          <div className="flex items-center mt-4">
+          <div className="flex items-center mt-4 ">
             <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
               {" "}
               SoFit Points:{" "}
               {Number(profile.soFitPoints.toFixed(0)).toLocaleString("pt-BR")}
+            </p>
+          </div>
+
+          <div className="flex items-center mt-4">
+            <p className="font-semibold text-lg text-gray-700 dark:text-gray-400">
+              Following: {profile.followingId.length}
+            </p>
+          </div>
+          <div className="flex items-center mt-4">
+            <p className="font-semibold text-lg text-gray-700 dark:text-gray-400">
+              Followers: {profile.followersId.length}
             </p>
           </div>
         </div>

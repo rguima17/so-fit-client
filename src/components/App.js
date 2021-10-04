@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // --------------------------- REMOVER
 
 import AuthRouter from "../routeComponents/auth/AuthRouter";
 import { AuthContextComponent } from "../contexts/authContext";
@@ -19,6 +19,7 @@ import WorkoutDuplicate from "./workout/WorkoutDuplicate";
 
 import ProfileDetail from "./userProfile/ProfileDetail";
 import ProfileEdit from "./userProfile/ProfileEdit";
+import PostingEdit from "./posting/PostingEdit";
 
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
@@ -44,6 +45,10 @@ function App() {
               />
               <PrivateRoute exact path="/user-feed" component={UserFeed} />
               <PrivateRoute exact path="/user/:id" component={ViewUser} />
+
+              {/* Post related routes */}
+
+              <Route exact path="/posting/edit/:id" component={PostingEdit} />
 
               {/* Workout related routes */}
               <PrivateRoute
