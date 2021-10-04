@@ -7,7 +7,7 @@ function ExerciseForm(props) {
     switch (props.exerciseState.category) {
       case "Cardio":
         return (
-          <>
+          <label className="block mt-2">
             <span className="text-gray-700">Exercise name</span>
             <select
               className="form-select mt-1 block w-full"
@@ -22,11 +22,11 @@ function ExerciseForm(props) {
               <option value="Walking">Walking</option>
               <option value="Running">Running</option>
             </select>
-          </>
+          </label>
         );
       case "Bike":
         return (
-          <>
+          <label className="block mt-2">
             <span className="text-gray-700">Exercise name</span>
             <select
               className="form-select mt-1 block w-full"
@@ -40,11 +40,11 @@ function ExerciseForm(props) {
               </option>
               <option value="Biking">Biking</option>
             </select>
-          </>
+          </label>
         );
       case "Body-workout":
         return (
-          <>
+          <label className="block mt-2">
             <span className="text-gray-700">Exercise name</span>
             <select
               className="form-select mt-1 block w-full"
@@ -68,7 +68,7 @@ function ExerciseForm(props) {
               <option value="Back plank">Back plank</option>
               <option value="Side plank">Side plank</option>
             </select>
-          </>
+          </label>
         );
       default:
         return <div className="mt-1 mb-10 block w-full"></div>;
@@ -77,7 +77,7 @@ function ExerciseForm(props) {
 
   const renderQuantityInputByExerciseName = () => {
     return (
-      <label className="block">
+      <label className="block mt-2">
         <span className="text-gray-700 block">Quantity</span>
         <input
           type="number"
@@ -99,7 +99,6 @@ function ExerciseForm(props) {
     <LoadingSpinner />
   ) : (
     <form
-      // {console.log('entrou no exerciseform')}
       className="p-4 shadow-md rounded-md text-left"
       style={{ maxWidth: "92vw", marginLeft: "auto", marginRight: "auto" }}
       onSubmit={props.handleSubmit}
@@ -122,7 +121,7 @@ function ExerciseForm(props) {
         </select>
       </label>
 
-      <label className="block">{renderExerciseNamesByCategory()}</label>
+      {renderExerciseNamesByCategory()}
 
       {props.exerciseState.exerciseName !== ""
         ? renderQuantityInputByExerciseName()

@@ -48,14 +48,23 @@ function WorkoutList() {
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <h5
-                  className="bg-gray-100 py-1 rounded mb-1 font-medium text-gray500 uppercase tracking-wider text-center"
+                <div
+                  className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center pl-10"
                   onClick={() => {
                     setShowPlannedList(!showPlannedList);
                   }}
                 >
-                  Planned Workouts
-                </h5>
+                  <h5 className="font-medium uppercase tracking-wider">
+                    Planned Workouts
+                  </h5>
+                  <div>
+                    {showPlannedList ? (
+                      <i className="fas fa-chevron-up pl-10 animate-pulse"></i>
+                    ) : (
+                      <i className="fas fa-chevron-down pl-10 animate-pulse"></i>
+                    )}
+                  </div>
+                </div>
                 {showPlannedList ? (
                   <WorkoutListTable
                     workouts={workouts}
@@ -97,14 +106,23 @@ function WorkoutList() {
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <h5
-                  className="bg-gray-100 py-1 rounded mb-1 font-medium text-gray500 uppercase tracking-wider text-center"
+                <div
+                  className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center pl-10"
                   onClick={() => {
                     setShowDoneList(!showDoneList);
                   }}
                 >
-                  'Done!' Workouts
-                </h5>
+                  <h5 className="font-medium uppercase tracking-wider">
+                    'Done!' Workouts
+                  </h5>
+                  <div>
+                    {showDoneList ? (
+                      <i className="fas fa-chevron-up pl-10 animate-pulse"></i>
+                    ) : (
+                      <i className="fas fa-chevron-down pl-10 animate-pulse"></i>
+                    )}
+                  </div>
+                </div>
                 {showDoneList ? (
                   <WorkoutListTable
                     workouts={workouts}

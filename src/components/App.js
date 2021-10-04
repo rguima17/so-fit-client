@@ -23,6 +23,8 @@ import PostingEdit from "./posting/PostingEdit";
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
 
+import PointsLeaderboard from "./leaderboards/PointsLeaderboard";
+
 function App() {
   return (
     <BrowserRouter>
@@ -48,6 +50,13 @@ function App() {
               {/* Post related routes */}
 
               <Route exact path="/posting/edit/:id" component={PostingEdit} />
+
+              {/* Leaderboard related routes */}
+              <Route
+                exact
+                path="/points-leaderboard"
+                component={PointsLeaderboard}
+              />
 
               {/* Workout related routes */}
               <PrivateRoute
