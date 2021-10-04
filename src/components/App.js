@@ -9,7 +9,7 @@ import Footer from "./structure/footer/Footer";
 import NavRouter from "./structure/nav/NavRouter";
 import Chronometer from "./chronometer/Chronometer";
 
-import WorkoutList from "../components/workout/WorkoutList";
+import WorkoutList from "../components/workout/workoutList/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
 import WorkoutEdit from "./workout/WorkoutEdit";
 import WorkoutDelete from "./workout/WorkoutDelete";
