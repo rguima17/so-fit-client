@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-import Logo from "../../../img/Logo.png";
+import Logo from "../../../assets/img/Logo.png";
 
 const navigation = [
   { name: "Profile", href: "/profile", current: true },
@@ -79,7 +79,7 @@ export default function NavBarOffline() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className='block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-500'
+                    className='block px-3 py-2 rounded-md text-left text-base font-medium text-white hover:text-gray-900 hover:bg-gray-500'
                   >
                     {item.name}
                   </Link>
