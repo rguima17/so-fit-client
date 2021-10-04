@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // --------------------------- REMOVER
 
 import AuthRouter from "../routeComponents/auth/AuthRouter";
 import { AuthContextComponent } from "../contexts/authContext";

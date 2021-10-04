@@ -150,8 +150,8 @@ function WorkoutDetail() {
                 onClick={() => handleDeleteClick(workout)}
               ></i>
 
-              {/* Button to post a workout */}
-              {/* <NavLink to={`/posting/edit/${id}`}>
+            
+               <NavLink to={`/posting/edit/${id}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -167,7 +167,9 @@ function WorkoutDetail() {
                   />
                 </svg>
               </NavLink>
-              ................................. */}
+
+
+            
             </h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
               {workout.description}
