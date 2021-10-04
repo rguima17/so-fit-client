@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 #main-container {
-  background-color: white;
+  background-color: lightgray;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
