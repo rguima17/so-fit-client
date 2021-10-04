@@ -17,11 +17,11 @@ function LikedPosts() {
       try {
         const response = await api.get("/postings");
         setPosts([...response.data]);
-        console.log(response.data.length)
-        console.log(response.data)
-        console.log(response.data[0])
-        console.log(response.data[0].likes)
-        console.log(loggedInUser.user._id)
+        // console.log(response.data.length)
+        // console.log(response.data)
+        // console.log(response.data[0])
+        // console.log(response.data[0].likes)
+        // console.log(loggedInUser.user._id)
 
         let arr = [];
         for (let i = 0; i < response.data.length; i++) {
@@ -32,16 +32,13 @@ function LikedPosts() {
         }
         setfilteredPosts([...arr]);
 
-        console.log(arr);
+        // console.log(arr);
       } catch (err) {
         console.error(err);
       }
     }
     fetchPosts();
   }, []);
-
-  
- 
 
   return (
     <div>
