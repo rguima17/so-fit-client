@@ -91,7 +91,7 @@ export default function NavBarOffline() {
                     <Menu.Button className='bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
                       <span className='sr-only'>Open user menu</span>
                       <img
-                        className='h-8 w-8 rounded-full'
+                        className='mx-auto object-cover rounded-full h-8 w-8 '
                         src={profile.pictureUrl} //'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
                         alt={`User ${profile.name}`}
                       />
@@ -192,7 +192,7 @@ export default function NavBarOffline() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className='block px-3 py-2 rounded-md text-left text-base font-medium text-white hover:text-gray-900 hover:bg-gray-500'
+                    className='block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-500'
                   >
                     {item.name}
                   </Link>

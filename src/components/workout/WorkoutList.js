@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 
 import api from "../../apis/api";
@@ -15,9 +15,10 @@ function WorkoutList() {
   const [workoutCreated, setWorkoutCreated] = useState(false);
 
   const history = useHistory();
+  const scrollRef = useRef(null);
 
   useEffect(() => {
-    async function fetchProjects() {
+    async function fetchWorkoutList() {
       try {
         setLoading(true);
         const response = await api.get("/workout");
@@ -31,7 +32,7 @@ function WorkoutList() {
         setLoading(false);
       }
     }
-    fetchProjects();
+    fetchWorkoutList();
   }, [workoutCreated]);
 
   return (
@@ -106,8 +107,11 @@ function WorkoutList() {
             }}
           >
             <button
-              onClick={() => setShowForm(!showForm)}
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              onClick={() => {
+                setShowForm(!showForm);
+                scrollRef.current.scrollIntoView();
+              }}
+              className="w-full mt-2 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce"
             >
               Add a new workout
             </button>
@@ -119,6 +123,7 @@ function WorkoutList() {
               />
             ) : null}
           </div>
+          <div ref={scrollRef} />
         </div>
       )}
     </div>

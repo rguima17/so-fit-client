@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 
 import api from "../../apis/api";
 import ExerciseCreate from "../exercise/ExerciseCreate";
+import ExerciseList from "../exercise/ExerciseList";
 import ExerciseEdit from "../exercise/ExerciseEdit";
 
 import LoadingSpinner from "../structure/loading/LoadingSpinner";
 import ConirmationModal from "../structure/confirmationModal/ConfirmationModal";
 
-import pickCategoryImage from "../../scripts/pickExerciseCategory";
 import renderWorkoutStatus from "../../scripts/renderWorkoutStatus";
 
 function WorkoutDetail() {
@@ -19,6 +19,7 @@ function WorkoutDetail() {
     weekDay: "",
     exercisesId: [],
   });
+  const [workoutTotalPoints, setWorkoutTotalPoints] = useState(0);
 
   const { id } = useParams();
   const history = useHistory();
@@ -31,6 +32,8 @@ function WorkoutDetail() {
     exerciseName: "",
     exerciseReps: 0,
   });
+
+  const scrollRef = useRef(null);
 
   // Setup for deleting a generic entity (exercise, or workout)
   const [showModal, setShowModal] = useState(false);
@@ -77,7 +80,7 @@ function WorkoutDetail() {
 
   // Retreiving the workout details
   useEffect(() => {
-    async function fetchData() {
+    async function fetchWorkoutData() {
       try {
         setLoading(true);
         const response = await api.get(`/workout/${id}`);
@@ -92,8 +95,17 @@ function WorkoutDetail() {
         console.error(err);
       }
     }
-    fetchData();
+    fetchWorkoutData();
   }, [id, exerciseChanged]);
+
+  // Calculating this workout total points
+  useEffect(() => {
+    setWorkoutTotalPoints(
+      workout.exercisesId.reduce((acc, exercise) => {
+        return acc + exercise.exerciseTotalPoints;
+      }, 0)
+    );
+  }, [workout]);
 
   return (
     <div className="px-1 pt-1">
@@ -108,7 +120,7 @@ function WorkoutDetail() {
                   to={`/workout`}
                   className="text-indigo-600 hover:text-indigo-900"
                 >
-                  {"<<"}
+                  <i className="fas fa-arrow-circle-left"></i>
                 </NavLink>
               </span>
               <span className="pl-3 pr-2">{workout.name}</span>
@@ -137,6 +149,25 @@ function WorkoutDetail() {
                 className="fas fa-times text-red-400"
                 onClick={() => handleDeleteClick(workout)}
               ></i>
+
+              {/* Button to post a workout */}
+              {/* <NavLink to={`/posting/edit/${id}`}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+              </NavLink>
+              ................................. */}
             </h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
               {workout.description}
@@ -146,7 +177,30 @@ function WorkoutDetail() {
             <dl>
               <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Status</dt>
-                {renderWorkoutStatus(workout)}
+                <div className="flex justify-between">
+                  {renderWorkoutStatus(workout)}
+                  {workout.status === "Done!" ? (
+                    <div>
+                      <i
+                        className="fas fa-share-square pr-3 text-green-600 animate-pulse"
+                        onClick={() => history.push(`/posting/edit/${id}`)}
+                      ></i>
+                      <i
+                        className="fas fa-copy text-green-600 animate-pulse"
+                        onClick={() => history.push(`/workout/duplicate/${id}`)}
+                      ></i>
+                    </div>
+                  ) : (
+                    <i
+                      className="fas fa-check-square text-green-600 animate-pulse"
+                      onClick={() =>
+                        history.push(
+                          `/workout/${id}/done/${workoutTotalPoints}`
+                        )
+                      }
+                    ></i>
+                  )}
+                </div>
               </div>
               <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
@@ -161,65 +215,19 @@ function WorkoutDetail() {
                   Amount of points to be earned
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {workout.exercisesId
-                    .reduce((acc, exercise) => {
-                      return acc + exercise.exerciseTotalPoints;
-                    }, 0)
-                    .toFixed(3)}
+                  {workoutTotalPoints.toFixed(0).toLocaleString("pt-BR")}
                 </dd>
               </div>
-              <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dd className="text-sm font-medium text-gray-500">
-                  Exercise's list
-                </dd>
-                {workout.exercisesId.map((exercise) => {
-                  return (
-                    <dd
-                      className="flex justify-between mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
-                      key={exercise._id}
-                    >
-                      <span>
-                        <img
-                          src={pickCategoryImage(exercise.category)}
-                          alt="category-icon"
-                          style={{ height: "19px", display: "inline" }}
-                        />{" "}
-                        {exercise.exerciseReps} x {exercise.exerciseName}
-                      </span>
-                      <div>
-                        <span className="px-2 whitespace-nowrap text-right text-sm font-medium">
-                          <span
-                            onClick={() => {
-                              setShowForm(!showForm);
-                              setExerciseToUpdate({ ...exercise });
-                            }}
-                            className="text-indigo-600 hover:text-indigo-900"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 inline"
-                              fill="none"
-                              viewBox="0 0 24 28"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                        <i
-                          className="fas fa-times text-red-400"
-                          onClick={() => handleDeleteClick(exercise)}
-                        ></i>
-                      </div>
-                    </dd>
-                  );
-                })}
-              </div>
+
+              <ExerciseList
+                workout={workout}
+                showForm={showForm}
+                setShowForm={setShowForm}
+                setExerciseToUpdate={setExerciseToUpdate}
+                scrollRef={scrollRef}
+                handleDeleteClick={handleDeleteClick}
+              />
+
               <button
                 onClick={() => {
                   setShowForm(!showForm);
@@ -228,11 +236,13 @@ function WorkoutDetail() {
                     exerciseName: "",
                     exerciseReps: 0,
                   });
+                  scrollRef.current.scrollIntoView();
                 }}
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce"
               >
                 Add a new exercise to this workout
               </button>
+
               {showForm ? (
                 exerciseToUpdate._id ? (
                   <ExerciseEdit
@@ -241,12 +251,15 @@ function WorkoutDetail() {
                     setExerciseChanged={setExerciseChanged}
                   />
                 ) : (
-                  <ExerciseCreate
-                    handleClose={setShowForm}
-                    setExerciseChanged={setExerciseChanged}
-                  />
+                  <>
+                    <ExerciseCreate
+                      handleClose={setShowForm}
+                      setExerciseChanged={setExerciseChanged}
+                    />
+                  </>
                 )
               ) : null}
+              <div ref={scrollRef} />
             </dl>
           </div>
         </div>

@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
-// import { useHistory, useParams } from "react-router-dom";
 import api from "../../apis/api";
 import UserSmallCard from "./UserSmallcard";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 
-function AllUsers() {
+function UserFollowing() {
   const { loggedInUser } = useContext(AuthContext);
 
-  const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState("");
+  const [following, setFollowing] = useState([]);
+  
 
   useEffect(() => {
-  
+    
     async function fetchUsers() {
       try {
-        const response = await api.get("/users");
-        setUsers([...response.data]);
+       
+        const user = await api.get("/profile")
+        setFollowing([...user.data.followingId])
+
       } catch (err) {
         console.error(err);
       }
@@ -25,18 +26,8 @@ function AllUsers() {
     fetchUsers();
   }, []);
 
-  function handleSearch(e) {
-    setSearch(e.target.value);
-  }
-
-  const usersWithoutLoggedInUser = users.filter(
-    (user) => user._id !== loggedInUser.user._id
-  );
-
-  const filteredUsers = usersWithoutLoggedInUser.filter((user) =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
-
+  
+ 
   return (
     <div>
       <div className="flex justify-content-end mr-3">
@@ -47,20 +38,10 @@ function AllUsers() {
           Back
         </NavLink>
       </div>
-      <h3>All Users</h3>
+      <h3>Your Folllowing</h3>
 
-      <div>
-        <form className="">
-          <input
-            className=" text-gray-700 bg-white border border-gray-300 rounded-md sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            type="text"
-            onChange={handleSearch}
-            placeholder="Search User"
-          />
-        </form>
-      </div>
-
-      {filteredUsers.map((user) => {
+    
+      {following.map((user) => {
         return (
           <div key={user._id}>
             <UserSmallCard
@@ -76,4 +57,4 @@ function AllUsers() {
   );
 }
 
-export default AllUsers;
+export default UserFollowing;

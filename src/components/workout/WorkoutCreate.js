@@ -48,7 +48,6 @@ function WorkoutCreate(props) {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         workoutState={workoutState}
-        statusAvailable={false}
         loading={loading}
         buttonText="Create workout"
       />
