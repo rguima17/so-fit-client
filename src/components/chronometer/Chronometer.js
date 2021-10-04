@@ -8,13 +8,13 @@ export default function Chronometer() {
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const countRef = useRef(null);
-    const [options, setOptions] = useState({
-      prepare: 0,
-      work: 0,
-      rest: 0,
-      cycles: 0,
-      tabatas: 0,
-    });
+    // const [options, setOptions] = useState({
+    //   prepare: 0,
+    //   work: 0,
+    //   rest: 0,
+    //   cycles: 0,
+    //   tabatas: 0,
+    // });
 
     const handleStartRegressive = () => {
       countRef.current = setInterval(() => {

@@ -21,6 +21,8 @@ import ProfileEdit from "./userProfile/ProfileEdit";
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
 
+import PostingEdit from "./posting/PostingEdit";
+
 function App() {
   return (
     <BrowserRouter>
@@ -43,7 +45,12 @@ function App() {
               <PrivateRoute exact path='/user-feed' component={UserFeed} />
               <PrivateRoute exact path='/user/:id' component={ViewUser} />
 
-              {/* WOrkout related routes */}
+               {/* Post related routes */}
+
+               <Route exact path='/posting/edit/:id' component={PostingEdit} />
+
+
+              {/* Workout related routes */}
               <PrivateRoute
                 exact
                 path='/workout/edit/:id'
