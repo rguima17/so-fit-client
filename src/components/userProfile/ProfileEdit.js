@@ -17,7 +17,7 @@ function ProfileEdit() {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log("useeffect4")
+    
     async function fetchProfile() {
       try {
         const response = await api.get("/profile");

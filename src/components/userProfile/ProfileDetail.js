@@ -18,7 +18,7 @@ function ProfileDetail() {
   });
 
   useEffect(() => {
-    console.log("useeffect3")
+    
     async function fetchProfile() {
       try {
         const response = await api.get("/profile");
@@ -87,6 +87,8 @@ function ProfileDetail() {
             </p>
           </div>
         </div>
+
+
 
         <div className='flex justify-content-between mr-4'>
           <NavLink to={`/user-feed`}>

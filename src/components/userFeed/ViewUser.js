@@ -24,7 +24,7 @@ function ViewUser() {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log("useeffect2")
+    
     async function fetchUser() {
       try {
         const response = await api.get(`/user/view/${id}`);
@@ -70,6 +70,7 @@ function ViewUser() {
   async function handleUnfollow() {
     try {
       setbuttonClick(!buttonClick);
+     
       if (loggedInUser.user._id === id) {
         // console.log("Cannot unfollow yourself")
         return null;
