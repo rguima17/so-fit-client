@@ -22,7 +22,7 @@ function WorkoutForm(props) {
           required
         />
       </label>
-      <div className="mt-4">
+      <div className="mt-2">
         <label className="block">
           <span className="text-gray-700">Workout description</span>
           <textarea
@@ -34,40 +34,9 @@ function WorkoutForm(props) {
             value={props.workoutState.description}
             onChange={props.handleChange}
           ></textarea>
-
-          {/* <input className="form-input mt-1 block w-full" placeholder="..." /> */}
         </label>
       </div>
-      {props.statusAvailable ? (
-        <div className="mt-4">
-          <span className="text-gray-700">Status</span>
-          <div className="mt-2">
-            <label className="inline-flex items-center">
-              <input
-                type="radio"
-                className="form-radio"
-                name="status"
-                value="Planned"
-                onChange={props.handleChange}
-                checked={props.workoutState.status === "Planned"}
-              />
-              <span className="ml-2">Planned</span>
-            </label>
-            <label className="inline-flex items-center ml-6">
-              <input
-                type="radio"
-                className="form-radio"
-                name="status"
-                value="Done!"
-                onChange={props.handleChange}
-                checked={props.workoutState.status === "Done!"}
-              />
-              <span className="ml-2">Done!</span>
-            </label>
-          </div>
-        </div>
-      ) : null}
-      <label className="block mt-4">
+      <label className="block mt-2">
         <span className="text-gray-700">Day of the week</span>
         <select
           className="form-select mt-1 block w-full"
@@ -88,7 +57,7 @@ function WorkoutForm(props) {
           <option value="SUN">Sunday</option>
         </select>
       </label>
-      <div className="mt-8">
+      <div className="mt-3">
         <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
           {props.buttonText}
         </button>

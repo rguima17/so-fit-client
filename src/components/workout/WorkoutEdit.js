@@ -9,7 +9,6 @@ function WorkoutEdit() {
   const [workoutState, setWorkoutState] = useState({
     name: "",
     description: "",
-    status: "",
     weekDay: "",
     exercisesId: [],
   });
@@ -20,7 +19,7 @@ function WorkoutEdit() {
 
   // Fetching the current workout data an storing it in the state
   useEffect(() => {
-    async function fetchData() {
+    async function fetchWorkoutEditData() {
       setLoading(true);
       try {
         const response = await api.get(`/workout/${id}`);
@@ -32,7 +31,7 @@ function WorkoutEdit() {
         setLoading(false);
       }
     }
-    fetchData();
+    fetchWorkoutEditData();
   }, [id]);
 
   function handleChange(event) {
@@ -59,22 +58,21 @@ function WorkoutEdit() {
   }
   return (
     <div className="bg-white px-1 pt-1">
-      <div className="inline flex justify-center items-center pr-4">
+      <div className="flex justify-center items-center pr-4">
         <span className="pr-2 py-4 whitespace-nowrap text-sm font-medium inline">
           <NavLink
             to={`/workout/${id}`}
             className="text-indigo-600 hover:text-indigo-900"
           >
-            {"<<"}
+            <i className="fas fa-arrow-circle-left pb-2"></i>
           </NavLink>
         </span>
-        <h4 className="inline">Edit your workout</h4>
+        <h5 className="inline">Edit your workout</h5>
       </div>
       <WorkoutForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         workoutState={workoutState}
-        statusAvailable={true}
         loading={loading}
         buttonText="Update workout"
       />
