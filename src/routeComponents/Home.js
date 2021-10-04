@@ -2,10 +2,10 @@
 import { Link } from "react-router-dom";
 import "./home.css";
 
-import imgBiking from "../img/slides/Bike.png";
-import imgRunning from "../img/slides/Running.jpg";
-import imgPullUp from "../img/slides/Pull-Up.jpg";
-import imgExercise from "../img/slides/Exercise.jpg";
+import imgBiking from "../assets/img/slides/Bike.png";
+import imgRunning from "../assets/img/slides/Running.jpg";
+import imgPullUp from "../assets/img/slides/Pull-Up.jpg";
+import imgExercise from "../assets/img/slides/Exercise.jpg";
 
 function Home() {
   return (

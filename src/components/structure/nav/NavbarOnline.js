@@ -6,7 +6,7 @@ import { Popover, Transition, Menu } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import api from "../../../apis/api";
-import Logo from "../../../img/Logo.png";
+import Logo from "../../../assets/img/Logo.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -192,7 +192,7 @@ export default function NavBarOffline() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className='block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-500'
+                    className='block px-3 py-2 rounded-md text-left text-base font-medium text-white hover:text-gray-900 hover:bg-gray-500'
                   >
                     {item.name}
                   </Link>
