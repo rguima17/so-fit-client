@@ -14,13 +14,7 @@ export default function OptionsModal(props) {
           <i className='fas fa-cog'></i>
         </h3>
       </button>
-      {/* <button
-        className='text-white bg-indigo-600 hover:bg-indigo-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-        type='button'
-        onClick={() => setShowModal(true)}
-      >
-        Settings Tabata
-      </button> */}
+
       {showModal ? (
         <>
           <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
@@ -42,68 +36,64 @@ export default function OptionsModal(props) {
                 {/*body*/}
                 <div className='relative p-6 flex-auto'>
                   <form handleSubmit={props.handleSubmit}>
-                    <div class='form-group'>
-                      <label for='formGroupExampleInput'>Prepare</label>
+                    <label className='block'>
+                      <span className='text-gray-700'>Prepare</span>
                       <input
                         type='number'
-                        class='form-control'
+                        className='form-input mt-1 block w-full'
+                        placeholder='Prepare Value'
                         name='prepare'
-                        id='formGroupExampleInput'
-                        placeholder='Insert Prepare'
                         value={props.options.prepare}
                         onChange={props.handleChange}
                       />
-                    </div>
-                    <div class='form-group'>
-                      <label for='formGroupExampleInput2'>Work</label>
+                    </label>
+                    <label className='block'>
+                      <span className='text-gray-700'>Work</span>
                       <input
                         type='number'
-                        class='form-control'
+                        className='form-input mt-1 block w-full'
+                        placeholder='Work Value'
                         name='work'
-                        id='formGroupExampleInput2'
-                        placeholder='Insert Work'
                         value={props.options.work}
                         onChange={props.handleChange}
                       />
-                    </div>
-                    <div class='form-group'>
-                      <label for='formGroupExampleInput2'>Rest</label>
+                    </label>
+                    <label className='block'>
+                      <span className='text-gray-700'>Rest</span>
                       <input
                         type='number'
-                        class='form-control'
+                        className='form-input mt-1 block w-full'
+                        placeholder='Rest Value'
                         name='rest'
-                        id='formGroupExampleInput2'
-                        placeholder='Insert Rest'
                         value={props.options.rest}
                         onChange={props.handleChange}
                       />
-                    </div>
-                    <div class='form-group'>
-                      <label for='formGroupExampleInput2'>Cyrcle</label>
+                    </label>
+                    <label className='block'>
+                      <span className='text-gray-700'>Cycles</span>
                       <input
                         type='number'
-                        class='form-control'
+                        className='form-input mt-1 block w-full'
+                        placeholder='Cycles Value'
                         name='cycles'
-                        id='formGroupExampleInput2'
-                        placeholder='Insert Cyrcle'
                         value={props.options.cycles}
                         onChange={props.handleChange}
                       />
-                    </div>
-                    <div class='form-group'>
-                      <label for='formGroupExampleInput2'>Tabata</label>
+                    </label>
+                    <label className='block'>
+                      <span className='text-gray-700'>Tabatas</span>
                       <input
                         type='number'
-                        class='form-control'
+                        className='form-input mt-1 block w-full'
+                        placeholder='Tabatas Value'
                         name='tabatas'
-                        id='formGroupExampleInput2'
-                        placeholder='Insert Tabata'
                         value={props.options.tabatas}
                         onChange={props.handleChange}
                       />
-                    </div>
+                    </label>
                   </form>
                 </div>
+
                 {/*footer*/}
                 <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
                   <button
