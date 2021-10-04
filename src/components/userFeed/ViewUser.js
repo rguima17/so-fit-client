@@ -24,7 +24,6 @@ function ViewUser() {
   const { id } = useParams();
 
   useEffect(() => {
-    
     async function fetchUser() {
       try {
         const response = await api.get(`/user/view/${id}`);
@@ -39,13 +38,8 @@ function ViewUser() {
   //Follow user
   async function handleFollow() {
     try {
-      setbuttonClick(!buttonClick);
-      // console.log(loggedInUser.user._id)
-      // console.log(userId.id)
-
       //Check if same User
       if (loggedInUser.user._id === id) {
-        // console.log("Cannot follow yourself")
         return null;
       }
 
@@ -61,6 +55,7 @@ function ViewUser() {
         }
       }
       await api.post(`/user/view/${id}`);
+      setbuttonClick(!buttonClick);
     } catch (err) {
       console.log(err);
     }
@@ -70,7 +65,7 @@ function ViewUser() {
   async function handleUnfollow() {
     try {
       setbuttonClick(!buttonClick);
-     
+
       if (loggedInUser.user._id === id) {
         // console.log("Cannot unfollow yourself")
         return null;

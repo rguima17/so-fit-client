@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import api from "../../apis/api";
 import ViewPostCard from "./ViewPostCard";
 import { useContext } from "react";
@@ -7,99 +7,85 @@ import { AuthContext } from "../../contexts/authContext";
 import { NavLink } from "react-router-dom";
 
 function ViewPost() {
-   
   const { loggedInUser } = useContext(AuthContext);
 
   const [post, setPost] = useState({
-    name:"",
-    createdDate:"",
-    pictureUrl:"",
-    description:"",
-    likes:[],
-    workoutId:{
-        exercisesId:[]
+    name: "",
+    createdDate: "",
+    pictureUrl: "",
+    description: "",
+    likes: [],
+    workoutId: {
+      exercisesId: [],
     },
-    workoutId:{}
-  
+    postedBy: {
+      name: "",
+    },
   });
 
-  const[exercises, SetExercises] =useState([])
-
+  const [likeButtonClick, setLikeButtonClick] = useState(false);
+  const [exercises, SetExercises] = useState([]);
+  
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
-    
     async function fetchPost() {
       try {
         const response = await api.get(`/posting/${id}`);
-       setPost({ ...response.data });
-    
-      
-        let arr = []
-        for(let i=0; i<response.data.workoutId.exercisesId.length;i++){
-           arr.push (response.data.workoutId.exercisesId[i].exerciseName)
+        // console.log(response.data);
+        setPost({ ...response.data });
+
+        let arr = [];
+        for (let i = 0; i < response.data.workoutId.exercisesId.length; i++) {
+          arr.push(response.data.workoutId.exercisesId[i].exerciseName);
         }
-          SetExercises([...arr])
-       
+        SetExercises([...arr]);
       } catch (err) {
         console.error(err);
       }
     }
     fetchPost();
-  }, [id]);
- 
+  }, [id, likeButtonClick]);
+
+  async function deletePost() {
+    if (loggedInUser.user._id !== post.postedBy._id) {
+      return null;
+    }
+
+    try {
+      await api.delete(`/posting/delete/${id}`);
+      history.push("/user-feed");
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
 
+  async function handleLike() {
+    if (loggedInUser.user._id === post.postedBy._id) {
+      return null;
+    }
 
-  //Follow user
-//   async function handleFollow() {
-//     try {
-//       setbuttonClick(!buttonClick);
-      
-//       //Check if same User
-//       if (loggedInUser.user._id === id) {
-        
-//         return null;
-//       }
+    setLikeButtonClick(!likeButtonClick);
+    //Check if already liked the post
+    for (let i = 0; i < post.likes.length; i++) {
+      if (post.likes[i] === loggedInUser.user._id) {
+        try {
+          await api.delete(`/post/like/${id}`);
+        } catch (err) {
+          console.error(err);
+        }
+        return null;
+      }
+    }
 
-//       const profile = await api.get(`/user/view/${loggedInUser.user._id}`);
-
-//       const followingArray = profile.data.followingId;
-
-//       // Check if already follow user
-//       for (let i = 0; i < followingArray.length; i++) {
-//         if (followingArray[i] === id) {
-         
-//           return null;
-//         }
-//       }
-//       await api.post(`/user/view/${id}`);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-
-  //Unfollow User
-//   async function handleUnfollow() {
-//     try {
-//       setbuttonClick(!buttonClick);
-     
-//       if (loggedInUser.user._id === id) {
-       
-//         return null;
-//       }
-//       await api.delete(`/user/view/${id}`);
-   
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   }
-
-
-// return (
-//     <div>OI</div>
-// )
-// }
+    try {
+      await api.post(`/post/like/${id}`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div>
@@ -118,28 +104,12 @@ function ViewPost() {
         description={post.description}
         likes={post.likes.length}
         exercises={exercises}
+        deletePost={deletePost}
+        handleLike={handleLike}
+        postedBy ={post.postedBy.name}
       />
-
-     
-
-      {/* {filteredPosts.map((post) => {
-        return (
-          <div key={post._id}>
-            <PostSmallCard              
-                id={post._id}
-                name={post.name}
-                pictureUrl={post.pictureUrl}
-            />
-          </div>
-        );
-      })} */}
-  
     </div>
   );
 }
-
-
-
-
 
 export default ViewPost;

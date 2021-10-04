@@ -2,6 +2,7 @@ import AllUsers from "./AllUsers";
 import UserFollowing from "./UserFollowing";
 import UserPosts from "../posting/UserPosts";
 import FollowingPosts from "../posting/FollowingPosts";
+import LikedPosts from "../posting/LikedPosts";
 
 function UserFeed() {
    
@@ -12,6 +13,7 @@ function UserFeed() {
           < UserFollowing />
          <UserPosts/>
          <FollowingPosts />
+         <LikedPosts/>
 
 
            </div>
