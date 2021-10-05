@@ -6,7 +6,7 @@ export default function OptionsModal(props) {
   return (
     <>
       <button
-        className='border border-dark container md:container md:mx-auto'
+        className='absolute top-28 left-5 text-4xl text-white'
         type='button'
         onClick={() => setShowModal(true)}
       >
@@ -22,7 +22,7 @@ export default function OptionsModal(props) {
               {/*content*/}
               <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
                 {/*header*/}
-                <div className='flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t'>
+                <div className='bg-gray-300 flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t'>
                   <h3 className='text-3xl font-semibold'>Settings</h3>
                   <button
                     className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
@@ -34,10 +34,10 @@ export default function OptionsModal(props) {
                   </button>
                 </div>
                 {/*body*/}
-                <div className='relative p-6 flex-auto'>
-                  <form handleSubmit={props.handleSubmit}>
+                <div className='bg-gray-300 relative p-6 flex-auto'>
+                  <form>
                     <label className='block'>
-                      <span className='text-gray-700'>Prepare</span>
+                      <span className='text-gray-700'>Prepare (seconds)</span>
                       <input
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -48,7 +48,7 @@ export default function OptionsModal(props) {
                       />
                     </label>
                     <label className='block'>
-                      <span className='text-gray-700'>Work</span>
+                      <span className='text-gray-700'>Work (seconds)</span>
                       <input
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -59,7 +59,7 @@ export default function OptionsModal(props) {
                       />
                     </label>
                     <label className='block'>
-                      <span className='text-gray-700'>Rest</span>
+                      <span className='text-gray-700'>Rest (seconds)</span>
                       <input
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -70,7 +70,9 @@ export default function OptionsModal(props) {
                       />
                     </label>
                     <label className='block'>
-                      <span className='text-gray-700'>Cycles</span>
+                      <span className='text-gray-700'>
+                        Cycles (repetitions)
+                      </span>
                       <input
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -81,7 +83,9 @@ export default function OptionsModal(props) {
                       />
                     </label>
                     <label className='block'>
-                      <span className='text-gray-700'>Tabatas</span>
+                      <span className='text-gray-700'>
+                        Tabatas (repetitions)
+                      </span>
                       <input
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -95,7 +99,7 @@ export default function OptionsModal(props) {
                 </div>
 
                 {/*footer*/}
-                <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
+                <div className='bg-gray-300 flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
                   <button
                     className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                     type='button'
