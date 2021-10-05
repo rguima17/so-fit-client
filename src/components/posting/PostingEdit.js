@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, NavLink} from "react-router-dom";
+import { useParams, NavLink, useHistory} from "react-router-dom";
 
 
 import api from "../../apis/api";
@@ -7,7 +7,7 @@ import api from "../../apis/api";
 function PostingEdit() {
 
   const { id } = useParams();
- 
+  const history = useHistory()
 
   const [posting, setPosting] = useState({
       name:"",
@@ -19,10 +19,29 @@ function PostingEdit() {
   });
 
   function handleChange(event) {
-      setPosting({ ...posting, [event.target.name]: event.target.value });
+    if (event.target.files) {
+      // console.log("entrou");
+
+      return setPosting({
+        ...posting,
+        [event.target.name]: event.target.files[0],
+      });
+    }
+     return setPosting({ ...posting, [event.target.name]: event.target.value });
   }
 
- 
+
+  async function handleUpload(file) {
+    const uploadData = new FormData();
+
+    uploadData.append("pictureUrl2", file);
+
+    const response = await api.post("/image-upload", uploadData);
+
+    return response.data.url;
+  }
+
+
   useEffect(() => {
     async function fetchInitialData() {
        
@@ -43,18 +62,25 @@ function PostingEdit() {
     fetchInitialData();
   }, [id]);
 
-
+ 
   async function handlePosting(){
-    try {
-        const response = await api.post(`/posting/${id}`, posting)
-        console.log(response)
-  
+     try {
+
+      if (posting.pictureUrl2) {
+        const pictureUrl = await handleUpload(posting.pictureUrl2)
+         await api.post(`/posting/${id}`, {...posting, pictureUrl})
+        history.push("/profile")
+      
+      }else {
+        await api.post(`/posting/${id}`, posting);
+        history.push("/profile");
+      }
     }
        catch (err) {
         console.error(err);
       }
   }
- 
+
   return (
     <div>
       <h1>Posting Edit</h1>
@@ -103,7 +129,7 @@ function PostingEdit() {
               ></textarea>
             </div>
 
-            <div className="mb-1">
+            {/* <div className="mb-1">
               <label className="text-gray-700 font-semibold dark:text-gray-200 mb-1 ">
                 Post Picture:
               </label>
@@ -113,11 +139,26 @@ function PostingEdit() {
                 name="pictureUrl2"
                 placeholder="Add a diffent picture"
               />
-            </div>
+            </div> */}
+          <div className="mb-1">
+            <label className="text-gray-700 font-semibold dark:text-gray-200 mb-1 ">Picture:</label>
+            <input
+              type="file"
+              className="block w-full px-4 py-2  text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              name="pictureUrl2"
+              placeholder="Change your picture"
+              onChange={handleChange}
+            />
+          </div>
+
+
+
           </div>
           <div className="flex justify-content-end mr-3">
         <div
-          onClick ={handlePosting}
+            onClick={handlePosting}   
+         
+            
           className=" w-25 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
         >
           Post
@@ -129,3 +170,8 @@ function PostingEdit() {
 }
 
 export default PostingEdit;
+
+
+ 
+    
+ 

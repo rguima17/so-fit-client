@@ -1,31 +1,38 @@
 import { useState, useEffect } from "react";
 import api from "../../apis/api";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
-import PostSmallCard from "./PostSmallCard";
+import PostSmallCard from "./PostSmallCard"
 
-function FollowingPosts() {
+function LikedPosts() {
   const { loggedInUser } = useContext(AuthContext);
 
   const [posts, setPosts] = useState([]);
-  const [following, setFollowing] = useState([]);
+  const [filteredPosts, setfilteredPosts] = useState([]);
+  
 
   useEffect(() => {
     async function fetchPosts() {
       try {
         const response = await api.get("/postings");
         setPosts([...response.data]);
+        // console.log(response.data.length)
+        // console.log(response.data)
+        // console.log(response.data[0])
+        // console.log(response.data[0].likes)
+        // console.log(loggedInUser.user._id)
 
-        const profile = await api.get("/profile");
         let arr = [];
-
-        for (let i = 0; i < profile.data.followingId.length; i++) {
-          arr.push(profile.data.followingId[i]["_id"]);
-        }
-        setFollowing([...arr]);
+        for (let i = 0; i < response.data.length; i++) {
         
-      console.log(arr)
+          if (response.data[i].likes.indexOf(loggedInUser.user._id) > -1 ) {
+            arr.push(response.data[i]);
+          }
+        }
+        setfilteredPosts([...arr]);
+
+        // console.log(arr);
       } catch (err) {
         console.error(err);
       }
@@ -33,12 +40,6 @@ function FollowingPosts() {
     fetchPosts();
   }, []);
 
-
-  const filteredPosts = posts.filter(
-    (post) => following.indexOf(post.postedBy._id) > 0 
-  );
-
-  
   return (
     <div>
       <div className="flex justify-content-end mr-3">
@@ -49,16 +50,15 @@ function FollowingPosts() {
           Back
         </NavLink>
       </div>
-      <h3>Your Folllowing Posts</h3>
+      <h3>Your Liked Workouts</h3>
 
-          
       {filteredPosts.map((post) => {
         return (
           <div key={post._id}>
-            <PostSmallCard              
-                id={post._id}
-                name={post.name}
-                pictureUrl={post.pictureUrl}
+            <PostSmallCard
+              id={post._id}
+              name={post.name}
+              pictureUrl={post.pictureUrl}
             />
           </div>
         );
@@ -67,4 +67,4 @@ function FollowingPosts() {
   );
 }
 
-export default FollowingPosts;
+export default LikedPosts;

@@ -6,11 +6,10 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Logo from "../../../assets/img/Logo.png";
 
 const navigation = [
-  { name: "Profile", href: "/profile", current: true },
-  { name: "Workout", href: "/workout", current: false },
-  { name: "Chronometer", href: "/chronometer", current: false },
-  { name: "ChronometerTabata", href: "/chronometer-tabata", current: false },
+  { name: "Login", href: "/auth/login", current: false },
   { name: "Signup", href: "/auth/signup", current: false },
+  { name: "Leaderboards", href: "/points-leaderboard", current: true },
+  { name: "Chronometers", href: "/chronometer", current: false },
 ];
 
 export default function NavBarOffline() {

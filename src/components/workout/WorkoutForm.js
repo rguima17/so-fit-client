@@ -5,7 +5,7 @@ function WorkoutForm(props) {
     <LoadingSpinner />
   ) : (
     <form
-      className="p-4 shadow-md rounded-md text-left"
+      className="bg-white p-4 shadow-md rounded-md text-left border-gray-200"
       style={{ maxWidth: "92vw", marginLeft: "auto", marginRight: "auto" }}
       onSubmit={props.handleSubmit}
     >
