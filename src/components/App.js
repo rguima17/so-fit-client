@@ -8,6 +8,7 @@ import Home from "../routeComponents/Home";
 import Footer from "./structure/footer/Footer";
 import NavRouter from "./structure/nav/NavRouter";
 import Chronometer from "./chronometer/Chronometer";
+import ChronometerTabata from "./chronometer/ChronometerTabata";
 
 import WorkoutList from "../components/workout/workoutList/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
@@ -30,61 +31,66 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        <div id="main-container">
+        <div id='main-container'>
           <NavRouter />
-          <main id="site-content">
+          <main id='site-content'>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/auth" component={AuthRouter} />
-              <Route path="/chronometer" component={Chronometer} />
+              <Route exact path='/' component={Home} />
+              <Route path='/auth' component={AuthRouter} />
+              <Route path='/chronometer' component={Chronometer} />
+              <Route path='/chronometer-tabata' component={ChronometerTabata} />
 
               {/* User related routes */}
-              <PrivateRoute exact path="/profile" component={ProfileDetail} />
+              <PrivateRoute exact path='/profile' component={ProfileDetail} />
               <PrivateRoute
                 exact
-                path="/profile/edit/:id"
+                path='/profile/edit/:id'
                 component={ProfileEdit}
               />
-              <PrivateRoute exact path="/user-feed" component={UserFeed} />
-              <PrivateRoute exact path="/user/:id" component={ViewUser} />
+              <PrivateRoute exact path='/user-feed' component={UserFeed} />
+              <PrivateRoute exact path='/user/:id' component={ViewUser} />
 
               {/* Post related routes */}
 
-              <PrivateRoute exact path="/posting/edit/:id" component={PostingEdit} />
-              <PrivateRoute exact path="/post/:id" component={ViewPost} />
+              <PrivateRoute
+                exact
+                path='/posting/edit/:id'
+                component={PostingEdit}
+              />
+              <PrivateRoute exact path='/post/:id' component={ViewPost} />
 
               {/* Leaderboard related routes */}
               <Route
                 exact
-                path="/points-leaderboard"
+                path='/points-leaderboard'
                 component={PointsLeaderboard}
               />
 
               {/* Workout related routes */}
               <PrivateRoute
                 exact
-                path="/workout/edit/:id"
+                path='/workout/edit/:id'
                 component={WorkoutEdit}
               />
               <PrivateRoute
                 exact
-                path="/workout/duplicate/:id"
+                path='/workout/duplicate/:id'
                 component={WorkoutDuplicate}
               />
               <PrivateRoute
                 exact
-                path="/workout/delete/:id"
+                path='/workout/delete/:id'
                 component={WorkoutDelete}
               />
               <PrivateRoute
                 exact
-                path="/workout/:id"
+                path='/workout/:id'
                 component={WorkoutDetail}
               />
-              <PrivateRoute exact path="/workout" component={WorkoutList} />
+              <PrivateRoute exact path='/workout' component={WorkoutList} />
               <PrivateRoute
                 exact
-                path="/workout/:id/done/:points"
+                path='/workout/:id/done/:points'
                 component={WorkoutDone}
               />
             </Switch>
