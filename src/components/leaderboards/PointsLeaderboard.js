@@ -95,6 +95,7 @@ function PointsLeaderboard() {
                   <tr
                     className="hover:bg-gray-100"
                     style={{ backgroundColor: bgColor }}
+                    key={user._id}
                   >
                     <td className="px-4 py-4 whitespace-nowrap text-gray-500">
                       {index + 1 + (currentPage - 1) * 5}

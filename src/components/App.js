@@ -19,6 +19,7 @@ import WorkoutDuplicate from "./workout/WorkoutDuplicate";
 import ProfileDetail from "./userProfile/ProfileDetail";
 import ProfileEdit from "./userProfile/ProfileEdit";
 import PostingEdit from "./posting/PostingEdit";
+import ViewPost from "./posting/ViewPost";
 
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
@@ -49,7 +50,8 @@ function App() {
 
               {/* Post related routes */}
 
-              <Route exact path="/posting/edit/:id" component={PostingEdit} />
+              <PrivateRoute exact path="/posting/edit/:id" component={PostingEdit} />
+              <PrivateRoute exact path="/post/:id" component={ViewPost} />
 
               {/* Leaderboard related routes */}
               <Route
