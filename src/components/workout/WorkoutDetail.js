@@ -149,7 +149,6 @@ function WorkoutDetail() {
                 className="fas fa-times text-red-400"
                 onClick={() => handleDeleteClick(workout)}
               ></i>
- 
             </h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
               {workout.description}
@@ -209,21 +208,26 @@ function WorkoutDetail() {
                 scrollRef={scrollRef}
                 handleDeleteClick={handleDeleteClick}
               />
-
-              <button
-                onClick={() => {
-                  setShowForm(!showForm);
-                  setExerciseToUpdate({
-                    category: "",
-                    exerciseName: "",
-                    exerciseReps: 0,
-                  });
-                  scrollRef.current.scrollIntoView();
-                }}
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce"
-              >
-                Add a new exercise to this workout
-              </button>
+              {workout.status === "Done!" ? (
+                <button className="w-full px-4 py-2 tracking-wide text-green-800 rounded transform bg-green-100">
+                  Workout is completed
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setShowForm(!showForm);
+                    setExerciseToUpdate({
+                      category: "",
+                      exerciseName: "",
+                      exerciseReps: 0,
+                    });
+                    scrollRef.current.scrollIntoView();
+                  }}
+                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce"
+                >
+                  Add a new exercise to this workout
+                </button>
+              )}
 
               {showForm ? (
                 exerciseToUpdate._id ? (

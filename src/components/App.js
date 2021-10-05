@@ -9,7 +9,7 @@ import Footer from "./structure/footer/Footer";
 import NavRouter from "./structure/nav/NavRouter";
 import Chronometer from "./chronometer/Chronometer";
 
-import WorkoutList from "../components/workout/WorkoutList";
+import WorkoutList from "../components/workout/workoutList/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
 import WorkoutEdit from "./workout/WorkoutEdit";
 import WorkoutDelete from "./workout/WorkoutDelete";
@@ -23,6 +23,8 @@ import ViewPost from "./posting/ViewPost";
 
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
+
+import PointsLeaderboard from "./leaderboards/PointsLeaderboard";
 
 function App() {
   return (
@@ -50,6 +52,13 @@ function App() {
 
               <PrivateRoute exact path="/posting/edit/:id" component={PostingEdit} />
               <PrivateRoute exact path="/post/:id" component={ViewPost} />
+
+              {/* Leaderboard related routes */}
+              <Route
+                exact
+                path="/points-leaderboard"
+                component={PointsLeaderboard}
+              />
 
               {/* Workout related routes */}
               <PrivateRoute

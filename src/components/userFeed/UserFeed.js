@@ -5,20 +5,16 @@ import FollowingPosts from "../posting/FollowingPosts";
 import LikedPosts from "../posting/LikedPosts";
 
 function UserFeed() {
-
-   
-   return (
-       <div>
-          <h2> User Feed</h2>
-          <AllUsers />
-          < UserFollowing />
-         <UserPosts/>
-         <FollowingPosts />
-         <LikedPosts/>
-
-
-           </div>
-   )
+  return (
+    <div>
+      <h2> User Feed</h2>
+      <AllUsers />
+      <UserFollowing />
+      <UserPosts />
+      <FollowingPosts />
+      <LikedPosts />
+    </div>
+  );
 }
 
 export default UserFeed;
