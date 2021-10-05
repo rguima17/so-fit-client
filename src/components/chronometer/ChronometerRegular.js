@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-export default function Chronometer() {
+export default function ChronometerRegular() {
   const useTimer = (initialState = 0) => {
     const [timer, setTimer] = useState(initialState);
     const [isActive, setIsActive] = useState(false);
@@ -68,44 +68,44 @@ export default function Chronometer() {
     };
 
     return (
-      <div className=' bg-gray-800 text-white max-h-full md:max-h-screen'>
+      <div className=" bg-gray-800 text-white max-h-full md:max-h-screen">
         {/* container chronometer */}
         <div>
-          <h3 className='pt-4 mb-8 text-4xl text-center'>CHONOMETER</h3>
+          <h3 className="pt-4 mb-8 text-4xl text-center">CHONOMETER</h3>
         </div>
 
-        <div className='pb-16 flex iten-center justify-center'>
-          <p className=' shadow-2xl border-4 border-gray-100 bg-gray-800 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'>
+        <div className="pb-16 flex iten-center justify-center">
+          <p className=" shadow-2xl border-4 border-gray-100 bg-gray-800 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero">
             {formatTime(timer)}
           </p>
         </div>
 
-        <div className='text-4xl pb-20 '>
-          <div className='flex justify-center h-20'>
+        <div className="text-4xl pb-20 ">
+          <div className="flex justify-center h-20">
             {!isActive && !isPaused ? (
               <i
-                className='fas fa-play-circle py-2 px-4 text-7xl '
+                className="fas fa-play-circle py-2 px-4 text-7xl "
                 onClick={handleStart}
               ></i>
             ) : isPaused ? (
               <button
-                className='text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold py-2 px-4 rounded'
+                className="text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold py-2 px-4 rounded"
                 onClick={handlePause}
               >
                 Pause
               </button>
             ) : (
               <button
-                className='text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold py-2 px-4 rounded'
+                className="text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold py-2 px-4 rounded"
                 onClick={handleResume}
               >
                 Resume
               </button>
             )}
           </div>
-          <div className='flex justify-center'>
+          <div className="flex justify-center">
             <button
-              className=' text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold my-12 py-2 px-4 rounded '
+              className=" text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold my-12 py-2 px-4 rounded "
               onClick={handleReset}
               disabled={!isActive}
             >
