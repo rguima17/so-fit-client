@@ -35,7 +35,7 @@ function FollowingPosts() {
 
 
   const filteredPosts = posts.filter(
-    (post) => following.indexOf(post.postedBy._id) > 0 
+    (post) => following.indexOf(post.postedBy._id) >= 0 
   );
 
   
