@@ -7,33 +7,21 @@ function ProfileEdit() {
   const [profile, setProfile] = useState({
     name: "",
     description: "",
-    pictureUrl: "" 
+    pictureUrl: "",
   });
-
-  const [error, setError] = useState("");
 
   const history = useHistory();
 
   const { id } = useParams();
 
   useEffect(() => {
-    
     async function fetchProfile() {
       try {
         const response = await api.get("/profile");
 
-        console.log(id);
-
         setProfile({ ...response.data });
       } catch (err) {
         console.error(err);
-        if (!err.response.data) {
-          return setError("Erro desconhecido");
-        }
-        if (err.response.data.err) {
-          return setError(err.response.data.err.message);
-        }
-        return setError(err.response.data.msg);
       }
     }
     fetchProfile();
@@ -51,8 +39,6 @@ function ProfileEdit() {
 
   function handleChange(event) {
     if (event.target.files) {
-      // console.log("entrou");
-
       return setProfile({
         ...profile,
         [event.target.name]: event.target.files[0],
@@ -76,26 +62,16 @@ function ProfileEdit() {
       }
     } catch (err) {
       console.error(err);
-      if (!err.response.data) {
-        return setError("Erro desconhecido");
-      }
-      if (err.response.data.err) {
-        return setError(err.response.data.err.message);
-      }
-      return setError(err.response.data.msg);
     }
   }
 
   return (
-    <div>
-      <ProfileForm
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        handleUpload={handleUpload}
-        profile={profile}
-        error={error}
-      />
-    </div>
+    <ProfileForm
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      handleUpload={handleUpload}
+      profile={profile}
+    />
   );
 }
 

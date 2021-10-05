@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams, useHistory, NavLink } from "react-router-dom";
+
 import api from "../../apis/api";
-import ViewPostCard from "./ViewPostCard";
-import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
-import { NavLink } from "react-router-dom";
+
+import ViewPostCard from "./ViewPostCard";
 
 function ViewPost() {
   const { loggedInUser } = useContext(AuthContext);
@@ -25,7 +25,7 @@ function ViewPost() {
 
   const [likeButtonClick, setLikeButtonClick] = useState(false);
   const [exercises, SetExercises] = useState([]);
-  
+
   const { id } = useParams();
   const history = useHistory();
 
@@ -61,18 +61,17 @@ function ViewPost() {
     }
   }
 
-
   async function handleLike() {
     if (loggedInUser.user._id === post.postedBy._id) {
       return null;
     }
 
-    setLikeButtonClick(!likeButtonClick);
     //Check if already liked the post
     for (let i = 0; i < post.likes.length; i++) {
       if (post.likes[i] === loggedInUser.user._id) {
         try {
           await api.delete(`/post/like/${id}`);
+          setLikeButtonClick(!likeButtonClick);
         } catch (err) {
           console.error(err);
         }
@@ -82,6 +81,7 @@ function ViewPost() {
 
     try {
       await api.post(`/post/like/${id}`);
+      setLikeButtonClick(!likeButtonClick);
     } catch (err) {
       console.error(err);
     }
@@ -106,7 +106,7 @@ function ViewPost() {
         exercises={exercises}
         deletePost={deletePost}
         handleLike={handleLike}
-        postedBy ={post.postedBy.name}
+        postedBy={post.postedBy.name}
       />
     </div>
   );

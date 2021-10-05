@@ -9,7 +9,7 @@ function ExerciseList(props) {
       {props.workout.exercisesId.map((exercise) => {
         return (
           <dd
-            className="flex justify-between mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
+            className="flex justify-between mt-2 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
             key={exercise._id}
           >
             <span>

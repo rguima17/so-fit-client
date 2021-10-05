@@ -34,7 +34,7 @@ function PointsLeaderboard() {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <div className="px-1 pt-1 mt-5">
+    <div className="pt-1 mt-5">
       <div
         className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center pl-10"
         onClick={() => {
@@ -46,9 +46,9 @@ function PointsLeaderboard() {
         </h5>
         <div>
           {showLeaderboard ? (
-            <i className="fas fa-chevron-up pl-10 animate-pulse"></i>
+            <i className="fas fa-chevron-up px-5 animate-pulse"></i>
           ) : (
-            <i className="fas fa-chevron-down pl-10 animate-pulse"></i>
+            <i className="fas fa-chevron-down px-5 animate-pulse"></i>
           )}
         </div>
       </div>

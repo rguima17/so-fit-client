@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import api from "../../apis/api";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+
+import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
+
 import PostSmallCard from "./PostSmallCard";
 
 function UserPosts() {
@@ -21,7 +22,7 @@ function UserPosts() {
     fetchPosts();
   }, []);
 
-   const filteredPosts = posts.filter(
+  const filteredPosts = posts.filter(
     (post) => post.postedBy._id === loggedInUser.user._id
   );
 
@@ -40,12 +41,7 @@ function UserPosts() {
       {filteredPosts.map((post) => {
         return (
           <div key={post._id}>
-            <PostSmallCard
-              id={post._id}
-              name={post.name}
-              pictureUrl={post.pictureUrl}
-              
-            />
+            <PostSmallCard id={post._id} post={post} cardCategory="userPost" />
           </div>
         );
       })}
