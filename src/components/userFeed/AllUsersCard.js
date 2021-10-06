@@ -1,23 +1,29 @@
 import { NavLink } from "react-router-dom";
 
 function AllUsersCard(props) {
+  const soFitColor = "#6366F1";
   return (
-    <div className="flex items-center">
-      <img
-        alt="pictureUrl"
-        src={props.pictureUrl}
-        className="object-cover w-20 h-20 mr-4 rounded-full"
-      />
-      <div className="relative">
-        <div className="text-lg font-medium text-gray-800 mb-1 text-xl">{props.name}</div>
-        <NavLink
-          to={`/user/${props.id}`}
-          className="bg-blue-600 text-center hover:bg-blue-900 text-white font-medium py-1 px-3  rounded-full"
-        >
-          View Profile
-        </NavLink>
+    <NavLink to={`/user/${props.id}`}>
+      <div className="bg-gray-100 border-indigo-600  | mx-5 border-solid rounded-3xl border-2 | flex justify-start ">
+        <img
+          className="w-14 h-14 object-cover rounded-3xl border-2 ml-1 mr-12"
+          src={props.pictureUrl}
+          alt={props.name}
+        />
+        <div className="flex flex-col justify-center">
+          <p className="text-gray-900 dark:text-gray-300 font-semibold">
+            {props.name}
+          </p>
+          <p className="text-black dark:text-gray-100 text-justify font-semibold">
+            Followers: {props.followers}
+            <i
+              className="fas fa-running text-purple-500 ml-1"
+              style={{ color: soFitColor }}
+            ></i>
+          </p>
+        </div>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

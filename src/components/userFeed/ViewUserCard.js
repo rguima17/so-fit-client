@@ -1,4 +1,8 @@
 import { NavLink } from "react-router-dom";
+import rankingImg from "../../assets/icons/ranking.png";
+import soFitLogo from "../../assets/img/Logo.png";
+
+
 
 function ViewUserCard(props) {
   return (
@@ -26,13 +30,14 @@ function ViewUserCard(props) {
               {props.buttonClick ? "Unfollow" : "Follow"}
             </button>
           </div>
-          <p className="lg:max-w-md">{props.description}</p>
+          <div className="lg:max-w-md">{props.description}</div>
           <div className="flex justify-around items-center mt-4">
+            
             <div className="text-center">
-              <h4 className="text-gray-600 text-sm">Followers</h4>
+              <h4 className="text-black  text-2xl">Followers</h4>
 
               {props.followersNumber === 0 ? (
-                <div className="flex text-center items-center overflow-hidden mt-2 ml-4">
+                <div className="flex text-center items-center overflow-hidden mt-2 mr-3">
                   <div className="  pt-1 inline-block text-center h-8 w-8 rounded-full text-black border-2 border-white object-cover object-center">
                     {" "}
                     0{" "}
@@ -64,19 +69,21 @@ function ViewUserCard(props) {
                 </div>
               )}
             </div>
+
+
             <div className="text-center">
-              <h4 className="text-gray-600 text-sm">Following</h4>
+              <h4 className="text-black text-2xl">Following</h4>
 
               {props.followingNumber === 0 ? (
-                <div className="flex text-centeritems-center overflow-hidden mt-2 ml-4">
+                <div className="flex text-center justify-center items-center overflow-hidden mt-2 ml-4">
                   <div className=" pt-1 inline-block text-center h-8 w-8 rounded-full text-black border-2 border-white object-cover object-center">
                     {" "}
                     0{" "}
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center overflow-hidden mt-2">
-                  <div className=" invisible inline-block  font-bold h-8 w-8 text-white rounded-full text-white border-2 bg-black border-white"></div>
+                <div className="flex items-center justify-center overflow-hidden mt-2 mr-3 ">
+                  <div className="invisible inline-block  font-bold h-8 w-8 text-white rounded-full text-white border-2 bg-black border-white"></div>
                   {props.followingPictures
                     .filter((pic, index) => index < 3)
                     .map((pic, index) => {
@@ -100,18 +107,31 @@ function ViewUserCard(props) {
                 </div>
               )}
             </div>
+
           </div>
-          <div className="flex justify-around items-center mt-4">
-            <div className="text-center">
-              <h4 className="text-gray-600 text-sm">Level</h4>
-              <span className="mt-2 text-xl font-medium text-gray-800">
+          <div className="flex justify-around items-center my-9">
+            <div className="text-center ml-8">
+              <h4 className="text-black text-2xl">Level</h4>
+              <span className="mt-2 font-medium text-2xl text-gray-800">
                 {props.level}
+                 <img
+                 className=" ml-3 mt-3"
+                src={rankingImg}
+                alt="ranking-icon"
+                style={{ height: "32px", display: "inline" }}
+              />
               </span>
             </div>
-            <div className="text-center">
-              <h4 className="text-gray-600 text-sm">So Fi Points</h4>
-              <span className="text-xl font-medium text-gray-800">
-                {props.soFitPoints}
+            <div className="text-center ">
+              <h4 className="text-black text-2xl ml-5">So Fi Points</h4>
+              <span className="text-2xl ml-5 font-medium text-gray-800 " >
+                {props.soFitPoints}  
+                <img className=" ml-3 mt-3"
+                src={soFitLogo}
+                alt="soFit-icon"
+                style={{ height: "32px", display: "inline" }}
+              />
+
               </span>
             </div>
           </div>
@@ -131,3 +151,4 @@ function ViewUserCard(props) {
 }
 
 export default ViewUserCard;
+
