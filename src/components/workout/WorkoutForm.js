@@ -10,7 +10,7 @@ function WorkoutForm(props) {
       onSubmit={props.handleSubmit}
     >
       <label className="block">
-        <span className="text-gray-700">Workout given name</span>
+        <span className="text-gray-700 font-medium">Workout given name</span>
         <input
           type="text"
           className="form-input mt-1 block w-full"
@@ -24,7 +24,7 @@ function WorkoutForm(props) {
       </label>
       <div className="mt-2">
         <label className="block">
-          <span className="text-gray-700">Workout description</span>
+          <span className="text-gray-700 font-medium">Workout description</span>
           <textarea
             className="form-textarea mt-1 block w-full"
             rows="3"
@@ -37,7 +37,7 @@ function WorkoutForm(props) {
         </label>
       </div>
       <label className="block mt-2">
-        <span className="text-gray-700">Day of the week</span>
+        <span className="text-gray-700 font-medium">Day of the week</span>
         <select
           className="form-select mt-1 block w-full"
           name="weekDay"

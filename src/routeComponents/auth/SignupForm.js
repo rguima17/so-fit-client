@@ -82,7 +82,6 @@ function SignupForm(props) {
             type="text"
             name="name"
             value={props.state.name}
-            error={props.errors.email}
             onChange={props.handleChange}
             required
           />
@@ -100,7 +99,6 @@ function SignupForm(props) {
             type="email"
             name="email"
             value={props.state.email}
-            error={props.errors.email}
             onChange={props.handleChange}
             required
           />
@@ -128,7 +126,6 @@ function SignupForm(props) {
             type="password"
             name="password"
             value={props.state.password}
-            error={props.errors.password}
             onChange={props.handleChange}
             required
           />

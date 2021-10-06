@@ -118,7 +118,7 @@ function WorkoutDetail() {
               <span className="py-4 whitespace-nowrap text-right text-sm font-medium">
                 <NavLink
                   to={`/workout`}
-                  className="text-indigo-600 hover:text-indigo-900"
+                  className="text-indigo-600 hover:text-indigo-900 text-lg"
                 >
                   <i className="fas fa-arrow-circle-left"></i>
                 </NavLink>
