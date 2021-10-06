@@ -101,24 +101,7 @@ function ViewUser() {
     }
   }
 
-  //Unfollow User
-  async function handleUnfollow() {
-    try {
-      setbuttonClick(!buttonClick);
-
-      if (loggedInUser.user._id === id) {
-        // console.log("Cannot unfollow yourself")
-        return null;
-      }
-      await api.delete(`/user/view/${id}`);
-      //   console.log(response);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-
-
+ 
   return (
     <div>
       <ViewUserCard

@@ -50,8 +50,8 @@ function ViewPostCard(props) {
         <div className="flex items-center mt-3 ">
           <p className="text-gray-700 dark:text-gray-400">
             <span className="font-semibold">Exercises:</span>
-            {props.exercises.map((exercise) => {
-              return <li key={exercise._id}>{exercise}</li>;
+            {props.exercises.map((exercise, index) => {
+              return <li key={index}>{exercise}</li>;
             })}
           </p>
         </div>
