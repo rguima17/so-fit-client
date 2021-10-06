@@ -4,6 +4,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    fontFamily: {
+      sans: "Montserrat, ui-sans-serif, system-ui, -apple-system, Arial",
+      // sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont",
+    },
   },
   variants: {
     extend: {},

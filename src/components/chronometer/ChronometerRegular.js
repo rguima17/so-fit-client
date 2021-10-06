@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 
 export default function ChronometerRegular() {
+  const soFitColor = "#6366F1";
   const useTimer = (initialState = 0) => {
     const [timer, setTimer] = useState(initialState);
     const [isActive, setIsActive] = useState(false);
@@ -36,7 +37,6 @@ export default function ChronometerRegular() {
 
     return {
       timer,
-
       isActive,
       isPaused,
       handleStart,
@@ -49,7 +49,6 @@ export default function ChronometerRegular() {
   const Timer = () => {
     const {
       timer,
-
       isActive,
       isPaused,
       handleStart,
@@ -68,44 +67,57 @@ export default function ChronometerRegular() {
     };
 
     return (
-      <div className=" bg-gray-800 text-white max-h-full md:max-h-screen">
+      <div className='bg-gray-700 text-white max-h-full md:max-h-screen py-8'>
         {/* container chronometer */}
         <div>
-          <h3 className="pt-4 mb-8 text-4xl text-center">CHONOMETER</h3>
+          <h3 className='pt-4 mb-8 text-4xl text-center'>REGULAR</h3>
         </div>
 
-        <div className="pb-16 flex iten-center justify-center">
-          <p className=" shadow-2xl border-4 border-gray-100 bg-gray-800 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero">
+        <div className='pb-16 flex iten-center justify-center'>
+          <p
+            style={{ borderColor: soFitColor }}
+            className=' shadow-2xl border-4 bg-gray-700 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'
+          >
             {formatTime(timer)}
           </p>
         </div>
 
-        <div className="text-4xl pb-20 ">
-          <div className="flex justify-center h-20">
+        <div className='text-3xl pb-20 '>
+          <div className='flex justify-center h-20'>
             {!isActive && !isPaused ? (
-              <i
-                className="fas fa-play-circle py-2 px-4 text-7xl "
-                onClick={handleStart}
-              ></i>
-            ) : isPaused ? (
               <button
-                className="text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold py-2 px-4 rounded"
+                style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
+                className='font-medium w-40 h-16 text-white  py-2 px-3 rounded-full border-2'
+                onClick={handleStart}
+              >
+                Start
+              </button>
+            ) : // <i
+            //   className='fas fa-play-circle py-2 px-4 text-7xl '
+            //   onClick={handleStart}
+            // ></i>
+            isPaused ? (
+              <button
+                style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
+                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
                 onClick={handlePause}
               >
                 Pause
               </button>
             ) : (
               <button
-                className="text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold py-2 px-4 rounded"
+                style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
+                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
                 onClick={handleResume}
               >
                 Resume
               </button>
             )}
           </div>
-          <div className="flex justify-center">
+          <div className='flex justify-center '>
             <button
-              className=" text-center w-40 h-16 hover:bg-gray-600 border-4 border-gray-100 text-white font-bold my-12 py-2 px-4 rounded "
+              style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
+              className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2 '
               onClick={handleReset}
               disabled={!isActive}
             >
