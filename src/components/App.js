@@ -20,6 +20,8 @@ import ProfileDetail from "./userProfile/ProfileDetail";
 import ProfileEdit from "./userProfile/ProfileEdit";
 import PostingEdit from "./posting/PostingEdit";
 import ViewPost from "./posting/ViewPost";
+import UserPosts from "./posting/UserPosts.js";
+import LikedPosts from "./posting/LikedPosts";
 
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
@@ -49,21 +51,24 @@ function App() {
                 path="/profile/edit/:id"
                 component={ProfileEdit}
               />
-
               <PrivateRoute exact path="/user-feed" component={UserFeed} />
               <PrivateRoute exact path="/user/:id" component={ViewUser} />
               <PrivateRoute exact path="/all-users" component={AllUsers} />
-              <PrivateRoute exact path="/user-following" component={UserFollowing} />
-
+              <PrivateRoute
+                exact
+                path="/user-following"
+                component={UserFollowing}
+              />
 
               {/* Post related routes */}
-
               <PrivateRoute
                 exact
                 path="/posting/edit/:id"
                 component={PostingEdit}
               />
               <PrivateRoute exact path="/post/:id" component={ViewPost} />
+              <PrivateRoute exact path="/your-posts" component={UserPosts} />
+              <PrivateRoute exact path="/liked-posts" component={LikedPosts} />
 
               {/* Leaderboard related routes */}
               <Route

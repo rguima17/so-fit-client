@@ -1,31 +1,33 @@
-import UserPosts from "../posting/UserPosts";
-import FollowingPosts from "../posting/FollowingPosts";
-import LikedPosts from "../posting/LikedPosts";
+import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
+import FollowingPosts from "../posting/FollowingPosts";
+
 function UserFeed() {
+  const history = useHistory();
+
   return (
-    <div>
-      <h2> User Feed</h2>
-      <div className="text-center mt-5 ">
-        <NavLink
-          to={`/profile`}
-          className="font-medium text-white bg-black py-2 px-3 rounded-full border-2 border-blue-600 "
-        >
-          Back to profile
-        </NavLink>
-      </div>
-      <div className="flex justify-center my-7">
-        <div className="font-medium bg-black text-white py-2 px-3 rounded-full  border-2 border-blue-600 ">
-          <NavLink to="/user-following">People you follow</NavLink>
+    <div className="mb-2">
+      <div className="flex text-center bg-gray-100 justify-between px-2 py-2 text-2xl text-indigo-600 items-center hover:text-indigo-900">
+        <span className="pr-6 whitespace-nowrap inline">
+          <i
+            className="fas fa-arrow-circle-left"
+            onClick={() => history.goBack()}
+          ></i>
+          <i className="fas fa-arrow-circle-left text-gray-100"></i>
+        </span>
+        So Fit
+        {/* <i className="fas fa-dumbbell"></i> */}
+        <div>
+          <NavLink to="/liked-posts">
+            <i className="fas fa-heart pr-2"></i>
+          </NavLink>
+          <NavLink to="/all-users">
+            <i className="fas fa-search"></i>
+          </NavLink>
         </div>
-        <div className="font-medium bg-black text-white py-2 px-3 rounded-full  border-2 border-blue-600 ">
-          <NavLink to="/all-users">Search for friends</NavLink>
-        </div>
       </div>
-      <UserPosts />
       <FollowingPosts />
-      <LikedPosts />
     </div>
   );
 }

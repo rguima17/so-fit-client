@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import CommentPost from "./CommentPost";
+
 import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
 
 import ViewPostCard from "./ViewPostCard";
+import CommentPost from "./CommentPost";
 
 function ViewPost() {
   const { loggedInUser } = useContext(AuthContext);
@@ -36,15 +37,13 @@ function ViewPost() {
     text: "",
     postedBy: "",
     postedByName: "",
-    postedByPicture:""
+    postedByPicture: "",
   });
 
   const { id } = useParams();
   const history = useHistory();
 
   useEffect(() => {
-   
-
     async function fetchPost() {
       try {
         //Information about post
@@ -112,36 +111,36 @@ function ViewPost() {
 
   //Function for the comments
   function handleChange(event) {
-    
     setComment({
+      ...comment,
       text: event.target.value,
       postedBy: loggedInUser.user._id,
-      postedByName:loggedInUser.user.name,
-      postedByPicture:profileUser.pictureUrl,
+      postedByName: loggedInUser.user.name,
+      postedByPicture: profileUser.pictureUrl,
     });
   }
 
-  //Submit the comment
-  async function handleComment() {
-    console.log("handleComment");
+  // Submit the comment
+  async function handleComment(event) {
+    event.preventDefault();
+
     if (comment.text === "") {
       return null;
     }
 
-    
     try {
       await api.put(`/post/comment/${id}`, comment);
       setComment({
         text: "",
       });
-      setCommentButtonClick(!commentButtonClick)
+      setCommentButtonClick(!commentButtonClick);
     } catch (err) {
       console.error(err);
     }
   }
 
   return (
-    <div>
+    <>
       <ViewPostCard
         post={post}
         exercises={exercises}
@@ -149,29 +148,13 @@ function ViewPost() {
         handleLike={handleLike}
       />
 
-      <div className="mb-3 flex flex-row mt-5" >
- 
-        <input
-          type="text"
-          className="block w-2/3 px-4 py-2 "
-          name="comment"
-          placeholder="Comment"
-          onChange={handleChange}
-          value={comment.text}
-        />
-
-        <div
-          className="block w-1/3 px-4 py-2 bg-blue-600"
-          onClick={handleComment}
-        >
-          Comment
-        </div>
-      </div>
-
       <CommentPost
-        comment={post.comments}
+        commentList={post.comments}
+        comment={comment}
+        handleChange={handleChange}
+        handleComment={handleComment}
       />
-    </div>
+    </>
   );
 }
 

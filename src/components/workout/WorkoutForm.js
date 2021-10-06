@@ -15,7 +15,7 @@ function WorkoutForm(props) {
           type="text"
           className="form-input mt-1 block w-full"
           placeholder="Intense core workout"
-          maxLength="30"
+          maxLength="15"
           name="name"
           value={props.workoutState.name}
           onChange={props.handleChange}
@@ -29,7 +29,7 @@ function WorkoutForm(props) {
             className="form-textarea mt-1 block w-full"
             rows="3"
             placeholder="You may enter a description"
-            maxLength="500"
+            maxLength="300"
             name="description"
             value={props.workoutState.description}
             onChange={props.handleChange}
