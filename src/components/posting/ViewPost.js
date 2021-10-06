@@ -67,12 +67,13 @@ function ViewPost() {
       return null;
     }
 
-    setLikeButtonClick(!likeButtonClick);
+   
     //Check if already liked the post
     for (let i = 0; i < post.likes.length; i++) {
       if (post.likes[i] === loggedInUser.user._id) {
         try {
-          await api.delete(`/post/like/${id}`);
+          await api.delete(`/post/like/${id}`); 
+          setLikeButtonClick(!likeButtonClick);
         } catch (err) {
           console.error(err);
         }
@@ -82,6 +83,7 @@ function ViewPost() {
 
     try {
       await api.post(`/post/like/${id}`);
+      setLikeButtonClick(!likeButtonClick);
     } catch (err) {
       console.error(err);
     }
