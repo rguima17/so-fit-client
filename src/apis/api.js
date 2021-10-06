@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apis = {
   development: process.env.REACT_APP_API_BASE,
-  production: "https://so-fit-server.herokuapp.com",
+  production: "https://so-fit-server.herokuapp.com/api",
 };
 
 // Pré-configurando a URL padrão do nosso backend em uma instância do Axios
