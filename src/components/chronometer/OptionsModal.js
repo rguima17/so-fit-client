@@ -6,7 +6,7 @@ export default function OptionsModal(props) {
   return (
     <>
       <button
-        className='absolute top-28 left-5 text-4xl text-white'
+        className='absolute top-32 left-5 text-4xl text-white'
         type='button'
         onClick={() => setShowModal(true)}
       >
@@ -39,6 +39,7 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Prepare (seconds)</span>
                       <input
+                        min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
                         placeholder='Prepare Value'
@@ -50,6 +51,7 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Work (seconds)</span>
                       <input
+                        min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
                         placeholder='Work Value'
@@ -61,6 +63,7 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Rest (seconds)</span>
                       <input
+                        min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
                         placeholder='Rest Value'
@@ -74,24 +77,12 @@ export default function OptionsModal(props) {
                         Cycles (repetitions)
                       </span>
                       <input
+                        min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
                         placeholder='Cycles Value'
                         name='cycles'
                         value={props.options.cycles}
-                        onChange={props.handleChange}
-                      />
-                    </label>
-                    <label className='block'>
-                      <span className='text-gray-700'>
-                        Tabatas (repetitions)
-                      </span>
-                      <input
-                        type='number'
-                        className='form-input mt-1 block w-full'
-                        placeholder='Tabatas Value'
-                        name='tabatas'
-                        value={props.options.tabatas}
                         onChange={props.handleChange}
                       />
                     </label>
