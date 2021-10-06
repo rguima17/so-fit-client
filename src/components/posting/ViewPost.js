@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useHistory, NavLink } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
@@ -33,7 +33,6 @@ function ViewPost() {
     async function fetchPost() {
       try {
         const response = await api.get(`/posting/${id}`);
-        // console.log(response.data);
         setPost({ ...response.data });
 
         let arr = [];
@@ -88,27 +87,12 @@ function ViewPost() {
   }
 
   return (
-    <div>
-      <div className="flex justify-content-end mr-3">
-        <NavLink
-          to={`/user-feed`}
-          className=" w-25 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-        >
-          Back
-        </NavLink>
-      </div>
-      <ViewPostCard
-        name={post.name}
-        createdDate={post.createdDate}
-        pictureUrl={post.pictureUrl}
-        description={post.description}
-        likes={post.likes.length}
-        exercises={exercises}
-        deletePost={deletePost}
-        handleLike={handleLike}
-        postedBy={post.postedBy.name}
-      />
-    </div>
+    <ViewPostCard
+      post={post}
+      exercises={exercises}
+      deletePost={deletePost}
+      handleLike={handleLike}
+    />
   );
 }
 

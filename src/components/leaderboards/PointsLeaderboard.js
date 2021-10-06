@@ -34,7 +34,7 @@ function PointsLeaderboard() {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <div className="pt-1 mt-5">
+    <div className="mt-5">
       <div
         className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center pl-10"
         onClick={() => {
