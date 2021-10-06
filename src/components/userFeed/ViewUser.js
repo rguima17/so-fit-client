@@ -68,7 +68,7 @@ function ViewUser() {
 
 
     fetchUser();
-  }, [id, buttonClick]);
+  }, [id, loggedInUser, buttonClick]);
 
   //Follow user
   async function handleFollow() {

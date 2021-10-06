@@ -57,23 +57,20 @@ function AllUsers() {
           placeholder="Search for friends"
         />
       </div>
-
-      <div className="relative w-full sm: ml-3 ">
-        <div className="relative w-full px-4 pt-16 pb-16 mx-auto bg-top bg-cover max-w-6xl lg:py-24 lg:pb-32">
-          <div className="grid gap-10 row-gap-8 ml-auto mr-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3  ">
-            {filteredUsers.map((user) => {
-              return (
-                <div key={user._id}>
-                  <AllUsersCard
-                    id={user._id}
-                    name={user.name}
-                    pictureUrl={user.pictureUrl}
-                    followers={user.followers}
-                  />
-                </div>
-              );
-            })}
-          </div>
+      <div className="min-h-screen bg-gray-300 dark:bg-gray-900 py-6 flex flex-col  sm:py-12">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 px-4">
+          {filteredUsers.map((user) => {
+            return (
+              <div key={user._id}>
+                <AllUsersCard
+                  id={user._id}
+                  name={user.name}
+                  pictureUrl={user.pictureUrl}
+                  followers={user.followersId.length}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
