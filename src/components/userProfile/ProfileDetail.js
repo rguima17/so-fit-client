@@ -49,7 +49,7 @@ function ProfileDetail() {
     </div>
   ) : (
     <div
-      className="lg:flex md:flex mt-2 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 "
+      className="lg:flex md:flex my-2 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 "
       style={{ maxWidth: "96vw", marginLeft: "auto", marginRight: "auto" }}
     >
       <div className="lg:w-1/2 md:w-1/2">
@@ -91,15 +91,17 @@ function ProfileDetail() {
             </svg>
           </NavLink>
         </div>
-        <img
-          className="mx-auto object-top object-cover w-full h-56"
-          src={profile.pictureUrl}
-          alt={`User ${profile.name}`}
-          style={{
-            borderBottom: "1px gray solid",
-            borderTop: "1px gray solid",
-          }}
-        />
+        <div className="max-w-lg mx-auto">
+          <img
+            className="object-top object-cover"
+            src={profile.pictureUrl}
+            alt={`User ${profile.name}`}
+            style={{
+              borderBottom: "1px gray solid",
+              borderTop: "1px gray solid",
+            }}
+          />
+        </div>
         <div className="text-center py-3 bg-gray-700">
           <h1 className="mx-2 mb-0 text-white font-light italic text-md text-center">
             {profile.description}
@@ -111,7 +113,9 @@ function ProfileDetail() {
         <div className="table px-6 py-4 h-60 text-center w-full text-gray-600 dark:text-gray-400">
           <div className="table-row">
             <span className="font-normal table-cell">Level</span>
-            <span className="font-normal table-cell">So Fit Points</span>
+            <NavLink to="/points-leaderboard">
+              <span className="font-normal table-cell">So Fit Points</span>
+            </NavLink>
           </div>
           <div className="table-row">
             <p className="text-3xl table-cell pl-4">
@@ -122,35 +126,39 @@ function ProfileDetail() {
                 style={{ height: "32px", display: "inline" }}
               />
             </p>
-            <p className="text-3xl table-cell pl-2">
-              <span className="pr-2">
-                {Number(profile.soFitPoints.toFixed(0)).toLocaleString("pt-BR")}
-              </span>
-              <img
-                src={soFitLogo}
-                alt="soFit-icon"
-                style={{ height: "32px", display: "inline" }}
-              />
-            </p>
+            <NavLink to="/points-leaderboard">
+              <p className="text-3xl table-cell pl-2">
+                <span className="pr-2">
+                  {Number(profile.soFitPoints.toFixed(0)).toLocaleString(
+                    "pt-BR"
+                  )}
+                </span>
+                <img
+                  src={soFitLogo}
+                  alt="soFit-icon"
+                  style={{ height: "32px", display: "inline" }}
+                />
+              </p>
+            </NavLink>
           </div>
           <div className="table-row">
-            <span className="font-normal table-cell">Following</span>
+            <NavLink to="/user-following" className="font-normal table-cell">
+              Following
+            </NavLink>
             <span className="font-normal table-cell">Followers</span>
           </div>
           <div className="table-row">
-            <p className="text-3xl table-cell">
+            <NavLink to="/user-following" className="text-3xl table-cell">
               <span className="pr-4">{profile.followingId.length}</span>
               <i
                 className="fas fa-running fa-flip-horizontal"
                 style={{ color: soFitColor }}
               ></i>
-            </p>
+            </NavLink>
+
             <p className="text-3xl table-cell">
               <span className="pr-4">{profile.followersId.length}</span>
-              <i
-                className="fas fa-running text-purple-500"
-                style={{ color: soFitColor }}
-              ></i>
+              <i className="fas fa-running" style={{ color: soFitColor }}></i>
             </p>
           </div>
         </div>
@@ -160,7 +168,13 @@ function ProfileDetail() {
             to={`/workout`}
             className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center"
           >
-            Go to your workouts
+            Your workouts
+          </NavLink>
+          <NavLink
+            to={`/your-posts`}
+            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center"
+          >
+            Your posts
           </NavLink>
         </div>
         <div className="flex mx-2 mt-4">

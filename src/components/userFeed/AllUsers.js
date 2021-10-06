@@ -1,16 +1,19 @@
-import { useState, useEffect } from "react";
-// import { useHistory, useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import api from "../../apis/api";
-import { NavLink } from "react-router-dom";
-import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
+
 import AllUsersCard from "./AllUsersCard";
 
 function AllUsers() {
-  const { loggedInUser } = useContext(AuthContext);
-
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+
+  const { loggedInUser } = useContext(AuthContext);
+  const history = useHistory();
+
+  const soFitColor = "#6366F1";
 
   useEffect(() => {
     async function fetchUsers() {
@@ -38,23 +41,21 @@ function AllUsers() {
 
   return (
     <div>
-      <div className="text-center my-5 hover-cursor">
-        <NavLink
-          to={`/user-feed`}
-          className="font-medium text-white bg-black py-2 px-3 rounded-full  border-2 border-blue-600 "
-        >
-          Back to your Feed
-        </NavLink>
-      </div>
-      <div>
-        <form className="text-center">
-          <input
-            className="font-medium  py-2 px-3 rounded-full text-center border-2 border-blue-600 "
-            type="text"
-            onChange={handleSearch}
-            placeholder="Search your friends"
-          />
-        </form>
+      <div className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 items-center">
+        <span className="whitespace-nowrap text-sm font-medium px-2">
+          <i
+            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-3xl"
+            onClick={() => history.goBack()}
+          ></i>
+        </span>
+
+        <input
+          className="w-full font-medium py-2 px-3 rounded-full text-left border-2"
+          style={{ borderColor: soFitColor }}
+          type="text"
+          onChange={handleSearch}
+          placeholder="Search for friends"
+        />
       </div>
 
       <div className="relative w-full sm: ml-3 ">

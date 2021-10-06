@@ -38,7 +38,7 @@ function FollowingPosts() {
 
   const filteredPosts = posts.filter(
     (post) => following.indexOf(post.postedBy._id) >= 0
-  )
+  );
 
   async function handleLike(targetPostObj) {
     if (loggedInUser.user._id === targetPostObj.postedBy._id) {
@@ -69,9 +69,7 @@ function FollowingPosts() {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <div>
-      <h3>Your Folllowing Posts</h3>
-
+    <>
       {filteredPosts.map((post) => {
         return (
           <div key={post._id}>
@@ -84,7 +82,7 @@ function FollowingPosts() {
           </div>
         );
       })}
-    </div>
+    </>
   );
 }
 
