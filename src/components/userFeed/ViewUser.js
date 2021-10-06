@@ -5,7 +5,6 @@ import ViewUserCard from "./ViewUserCard";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 
-
 function ViewUser() {
   const { loggedInUser } = useContext(AuthContext);
 
@@ -22,6 +21,9 @@ function ViewUser() {
 
   const [buttonClick, setbuttonClick] = useState(false);
 
+  const [followingPictureArr, setFollowingPictureArr] = useState([]);
+  const [followerPictureArr, setFollowerPictureArr] = useState([]);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -34,16 +36,36 @@ function ViewUser() {
 
         const followingArray = profile.data.followingId;
 
+        let followingPictures = []
+        let followersPictures = []
+
         // Check if already follow user
         for (let i = 0; i < followingArray.length; i++) {
-          if (followingArray[i] === id) {
+          if (followingArray[i]._id === id) {
             setbuttonClick(true);
           }
         }
+
+        // Set State for following images
+        for (let i = 0; i < response.data.followingId.length; i++) {
+          followingPictures.push(response.data.followingId[i].pictureUrl)
+        }
+
+        // Set State for followers images
+        for (let i = 0; i < response.data.followersId.length; i++) {
+          followersPictures.push(response.data.followersId[i].pictureUrl)
+      }
+
+      setFollowingPictureArr([...followingPictures])
+      setFollowerPictureArr ([...followersPictures])
+
+
       } catch (err) {
         console.error(err);
       }
     }
+
+
 
     fetchUser();
   }, [id, buttonClick]);
@@ -61,7 +83,7 @@ function ViewUser() {
 
       // Check if already follow user
       for (let i = 0; i < followingArray.length; i++) {
-        if (followingArray[i] === id) {
+        if (followingArray[i]._id === id) {
           try {
             await api.delete(`/user/view/${id}`);
             setbuttonClick(!buttonClick);
@@ -95,6 +117,8 @@ function ViewUser() {
     }
   }
 
+
+
   return (
     <div>
       <ViewUserCard
@@ -106,8 +130,10 @@ function ViewUser() {
         description={user.description}
         soFitPoints={user.soFitPoints}
         handleFollow={handleFollow}
-       
         buttonClick={buttonClick}
+        followingPictures={followingPictureArr}
+        followerPictures={followerPictureArr}
+
       />
     </div>
   );
