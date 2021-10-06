@@ -128,12 +128,13 @@ function ViewPost() {
       return null;
     }
 
-    setCommentButtonClick(!commentButtonClick);
+    
     try {
       await api.put(`/post/comment/${id}`, comment);
       setComment({
         text: "",
       });
+      setCommentButtonClick(!commentButtonClick)
     } catch (err) {
       console.error(err);
     }

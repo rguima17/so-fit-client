@@ -1,7 +1,7 @@
 function CommentPost(props) {
   return (
     <div className="mx-auto max-w-screen-sm">
-      <h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
+      <h3 className="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
 
       {props.comment.map((comment, index) => {
         return (
