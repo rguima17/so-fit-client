@@ -1,7 +1,7 @@
 function ViewPostCard(props) {
   return (
     <div>
-      <div className="max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800">
+      <div className=" max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800">
         <img
           className="object-fill  object-top w-full h-56 "
           src={props.pictureUrl}
@@ -43,13 +43,13 @@ function ViewPostCard(props) {
           </div>
         </div>
         <div className="flex justify-around ">
-          <div className="flex justify-center w-25 px-6 py-2  leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-          onClick={props.handleLike}>
+          <div
+            className="flex justify-center w-25 px-6 py-2  leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            onClick={props.handleLike}
+          >
             Like:{props.likes.length}
           </div>
-          <div onClick={props.deletePost}>
-           X
-          </div>
+          <div onClick={props.deletePost}>X</div>
         </div>
       </div>
     </div>

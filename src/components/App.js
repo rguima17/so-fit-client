@@ -7,7 +7,7 @@ import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 import Home from "../routeComponents/Home";
 import Footer from "./structure/footer/Footer";
 import NavRouter from "./structure/nav/NavRouter";
-import Chronometer from "./chronometer/Chronometer";
+import ChronometerPage from "./chronometer/ChronometerPage";
 
 import WorkoutList from "../components/workout/workoutList/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
@@ -23,6 +23,8 @@ import ViewPost from "./posting/ViewPost";
 
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
+import AllUsers from "./userFeed/AllUsers";
+import UserFollowing from "./userFeed/UserFollowing";
 
 import PointsLeaderboard from "./leaderboards/PointsLeaderboard";
 
@@ -36,7 +38,9 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/auth" component={AuthRouter} />
-              <Route path="/chronometer" component={Chronometer} />
+
+              {/* chronometers */}
+              <Route path="/chronometer" component={ChronometerPage} />
 
               {/* User related routes */}
               <PrivateRoute exact path="/profile" component={ProfileDetail} />
@@ -45,12 +49,20 @@ function App() {
                 path="/profile/edit/:id"
                 component={ProfileEdit}
               />
+
               <PrivateRoute exact path="/user-feed" component={UserFeed} />
               <PrivateRoute exact path="/user/:id" component={ViewUser} />
+              <PrivateRoute exact path="/all-users" component={AllUsers} />
+              <PrivateRoute exact path="/user-following" component={UserFollowing} />
+
 
               {/* Post related routes */}
 
-              <PrivateRoute exact path="/posting/edit/:id" component={PostingEdit} />
+              <PrivateRoute
+                exact
+                path="/posting/edit/:id"
+                component={PostingEdit}
+              />
               <PrivateRoute exact path="/post/:id" component={ViewPost} />
 
               {/* Leaderboard related routes */}

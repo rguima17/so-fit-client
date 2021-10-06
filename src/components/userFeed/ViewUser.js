@@ -4,7 +4,7 @@ import api from "../../apis/api";
 import ViewUserCard from "./ViewUserCard";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
-import { NavLink } from "react-router-dom";
+
 
 function ViewUser() {
   const { loggedInUser } = useContext(AuthContext);
@@ -21,6 +21,7 @@ function ViewUser() {
   });
 
   const [buttonClick, setbuttonClick] = useState(false);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -28,32 +29,49 @@ function ViewUser() {
       try {
         const response = await api.get(`/user/view/${id}`);
         setUser({ ...response.data });
+
+        const profile = await api.get(`/user/view/${loggedInUser.user._id}`);
+
+        const followingArray = profile.data.followingId;
+
+        // Check if already follow user
+        for (let i = 0; i < followingArray.length; i++) {
+          if (followingArray[i] === id) {
+            setbuttonClick(true);
+          }
+        }
       } catch (err) {
         console.error(err);
       }
     }
+
     fetchUser();
   }, [id, buttonClick]);
 
   //Follow user
   async function handleFollow() {
     try {
+      const profile = await api.get(`/user/view/${loggedInUser.user._id}`);
+      const followingArray = profile.data.followingId;
+
       //Check if same User
       if (loggedInUser.user._id === id) {
         return null;
       }
 
-      const profile = await api.get(`/user/view/${loggedInUser.user._id}`);
-
-      const followingArray = profile.data.followingId;
-
       // Check if already follow user
       for (let i = 0; i < followingArray.length; i++) {
         if (followingArray[i] === id) {
-          //   console.log("Already follow this user");
+          try {
+            await api.delete(`/user/view/${id}`);
+            setbuttonClick(!buttonClick);
+          } catch (err) {
+            console.error(err);
+          }
           return null;
         }
       }
+
       await api.post(`/user/view/${id}`);
       setbuttonClick(!buttonClick);
     } catch (err) {
@@ -79,14 +97,6 @@ function ViewUser() {
 
   return (
     <div>
-      <div className="flex justify-content-end mr-3">
-        <NavLink
-          to={`/user-feed`}
-          className=" w-25 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-        >
-          Back
-        </NavLink>
-      </div>
       <ViewUserCard
         name={user.name}
         followersNumber={user.followersId.length}
@@ -96,7 +106,8 @@ function ViewUser() {
         description={user.description}
         soFitPoints={user.soFitPoints}
         handleFollow={handleFollow}
-        handleUnfollow={handleUnfollow}
+       
+        buttonClick={buttonClick}
       />
     </div>
   );

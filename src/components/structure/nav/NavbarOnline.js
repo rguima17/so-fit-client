@@ -1,5 +1,5 @@
 import { AuthContext } from "../../../contexts/authContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Fragment, useContext, useState, useEffect } from "react";
 
 import { Popover, Transition, Menu } from "@headlessui/react";
@@ -16,11 +16,12 @@ const navigation = [
   { name: "Profile", href: "/profile", current: false },
   { name: "Feed", href: "/user-feed", current: false },
   { name: "Workouts", href: "/workout", current: false },
-  { name: "Chronometer", href: "/chronometer", current: false },
+  { name: "Leaderboards", href: "/points-leaderboard", current: true },
+  { name: "Chronometers", href: "/chronometer", current: false },
 ];
 
 export default function NavBarOffline() {
-  const { logout } = useContext(AuthContext);
+  const { loggedInUser, logout } = useContext(AuthContext);
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
@@ -108,14 +109,15 @@ export default function NavBarOffline() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="origin-top-right absolute z-40 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    {/* painel log */}
+                    <Menu.Items className="origin-top-right top-9 w-40 absolute z-40 right-0 mt-2  rounded-md shadow-lg py-1 bg-gray-800 bg-opacity-90 ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <Link
                             to="/profile"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? "bg-gray-500" : "",
+                              "block px-4 py-2 text-sm text-right text-white"
                             )}
                           >
                             Your Profile
@@ -125,15 +127,15 @@ export default function NavBarOffline() {
 
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            to="#"
+                          <NavLink
+                            to={`/profile/edit/${loggedInUser.user._id}`}
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? "bg-gray-500" : "",
+                              "block px-4 py-2 text-sm text-right text-white"
                             )}
                           >
                             Settings
-                          </Link>
+                          </NavLink>
                         )}
                       </Menu.Item>
 
@@ -143,8 +145,8 @@ export default function NavBarOffline() {
                             onClick={logout}
                             to="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? "bg-gray-500" : "",
+                              "block px-4 py-2 text-sm text-right text-white"
                             )}
                           >
                             Sign out
@@ -169,9 +171,10 @@ export default function NavBarOffline() {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
+        {/* painel geral */}
         <Popover.Panel
           focus
-          className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+          className="absolute z-40 w-80 top-12 inset-x-0 p-2 transition transform origin-top-right md:hidden"
         >
           <div className="rounded-lg shadow-md bg-gray-800 bg-opacity-95 ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="px-4 pt-4 flex items-center justify-between">

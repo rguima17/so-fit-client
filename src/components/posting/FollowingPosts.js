@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import api from "../../apis/api";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/authContext";
 import PostSmallCard from "./PostSmallCard";
 
 function FollowingPosts() {
-  const { loggedInUser } = useContext(AuthContext);
-
   const [posts, setPosts] = useState([]);
   const [following, setFollowing] = useState([]);
 
@@ -24,8 +20,8 @@ function FollowingPosts() {
           arr.push(profile.data.followingId[i]["_id"]);
         }
         setFollowing([...arr]);
-        
-      console.log(arr)
+
+        console.log(arr);
       } catch (err) {
         console.error(err);
       }
@@ -33,12 +29,10 @@ function FollowingPosts() {
     fetchPosts();
   }, []);
 
-
   const filteredPosts = posts.filter(
-    (post) => following.indexOf(post.postedBy._id) >= 0 
-  );
+    (post) => following.indexOf(post.postedBy._id) >= 0
+  )
 
-  
   return (
     <div>
       <div className="flex justify-content-end mr-3">
@@ -51,14 +45,13 @@ function FollowingPosts() {
       </div>
       <h3>Your Folllowing Posts</h3>
 
-          
       {filteredPosts.map((post) => {
         return (
           <div key={post._id}>
-            <PostSmallCard              
-                id={post._id}
-                name={post.name}
-                pictureUrl={post.pictureUrl}
+            <PostSmallCard
+              id={post._id}
+              name={post.name}
+              pictureUrl={post.pictureUrl}
             />
           </div>
         );
