@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 // import { useHistory, useParams } from "react-router-dom";
 import api from "../../apis/api";
-import UserSmallCard from "./UserSmallcard";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
+import AllUsersCard from "./AllUsersCard";
 
 function AllUsers() {
   const { loggedInUser } = useContext(AuthContext);
@@ -13,7 +13,6 @@ function AllUsers() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-  
     async function fetchUsers() {
       try {
         const response = await api.get("/users");
@@ -39,39 +38,43 @@ function AllUsers() {
 
   return (
     <div>
-      <div className="flex justify-content-end mr-3">
+      <div className="text-center my-5 hover-cursor">
         <NavLink
-          to={`/profile`}
-          className=" w-25 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          to={`/user-feed`}
+          className="font-medium text-white bg-black py-2 px-3 rounded-full  border-2 border-blue-600 "
         >
-          Back
+          Back to your Feed
         </NavLink>
       </div>
-      <h3>All Users</h3>
-
       <div>
-        <form className="">
+        <form className="text-center">
           <input
-            className=" text-gray-700 bg-white border border-gray-300 rounded-md sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            className="font-medium  py-2 px-3 rounded-full text-center border-2 border-blue-600 "
             type="text"
             onChange={handleSearch}
-            placeholder="Search User"
+            placeholder="Search your friends"
           />
         </form>
       </div>
 
-      {filteredUsers.map((user) => {
-        return (
-          <div key={user._id}>
-            <UserSmallCard
-              id={user._id}
-              name={user.name}
-              pictureUrl={user.pictureUrl}
-              followers={user.followers}
-            />
+      <div className="relative w-full sm: ml-3 ">
+        <div className="relative w-full px-4 pt-16 pb-16 mx-auto bg-top bg-cover max-w-6xl lg:py-24 lg:pb-32">
+          <div className="grid gap-10 row-gap-8 ml-auto mr-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3  ">
+            {filteredUsers.map((user) => {
+              return (
+                <div key={user._id}>
+                  <AllUsersCard
+                    id={user._id}
+                    name={user.name}
+                    pictureUrl={user.pictureUrl}
+                    followers={user.followers}
+                  />
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      </div>
     </div>
   );
 }

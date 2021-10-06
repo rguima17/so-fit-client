@@ -23,6 +23,8 @@ import ViewPost from "./posting/ViewPost";
 
 import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
+import AllUsers from "./userFeed/AllUsers";
+import UserFollowing from "./userFeed/UserFollowing";
 
 import PointsLeaderboard from "./leaderboards/PointsLeaderboard";
 
@@ -47,8 +49,12 @@ function App() {
                 path="/profile/edit/:id"
                 component={ProfileEdit}
               />
+
               <PrivateRoute exact path="/user-feed" component={UserFeed} />
               <PrivateRoute exact path="/user/:id" component={ViewUser} />
+              <PrivateRoute exact path="/all-users" component={AllUsers} />
+              <PrivateRoute exact path="/user-following" component={UserFollowing} />
+
 
               {/* Post related routes */}
 

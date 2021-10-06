@@ -38,7 +38,7 @@ function FollowingPosts() {
 
   const filteredPosts = posts.filter(
     (post) => following.indexOf(post.postedBy._id) >= 0
-  );
+  )
 
   async function handleLike(targetPostObj) {
     if (loggedInUser.user._id === targetPostObj.postedBy._id) {
