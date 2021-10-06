@@ -5,21 +5,15 @@ import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
 import LoginForm from "./LoginForm";
 
-function Login(props) {
+function Login() {
   const [state, setState] = useState({ password: "", email: "" });
-  const [errors, setErrors] = useState({
-    email: null,
-    password: null,
-  });
 
   const history = useHistory();
-
-  // const authContext = useContext(AuthContext); COMENTADO NOVO
 
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
 
   useEffect(() => {
-    // Caso o usuário já esteja logado, redirecione para página principal
+    // If user is already loggedIn, redirect it to the profile page
     if (loggedInUser.token) {
       history.push("/profile");
     }
@@ -44,21 +38,18 @@ function Login(props) {
         "loggedInUser",
         JSON.stringify({ ...response.data })
       );
-      setErrors({ password: "", email: "" });
       history.push("/profile");
     } catch (err) {
       console.error(err.response);
-      setErrors({ ...err.response.data.errors });
     }
   }
 
   return (
-    <div>
+    <div className="mt-10">
       <LoginForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         state={state}
-        errors={errors}
       />
     </div>
   );

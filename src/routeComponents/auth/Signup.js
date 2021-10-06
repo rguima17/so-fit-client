@@ -3,13 +3,8 @@ import { useHistory } from "react-router-dom";
 import api from "../../apis/api";
 import SignupForm from "./SignupForm";
 
-function Signup(props) {
+function Signup() {
   const [state, setState] = useState({ name: "", password: "", email: "" });
-  const [errors, setErrors] = useState({
-    name: null,
-    email: null,
-    password: null,
-  });
 
   const history = useHistory();
 
@@ -25,21 +20,18 @@ function Signup(props) {
 
     try {
       await api.post("/signup", state);
-      setErrors({ name: "", password: "", email: "" });
       history.push("/auth/login");
     } catch (err) {
       console.error(err.response);
-      setErrors({ ...err.response.data.errors });
     }
   }
 
   return (
-    <div>
+    <div className="mt-10">
       <SignupForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         state={state}
-        errors={errors}
       />
     </div>
   );

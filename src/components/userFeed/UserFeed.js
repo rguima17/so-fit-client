@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 function UserFeed() {
   return (
     <div>
+      <h2> User Feed</h2>
       <div className="text-center mt-5 ">
         <NavLink
           to={`/profile`}

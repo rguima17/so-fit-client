@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/authContext";
-import api from "../../apis/api";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
+
+import api from "../../apis/api";
+
+import LoadingSpinner from "../structure/loading/LoadingSpinner";
+
+import rankingImg from "../../assets/icons/ranking.png";
+import soFitLogo from "../../assets/img/Logo.png";
 
 function ProfileDetail() {
-  const { logout } = useContext(AuthContext);
   const [profile, setProfile] = useState({
     name: "",
     description: "",
@@ -17,108 +21,155 @@ function ProfileDetail() {
     followingId: [],
   });
 
+  const { logout } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+
+  const soFitColor = "#6366F1";
+
   useEffect(() => {
     async function fetchProfile() {
       try {
+        setLoading(true);
         const response = await api.get("/profile");
-        //  console.log(response.data)
-
         setProfile({ ...response.data });
+        setLoading(false);
       } catch (err) {
         console.error(err);
+        setLoading(false);
       }
     }
     fetchProfile();
   }, []);
 
-  return (
+  return loading ? (
     <div>
-      <div className="max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800">
+      Loading...
+      <br />
+      <LoadingSpinner />
+    </div>
+  ) : (
+    <div
+      className="lg:flex md:flex mt-2 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 "
+      style={{ maxWidth: "96vw", marginLeft: "auto", marginRight: "auto" }}
+    >
+      <div className="lg:w-1/2 md:w-1/2">
+        <div className="flex text-center py-3 px-4 bg-gray-700 justify-between">
+          <h1 className="text-xl font-bold text-white">{profile.name}</h1>
+          <NavLink
+            to={`/profile/edit/${profile._id}`}
+            className="text-white hover:text-gray-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-6 inline animate-pulse mr-3"
+              fill="none"
+              viewBox="0 0 24 28"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-6 mr-0 inline animate-pulse text-red-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              onClick={logout}
+              style={{ cursor: "pointer" }}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          </NavLink>
+        </div>
         <img
-          className="mx-auto object-top object-cover w-full h-56 "
+          className="mx-auto object-top object-cover w-full h-56"
           src={profile.pictureUrl}
           alt={`User ${profile.name}`}
+          style={{
+            borderBottom: "1px gray solid",
+            borderTop: "1px gray solid",
+          }}
         />
-
-        <div className="text-center  py-3  bg-gray-900">
-          <h1 className="mx-3 mb-0 text-xl font-bold text-white">
-            Welcome to your profile !
+        <div className="text-center py-3 bg-gray-700">
+          <h1 className="mx-2 mb-0 text-white font-light italic text-md text-center">
+            {profile.description}
           </h1>
         </div>
+      </div>
 
-        <div className="px-6 py-4">
-          <div className="flex justify-between mb-1">
-            <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-              {profile.name}
-            </h1>
-            <NavLink to={`/profile/edit/${profile._id}`} className="">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                />
-              </svg>
-            </NavLink>
+      <div className="lg:w-1/2 md:w-1/2">
+        <div className="table px-6 py-4 h-60 text-center w-full text-gray-600 dark:text-gray-400">
+          <div className="table-row">
+            <span className="font-normal table-cell">Level</span>
+            <span className="font-normal table-cell">So Fit Points</span>
           </div>
-          <p className="py-2  font-semibold text-lg text-gray-700 dark:text-gray-400">
-            About: {profile.description}
-          </p>
-
-          <div className="flex items-center mt-4 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
-              Level: {profile.level}
+          <div className="table-row">
+            <p className="text-3xl table-cell pl-4">
+              <span className="pr-4">{profile.level}</span>
+              <img
+                src={rankingImg}
+                alt="ranking-icon"
+                style={{ height: "32px", display: "inline" }}
+              />
+            </p>
+            <p className="text-3xl table-cell pl-2">
+              <span className="pr-2">
+                {Number(profile.soFitPoints.toFixed(0)).toLocaleString("pt-BR")}
+              </span>
+              <img
+                src={soFitLogo}
+                alt="soFit-icon"
+                style={{ height: "32px", display: "inline" }}
+              />
             </p>
           </div>
-          <div className="flex items-center mt-4 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
-              {" "}
-              SoFit Points:{" "}
-              {Number(profile.soFitPoints.toFixed(0)).toLocaleString("pt-BR")}
-            </p>
+          <div className="table-row">
+            <span className="font-normal table-cell">Following</span>
+            <span className="font-normal table-cell">Followers</span>
           </div>
-
-          <div className="flex items-center mt-4">
-            <p className="font-semibold text-lg text-gray-700 dark:text-gray-400">
-              Following: {profile.followingId.length}
+          <div className="table-row">
+            <p className="text-3xl table-cell">
+              <span className="pr-4">{profile.followingId.length}</span>
+              <i
+                className="fas fa-running fa-flip-horizontal"
+                style={{ color: soFitColor }}
+              ></i>
             </p>
-          </div>
-          <div className="flex items-center mt-4">
-            <p className="font-semibold text-lg text-gray-700 dark:text-gray-400">
-              Followers: {profile.followersId.length}
+            <p className="text-3xl table-cell">
+              <span className="pr-4">{profile.followersId.length}</span>
+              <i
+                className="fas fa-running text-purple-500"
+                style={{ color: soFitColor }}
+              ></i>
             </p>
           </div>
         </div>
 
-        <div className="flex justify-content-between mr-4">
-          <NavLink to={`/user-feed`}>
-            <div className="mb-3 ml-3 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-              User Feed
-            </div>
-          </NavLink>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mr-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            onClick={logout}
-            style={{ cursor: "pointer" }}
+        <div className="flex mx-2">
+          <NavLink
+            to={`/workout`}
+            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
-          </svg>
+            Go to your workouts
+          </NavLink>
+        </div>
+        <div className="flex mx-2 mt-4">
+          <NavLink
+            to={`/user-feed`}
+            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center"
+          >
+            Go to your feed
+          </NavLink>
         </div>
       </div>
     </div>

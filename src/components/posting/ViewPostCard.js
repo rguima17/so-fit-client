@@ -1,56 +1,65 @@
+import { NavLink } from "react-router-dom";
+
+import likeBtn from "../../assets/icons/likeBtn.png";
+
 function ViewPostCard(props) {
+  const soFitColor = "#6366F1";
+
   return (
-    <div>
-      <div className=" max-w-sm mt-4 mx-auto overflow-hidden bg-white  rounded-lg shadow-lg dark:bg-gray-800">
-        <img
-          className="object-fill  object-top w-full h-56 "
-          src={props.pictureUrl}
-          alt={`User ${props.name}`}
-        />
-
-        <div className="px-6 py-4">
-          <div className="flex justify-between mb-1">
-            <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-              {props.name}
-            </h1>
+    <div className="max-w-sm mt-2 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+      <img
+        className="object-fill object-top w-full h-56 "
+        src={props.post.pictureUrl}
+        alt={`User ${props.post.name}`}
+      />
+      <div className="px-4 py-4">
+        <div className="sm:px-6 text-center">
+          <div className="text-lg leading-6 font-medium text-gray-900 text-center">
+            <span className="whitespace-nowrap text-sm font-medium">
+              <NavLink
+                to={`/user-feed`}
+                className="text-indigo-600 hover:text-indigo-900"
+              >
+                <i className="fas fa-arrow-circle-left text-lg"></i>
+              </NavLink>
+            </span>
+            <span className="pl-3 pr-3"> {props.post.name}</span>
+            <i
+              className="fas fa-times text-red-400"
+              onClick={props.deletePost}
+            ></i>
+            <button
+              className="inline bg-indigo-100 rounded-md p-1 animate-pulse"
+              onClick={props.handleLike}
+            >
+              <span className="font-bold pr-1" style={{ color: soFitColor }}>
+                {props.post.likes.length}
+              </span>
+              <img
+                src={likeBtn}
+                className="mx-auto object-cover h-5 w-5 inline"
+                alt="like-btn"
+              />
+            </button>
           </div>
-          <p className="py-2  font-semibold text-lg text-gray-700 dark:text-gray-400">
-            About: {props.description}
+          <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-2 border-b-2">
+            {props.post.description}
           </p>
+        </div>
 
-          <div className="flex items-center mt-3 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
-              Likes: {props.likes}
-            </p>
-          </div>
-          <div className="flex items-center mt-3 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
-              createdDate: {props.createdDate}
-            </p>
-          </div>
-          <div className="flex items-center mt-3 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
-              Created by: {props.postedBy}
-            </p>
-          </div>
-          <div className="flex items-center mt-3 ">
-            <p className=" font-semibold text-lg text-gray-700 dark:text-gray-400">
-              Exercises:{" "}
-              {props.exercises.map((exercise) => {
-                return <li key={exercise}>{exercise}</li>;
-              })}
-            </p>
-          </div>
+        <div className="flex items-center mt-3 ">
+          <p className="text-gray-700 dark:text-gray-400">
+            <span className="font-semibold">Exercises:</span>
+            {props.exercises.map((exercise) => {
+              return <li key={exercise._id}>{exercise}</li>;
+            })}
+          </p>
         </div>
-        <div className="flex justify-around ">
-          <div
-            className="flex justify-center w-25 px-6 py-2  leading-5 text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            onClick={props.handleLike}
-          >
-            Like:{props.likes.length}
-          </div>
-          <div onClick={props.deletePost}>X</div>
-        </div>
+        <p className="text-gray-700 dark:text-gray-400 text-right">
+          <span className="font-semibold">Posted by:</span>{" "}
+          {props.post.postedBy.name} (
+          {new Date(props.post.createdDate).toLocaleString().split(",")[0]})
+        </p>
       </div>
     </div>
   );

@@ -76,16 +76,17 @@ function LoginForm(props) {
           >
             Email Address
           </label>
-          <input
-            id="LoggingEmailAddress"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            type="email"
-            name="email"
-            value={props.state.email}
-            error={props.errors.email}
-            onChange={props.handleChange}
-            required
-          />
+          <div>
+            <input
+              id="LoggingEmailAddress"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              type="email"
+              name="email"
+              value={props.state.email}
+              onChange={props.handleChange}
+              required
+            />
+          </div>
         </div>
 
         <div className="mt-4">
@@ -110,7 +111,6 @@ function LoginForm(props) {
             type="password"
             name="password"
             value={props.state.password}
-            error={props.errors.password}
             onChange={props.handleChange}
             required
           />
