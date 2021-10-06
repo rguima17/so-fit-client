@@ -45,7 +45,7 @@ function Login() {
   }
 
   return (
-    <div className="mt-10">
+    <div className='mt-10'>
       <LoginForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}

@@ -7,7 +7,6 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import api from "../../../apis/api";
 import Logo from "../../../assets/img/Logo.png";
-import gym from "../../../assets/img/gym.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -83,14 +82,6 @@ export default function NavBarOffline() {
                   {/* link feed */}
                   <Link to='/user-feed'>
                     <i className='fas fa-dumbbell text-gray-300 text-2xl  lg:ml-8 md:ml-6'></i>
-
-                    {/* <img
-                      src={gym}
-                      alt='Feed icon'
-                      className='object-contain h-8 text-gray-300  lg:ml-6 md:ml-6'
-                    /> */}
-
-                    {/* <i className='fas fa-home text-gray-300 text-2xl lg:ml-6 md:ml-6'></i> */}
                   </Link>
                 </div>
                 {/* Profile dropdown */}
@@ -100,7 +91,7 @@ export default function NavBarOffline() {
                       <span className='sr-only'>Open user menu</span>
                       <img
                         className='mx-auto object-cover lg:mr-5 rounded-full h-8 w-8 '
-                        src={profile.pictureUrl} //'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+                        src={profile.pictureUrl}
                         alt={`User ${profile.name}`}
                       />
                     </Menu.Button>

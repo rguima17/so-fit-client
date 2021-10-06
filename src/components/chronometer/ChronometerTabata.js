@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import OptionsModal from "./OptionsModal";
-import countDownSound from "../../assets/sound/countdown.wav";
+import counterDownSound from "../../assets/sound/countdown.wav";
 
 export default function ChronometerTabata() {
   const soFitColor = "#6366F1";
@@ -207,7 +207,7 @@ export default function ChronometerTabata() {
 
     return (
       <div className='bg-gray-700 max-h-full md:max-h-screen py-8'>
-        <audio id='countdown' src={countDownSound}>
+        <audio id='countdown' src={counterDownSound}>
           <code>audio</code> element.
         </audio>
 
