@@ -16,8 +16,8 @@ function ProfileForm(props) {
       </div>
       <form
         onSubmit={props.handleSubmit}
-        className="p-4 shadow-md rounded-md text-left border-gray-200"
-        style={{ maxWidth: "92vw", marginLeft: "auto", marginRight: "auto" }}
+        className="p-4 shadow-md rounded-md text-left border-gray-200 mx-auto"
+        style={{ maxWidth: "92vw" }}
       >
         <div className="grid">
           <div className="mb-3">
@@ -59,7 +59,7 @@ function ProfileForm(props) {
             />
           </div>
           <div className="mt-3">
-            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600">
               Save profile
             </button>
           </div>

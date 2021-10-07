@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 
 export default function ChronometerRegular() {
-  const soFitColor = "#6366F1";
   const useTimer = (initialState = 0) => {
     const [timer, setTimer] = useState(initialState);
     const [isActive, setIsActive] = useState(false);
@@ -74,10 +73,7 @@ export default function ChronometerRegular() {
         </div>
 
         <div className='pb-16 flex iten-center justify-center'>
-          <p
-            style={{ borderColor: soFitColor }}
-            className=' shadow-2xl border-4 bg-gray-700 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'
-          >
+          <p className='static shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'>
             {formatTime(timer)}
           </p>
         </div>
@@ -86,28 +82,21 @@ export default function ChronometerRegular() {
           <div className='flex justify-center h-20'>
             {!isActive && !isPaused ? (
               <button
-                style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
-                className='font-medium w-40 h-16 text-white  py-2 px-3 rounded-full border-2'
+                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700 '
                 onClick={handleStart}
               >
                 Start
               </button>
-            ) : // <i
-            //   className='fas fa-play-circle py-2 px-4 text-7xl '
-            //   onClick={handleStart}
-            // ></i>
-            isPaused ? (
+            ) : isPaused ? (
               <button
-                style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
-                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
+                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
                 onClick={handlePause}
               >
                 Pause
               </button>
             ) : (
               <button
-                style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
-                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
+                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700 '
                 onClick={handleResume}
               >
                 Resume
@@ -116,8 +105,7 @@ export default function ChronometerRegular() {
           </div>
           <div className='flex justify-center '>
             <button
-              style={{ backgroundColor: soFitColor, borderColor: soFitColor }}
-              className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2 '
+              className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700 '
               onClick={handleReset}
               disabled={!isActive}
             >

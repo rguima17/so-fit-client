@@ -95,7 +95,7 @@ export default function NavBarOffline() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     {/* painel log */}
-                    <Menu.Items className="top-9 w-40 absolute z-40 -right-4  mt-2 rounded-md shadow-lg py-2 bg-gray-800 bg-opacity-95 ring-1 ring-black ring-opacity-5 focus:outline-none font-medium">
+                    <Menu.Items className="top-9 w-40 absolute z-40 -right-3  mt-2 rounded-md shadow-lg py-2 bg-gray-800 bg-opacity-95 ring-1 ring-black ring-opacity-5 focus:outline-none font-medium">
                       <Menu.Item>
                         {({ active }) => (
                           <Link

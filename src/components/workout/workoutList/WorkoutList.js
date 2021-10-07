@@ -81,11 +81,9 @@ function WorkoutList() {
             </div>
           </div>
           <div
-            className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
+            className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mx-auto"
             style={{
               width: "96vw",
-              marginLeft: "auto",
-              marginRight: "auto",
             }}
           >
             <button
@@ -93,7 +91,7 @@ function WorkoutList() {
                 setShowForm(!showForm);
                 scrollRef.current.scrollIntoView();
               }}
-              className="w-full mt-2 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce"
+              className="w-full mt-2 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600 animate-bounce"
             >
               Add a new workout
             </button>

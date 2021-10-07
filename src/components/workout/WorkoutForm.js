@@ -5,8 +5,8 @@ function WorkoutForm(props) {
     <LoadingSpinner />
   ) : (
     <form
-      className="bg-white p-4 shadow-md rounded-md text-left border-gray-200"
-      style={{ maxWidth: "92vw", marginLeft: "auto", marginRight: "auto" }}
+      className="bg-white p-4 shadow-md rounded-md text-left border-gray-200 mx-auto"
+      style={{ maxWidth: "92vw" }}
       onSubmit={props.handleSubmit}
     >
       <label className="block">
@@ -58,7 +58,7 @@ function WorkoutForm(props) {
         </select>
       </label>
       <div className="mt-3">
-        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600">
           {props.buttonText}
         </button>
       </div>

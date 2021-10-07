@@ -99,8 +99,8 @@ function ExerciseForm(props) {
     <LoadingSpinner />
   ) : (
     <form
-      className="p-4 shadow-md rounded-md text-left"
-      style={{ maxWidth: "92vw", marginLeft: "auto", marginRight: "auto" }}
+      className="p-4 shadow-md rounded-md text-left mx-auto"
+      style={{ maxWidth: "94vw" }}
       onSubmit={props.handleSubmit}
     >
       <label className="block mt-2">
@@ -128,7 +128,7 @@ function ExerciseForm(props) {
         : null}
 
       <div className="mt-3">
-        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-indigo-600">
           {props.buttonText}
         </button>
       </div>

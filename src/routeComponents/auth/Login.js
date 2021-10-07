@@ -33,7 +33,6 @@ function Login() {
     setError("")
     try {
       const response = await api.post("/login", state);
-      
 
       setLoggedInUser({ ...response.data });
       localStorage.setItem(
