@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import imgLoginBackGround from "../../assets/img/Fitness.jpg";
+import imgLoginBackGround from "../../assets/img/fitness2.jpg";
 
 function LoginForm(props) {
   return (

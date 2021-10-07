@@ -162,24 +162,39 @@ function WorkoutDetail() {
                   {renderWorkoutStatus(workout)}
                   {workout.status === "Done!" ? (
                     <div>
-                      <i
-                        className="fas fa-share-square pr-3 text-green-600 animate-pulse"
+                      <button
+                        className="mr-3 bg-green-100 rounded-md animate-pulse px-1"
                         onClick={() => history.push(`/posting/edit/${id}`)}
-                      ></i>
-                      <i
-                        className="fas fa-copy text-green-600 animate-pulse"
+                      >
+                        <i className="fas fa-share-square text-green-600 pr-1"></i>
+                        <span className="text-sm font-semibold text-green-600">
+                          Post
+                        </span>
+                      </button>
+                      <button
+                        className="bg-green-100 rounded-md animate-pulse px-1"
                         onClick={() => history.push(`/workout/duplicate/${id}`)}
-                      ></i>
+                      >
+                        <i className="fas fa-copy text-green-600 animate-pulse pr-1"></i>
+                        <span className="text-sm font-semibold text-green-600">
+                          Copy
+                        </span>
+                      </button>
                     </div>
                   ) : (
-                    <i
-                      className="fas fa-check-square text-green-600 animate-pulse"
+                    <button
+                      className="bg-indigo-100 rounded-md animate-pulse px-1 text-indigo-600"
                       onClick={() =>
                         history.push(
                           `/workout/${id}/done/${workoutTotalPoints}`
                         )
                       }
-                    ></i>
+                    >
+                      <i className="fas fa-check-square animate-pulse pr-1"></i>
+                      <span className="text-sm font-semibold ">
+                        Mark it as Done!
+                      </span>
+                    </button>
                   )}
                 </div>
               </div>
@@ -223,7 +238,7 @@ function WorkoutDetail() {
                     });
                     scrollRef.current.scrollIntoView();
                   }}
-                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-indigo-600 animate-bounce"
+                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600 animate-bounce"
                 >
                   Add a new exercise to this workout
                 </button>

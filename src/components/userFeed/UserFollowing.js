@@ -41,7 +41,7 @@ function UserFollowing() {
                   id={user._id}
                   name={user.name}
                   pictureUrl={user.pictureUrl}
-                  followers={user.followers}
+                  followers={user.followersId.length}
                 />
               </div>
             );

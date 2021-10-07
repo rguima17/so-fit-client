@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
@@ -46,6 +46,12 @@ function UserPosts() {
           </div>
         );
       })}
+      <NavLink
+        className=" fixed z-40 right-1 bottom-12 bg-indigo-600 text-white font-bold rounded-full text-4xl px-2 "
+        to="/workout"
+      >
+        +
+      </NavLink>
     </div>
   );
 }
