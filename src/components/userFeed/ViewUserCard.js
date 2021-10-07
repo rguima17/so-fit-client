@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import rankingImg from "../../assets/icons/ranking.png";
 import soFitLogo from "../../assets/img/Logo.png";
 
+const soFitColor = "#6366F1";
 
 
 function ViewUserCard(props) {
