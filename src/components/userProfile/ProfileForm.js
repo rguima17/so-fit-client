@@ -9,7 +9,7 @@ function ProfileForm(props) {
             to={`/profile`}
             className="text-indigo-600 hover:text-indigo-900"
           >
-            <i className="fas fa-arrow-circle-left"></i>
+            <i className="fas fa-arrow-circle-left text-2xl"></i>
           </NavLink>
         </span>
         <h5 className="inline">Edit your profile</h5>

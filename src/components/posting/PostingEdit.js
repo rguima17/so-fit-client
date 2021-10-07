@@ -72,17 +72,17 @@ function PostingEdit() {
   }
 
   return (
-    <section className="bg-white px-1 pt-1">
+    <section className="bg-white px-1 pt-1 mt-2 mx-2 rounded-xl">
       <div className="flex justify-center items-center pr-6 pt-4 text-lg font-normal">
         <span className="pr-6 whitespace-nowrap inline">
           <NavLink
             to={`/workout/${id}`}
             className="text-indigo-600 hover:text-indigo-900"
           >
-            <i className="fas fa-arrow-circle-left"></i>
+            <i className="fas fa-arrow-circle-left text-2xl"></i>
           </NavLink>
         </span>
-        <h5 className="inline">Edit your post</h5>
+        <h5 className="inline text-xl">Edit your post</h5>
       </div>
 
       <form
@@ -91,7 +91,7 @@ function PostingEdit() {
       >
         <div className="grid">
           <div className="mb-3">
-            <label className="text-gray-700  font-medium dark:text-gray-200">
+            <label className="text-gray-700 font-medium dark:text-gray-200">
               Post Name
             </label>
 
@@ -106,7 +106,7 @@ function PostingEdit() {
             />
           </div>
           <div className="mb-3">
-            <label className="text-gray-700  font-mediumdark:text-gray-200">
+            <label className="text-gray-700  font-medium dark:text-gray-200">
               Post Description
             </label>
             <textarea
