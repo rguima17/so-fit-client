@@ -66,6 +66,14 @@ function LoginForm(props) {
           />
         </div>
 
+        {props.error !== "" ? (
+          <div className="mt-8">
+            <div className="w-full px-4 py-2 text-black bg-red-300 border rounded-md ">
+              {props.error}
+            </div>
+          </div>
+        ) : null}
+
         <div className="mt-8">
           <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600">
             Login
