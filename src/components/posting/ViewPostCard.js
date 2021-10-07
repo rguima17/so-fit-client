@@ -15,7 +15,7 @@ function ViewPostCard(props) {
   const soFitColor = "#6366F1";
 
   return (
-    <div className="max-w-sm mt-2 mx-auto overflow-hidden bg-white shadow-lg dark:bg-gray-800">
+    <div className="max-w-sm mt-2 mx-2 overflow-hidden bg-white shadow-lg dark:bg-gray-800 rounded-2xl">
       <img
         className="object-fill object-top w-full h-56 "
         src={props.post.pictureUrl}
@@ -23,10 +23,10 @@ function ViewPostCard(props) {
       />
       <div className="px-4 py-4">
         <div className="sm:px-6 text-center">
-          <div className="text-lg leading-6 font-medium text-gray-900 text-center">
-            <span className="whitespace-nowrap text-sm font-medium">
+          <div className="flex  justify-center items-center text-lg font-medium text-gray-900">
+            <span className="whitespace-nowrap font-medium">
               <i
-                className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-lg"
+                className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-2xl"
                 onClick={() => history.goBack()}
               ></i>
             </span>
@@ -38,7 +38,7 @@ function ViewPostCard(props) {
               ></i>
             ) : (
               <button
-                className="inline bg-indigo-100 rounded-md p-1 animate-pulse"
+                className="inline bg-indigo-100 rounded-full p-1 animate-pulse"
                 onClick={props.handleLike}
               >
                 <span className="font-bold pr-1" style={{ color: soFitColor }}>
@@ -75,10 +75,11 @@ function ViewPostCard(props) {
             })}
           </ul>
         </div>
-        <p className="text-gray-700 dark:text-gray-400 text-right border-t-2 pt-2">
-          <span className="font-semibold">Posted by:</span>{" "}
-          {props.post.postedBy.name} (
-          {new Date(props.post.createdDate).toLocaleString().split(",")[0]})
+        <p className="flex justify-between text-gray-700 dark:text-gray-400 text-right border-t-2 pt-2">
+          <span className="font-semibold">{props.post.postedBy.name}</span>
+          <span className="text-sm">
+            {new Date(props.post.createdDate).toLocaleString().split(",")[0]}
+          </span>
         </p>
       </div>
     </div>

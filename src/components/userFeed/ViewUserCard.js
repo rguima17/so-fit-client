@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import rankingImg from "../../assets/icons/ranking.png";
 import soFitLogo from "../../assets/img/Logo.png";
 
-
-
 function ViewUserCard(props) {
   return (
     <div>
@@ -32,7 +30,6 @@ function ViewUserCard(props) {
           </div>
           <div className="lg:max-w-md">{props.description}</div>
           <div className="flex justify-around items-center mt-4">
-            
             <div className="text-center">
               <h4 className="text-black  text-2xl">Followers</h4>
 
@@ -50,7 +47,8 @@ function ViewUserCard(props) {
                     .filter((pic, index) => index < 3)
                     .map((pic, index) => {
                       return (
-                        <img key={index}
+                        <img
+                          key={index}
                           className=" -ml-2 inline-block h-8 w-8 rounded-full text-white border-2 border-white object-cover object-center"
                           src={pic}
                           alt=""
@@ -70,7 +68,6 @@ function ViewUserCard(props) {
               )}
             </div>
 
-
             <div className="text-center">
               <h4 className="text-black text-2xl">Following</h4>
 
@@ -88,7 +85,8 @@ function ViewUserCard(props) {
                     .filter((pic, index) => index < 3)
                     .map((pic, index) => {
                       return (
-                        <img key={index}
+                        <img
+                          key={index}
                           className=" -ml-2 inline-block h-8 w-8 rounded-full text-white border-2 border-white object-cover object-center"
                           src={pic}
                           alt=""
@@ -107,31 +105,30 @@ function ViewUserCard(props) {
                 </div>
               )}
             </div>
-
           </div>
           <div className="flex justify-around items-center my-9">
             <div className="text-center ml-8">
               <h4 className="text-black text-2xl">Level</h4>
               <span className="mt-2 font-medium text-2xl text-gray-800">
                 {props.level}
-                 <img
-                 className=" ml-3 mt-3"
-                src={rankingImg}
-                alt="ranking-icon"
-                style={{ height: "32px", display: "inline" }}
-              />
+                <img
+                  className=" ml-3 mt-3"
+                  src={rankingImg}
+                  alt="ranking-icon"
+                  style={{ height: "32px", display: "inline" }}
+                />
               </span>
             </div>
             <div className="text-center ">
               <h4 className="text-black text-2xl ml-5">So Fi Points</h4>
-              <span className="text-2xl ml-5 font-medium text-gray-800 " >
-                {props.soFitPoints}  
-                <img className=" ml-3 mt-3"
-                src={soFitLogo}
-                alt="soFit-icon"
-                style={{ height: "32px", display: "inline" }}
-              />
-
+              <span className="text-2xl ml-5 font-medium text-gray-800 ">
+                {Number(props.soFitPoints.toFixed(0)).toLocaleString("pt-BR")}
+                <img
+                  className=" ml-3 mt-3"
+                  src={soFitLogo}
+                  alt="soFit-icon"
+                  style={{ height: "32px", display: "inline" }}
+                />
               </span>
             </div>
           </div>
@@ -151,4 +148,3 @@ function ViewUserCard(props) {
 }
 
 export default ViewUserCard;
-

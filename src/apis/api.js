@@ -5,14 +5,14 @@ const apis = {
   production: "https://so-fit-server.herokuapp.com/api",
 };
 
-// Pré-configurando a URL padrão do nosso backend em uma instância do Axios
+// Setting up the backend URL to axios (dev or production)
 const api = axios.create({
   baseURL: apis[process.env.NODE_ENV],
 });
 
-// Configura a instância do Axios para injetar o cabeçalho de autenticação antes de cada requisição
+// Configing axios to inject the Authentication Header in any request the request
 api.interceptors.request.use((config) => {
-  // Verifica se já temos as informações do usuário logado no localStorage
+  // Verifying if there is any info for the user in the localStorage
   const storedUser = localStorage.getItem("loggedInUser");
 
   const loggedInUser = JSON.parse(storedUser || '""');

@@ -112,26 +112,26 @@ function WorkoutDetail() {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg ">
+        <div className="bg-white shadow overflow-hidden sm:rounded-lg rounded-lg">
           <div className="px-4 py-3 sm:px-6 text-center">
-            <h3 className="text-lg leading-6 font-medium text-gray-900 text-center">
+            <h3 className="flex items-center justify-center text-lg leading-6 font-medium text-gray-900">
               <span className="py-4 whitespace-nowrap text-right text-sm font-medium">
                 <NavLink
                   to={`/workout`}
                   className="text-indigo-600 hover:text-indigo-900 text-lg"
                 >
-                  <i className="fas fa-arrow-circle-left"></i>
+                  <i className="fas fa-arrow-circle-left text-2xl"></i>
                 </NavLink>
               </span>
-              <span className="pl-3 pr-2">{workout.name}</span>
-              <span className="pr-2 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <span className="pl-6 pr-4 text-xl">{workout.name}</span>
+              <span className="pr-4 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <NavLink
                   to={`/workout/edit/${id}`}
                   className="text-indigo-600 hover:text-indigo-900"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-6 inline"
+                    className="h-7 w-8 inline"
                     fill="none"
                     viewBox="0 0 24 28"
                     stroke="currentColor"
@@ -146,7 +146,7 @@ function WorkoutDetail() {
                 </NavLink>
               </span>
               <i
-                className="fas fa-times text-red-400"
+                className="fas fa-times text-red-400 text-2xl"
                 onClick={() => handleDeleteClick(workout)}
               ></i>
             </h3>
