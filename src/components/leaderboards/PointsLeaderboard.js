@@ -36,7 +36,7 @@ function PointsLeaderboard() {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <div className="mt-5">
+    <div className="mt-2 mx-2">
       <div
         className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center items-center"
         onClick={() => {
@@ -45,7 +45,7 @@ function PointsLeaderboard() {
       >
         <span className="whitespace-nowrap text-sm font-medium pr-3">
           <i
-            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-lg"
+            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-2xl"
             onClick={() => history.goBack()}
           ></i>
         </span>
@@ -62,7 +62,7 @@ function PointsLeaderboard() {
       </div>
       {showLeaderboard ? (
         <>
-          <table className="min-w-full divide-y divide-gray-200 m">
+          <table className="divide-y divide-gray-200">
             <thead className="bg-gray-200">
               <tr>
                 <th
@@ -104,6 +104,7 @@ function PointsLeaderboard() {
                     className="hover:bg-gray-100"
                     style={{ backgroundColor: bgColor }}
                     key={user._id}
+                    onClick={() => history.push(`user/${user._id}`)}
                   >
                     <td className="px-4 py-4 whitespace-nowrap text-gray-500">
                       {index + 1 + (currentPage - 1) * 5}

@@ -7,7 +7,6 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import api from "../../../apis/api";
 import Logo from "../../../assets/img/Logo.png";
-// import gym from "../../../assets/img/gym.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -60,41 +59,21 @@ export default function NavBarOffline() {
           <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0 md:flex-grow-0">
             <div className="flex items-center justify-between md:justify-between w-full ">
               <div className="flex items-center md:hidden">
-                <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="bg-gray-800 rounded-md m-2 inline-flex items-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Open main menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <div>
-                <Link to="/">
-                  <span className="sr-only">LOGO</span>
-                  <img
-                    alt="logo"
-                    className=" h-10 w-auto sm:h-10 ml-12"
-                    src={Logo}
-                  />
-                </Link>
-              </div>
+              <Link to="/user-feed">
+                <span className="sr-only">SO FIT LOGO</span>
+                <img alt="logo" className=" h-10 w-auto sm:h-10" src={Logo} />
+              </Link>
 
               {/*profile notification */}
 
-              <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <div>
-                  {/* link feed */}
-                  <Link to="/user-feed">
-                    <i className="fas fa-dumbbell text-gray-300 text-2xl  lg:ml-8 md:ml-6"></i>
-
-                    {/* <img
-                      src={gym}
-                      alt='Feed icon'
-                      className='object-contain h-8 text-gray-300  lg:ml-6 md:ml-6'
-                    /> */}
-
-                    {/* <i className='fas fa-home text-gray-300 text-2xl lg:ml-6 md:ml-6'></i> */}
-                  </Link>
-                </div>
+              <div className="flex items-center pr-2 sm:static sm:inset-auto">
                 {/* Profile dropdown */}
-                <Menu as="div" className="ml-6 relative">
+                <Menu as="div" className="relative">
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
@@ -116,14 +95,14 @@ export default function NavBarOffline() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     {/* painel log */}
-                    <Menu.Items className="top-9 w-40 absolute z-40 right-0  mt-2 rounded-md shadow-lg py-2 bg-gray-800 bg-opacity-95 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="top-9 w-40 absolute z-40 -right-4  mt-2 rounded-md shadow-lg py-2 bg-gray-800 bg-opacity-95 ring-1 ring-black ring-opacity-5 focus:outline-none font-medium">
                       <Menu.Item>
                         {({ active }) => (
                           <Link
                             to="/profile"
                             className={classNames(
                               active ? "bg-gray-500" : "",
-                              "block px-4 py-2 text-sm text-right text-white"
+                              "block px-4 py-2 text-right text-white"
                             )}
                           >
                             Your Profile
@@ -137,7 +116,7 @@ export default function NavBarOffline() {
                             to={`/profile/edit/${loggedInUser.user._id}`}
                             className={classNames(
                               active ? "bg-gray-500" : "",
-                              "block px-4 py-2 text-sm text-right text-white"
+                              "block px-4 py-2 text-right text-white"
                             )}
                           >
                             Settings
@@ -152,7 +131,7 @@ export default function NavBarOffline() {
                             to="#"
                             className={classNames(
                               active ? "bg-gray-500" : "",
-                              "block px-4 py-2 text-sm text-right text-white"
+                              "block px-4 py-2 text-right text-white"
                             )}
                           >
                             Sign out
@@ -187,7 +166,7 @@ export default function NavBarOffline() {
               <div className="-mr-2">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Close main menu</span>
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <XIcon className="h-3 w-3" aria-hidden="true" />
                 </Popover.Button>
               </div>
 

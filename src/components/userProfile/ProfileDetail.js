@@ -43,13 +43,11 @@ function ProfileDetail() {
 
   return loading ? (
     <div>
-      Loading...
-      <br />
       <LoadingSpinner />
     </div>
   ) : (
     <div
-      className="lg:flex md:flex my-2 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 "
+      className="lg:flex md:flex my-2 mx-auto overflow-hidden bg-white shadow-lg dark:bg-gray-800 "
       style={{ maxWidth: "96vw", marginLeft: "auto", marginRight: "auto" }}
     >
       <div className="lg:w-1/2 md:w-1/2">

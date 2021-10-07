@@ -31,7 +31,7 @@ function Login() {
 
     try {
       const response = await api.post("/login", state);
-      console.log(response);
+      // console.log(response);
 
       setLoggedInUser({ ...response.data });
       localStorage.setItem(
