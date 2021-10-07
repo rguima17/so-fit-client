@@ -7,7 +7,6 @@ export default function ChronometerTabata() {
     const [timerTabata, setTimerTabata] = useState(initialState);
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [isPlay, setIsPlay] = useState();
     const countRefTabata = useRef(null);
     const [options, setOptions] = useState({
       prepare: 10,
@@ -16,11 +15,11 @@ export default function ChronometerTabata() {
       cycles: 8,
       tabatas: 1,
     });
+    const [showModal, setShowModal] = useState(false);
 
     const handleStartRegressive = () => {
       setIsActive(true);
       setIsPaused(true);
-      setIsPlay(true);
       countRefTabata.current = setInterval(() => {
         setTimerTabata((timerTabata) => timerTabata - 1);
       }, 10);
@@ -29,12 +28,10 @@ export default function ChronometerTabata() {
     const handlePause = () => {
       clearInterval(countRefTabata.current);
       setIsPaused(false);
-      setIsPlay(false);
     };
 
     const handleResume = () => {
       setIsPaused(true);
-      setIsPlay(true);
       countRefTabata.current = setInterval(() => {
         setTimerTabata((timerTabata) => timerTabata - 1);
       }, 10);
@@ -44,7 +41,6 @@ export default function ChronometerTabata() {
       clearInterval(countRefTabata.current);
       setIsActive(false);
       setIsPaused(false);
-      setIsPlay(false);
 
       setTimerTabata(0);
     };
@@ -67,7 +63,8 @@ export default function ChronometerTabata() {
       CalcTabata,
       options,
       setOptions,
-      isPlay,
+      showModal,
+      setShowModal,
     };
   };
 
@@ -83,7 +80,8 @@ export default function ChronometerTabata() {
       CalcTabata,
       options,
       setOptions,
-      isPlay,
+      showModal,
+      setShowModal,
     } = useTimer(0);
 
     const FormatTabata = (timerTabata) => {
@@ -119,8 +117,7 @@ export default function ChronometerTabata() {
           )}`.slice(-2);
         }
 
-        //Play sound timer
-        getSecondsTime <= 3 && isPlay ? playCounterSound() : stopCounterSound();
+        getSecondsTime <= 3 ? playCounterSound() : stopCounterSound();
 
         return `00 : ${getSecondsTime}`;
       } else {
@@ -129,13 +126,9 @@ export default function ChronometerTabata() {
     };
     const playCounterSound = () => {
       const sound = document.getElementById("countdown");
-      isPlay ? sound.play() : sound.pause();
+      isPaused ? sound.play() : sound.pause();
     };
-    const stopCounterSound = () => {
-      const sound = document.getElementById("countdown");
-      //    sound.pause();
-      //    sound.currentTime = 0;
-    };
+    const stopCounterSound = () => {};
 
     const getCurrentTarget = (timerTabata) => {
       const currentTarget = [
@@ -202,11 +195,15 @@ export default function ChronometerTabata() {
     };
 
     const handleChange = async (event) => {
-      console.log(event);
       await setOptions({
         ...options,
         [event.target.name]: parseInt(event.target.value),
       });
+    };
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      setShowModal(false);
     };
 
     const handleClose = () => {
@@ -220,25 +217,28 @@ export default function ChronometerTabata() {
     };
 
     return (
-      <div className='bg-gray-700 max-h-full md:max-h-screen py-8'>
-        <audio id='countdown' src={counterDownSound}>
+      <div className="bg-gray-700 min-h-full py-6 screen-full">
+        <audio id="countdown" src={counterDownSound}>
           <code>audio</code> element.
         </audio>
 
         <OptionsModal
+          showModal={showModal}
+          setShowModal={setShowModal}
           handleClose={handleClose}
           handleChange={handleChange}
+          handleSubmit={handleSubmit}
           options={options}
         />
-        <div className='text-white'>
+        <div className="text-white">
           {/* container Current step */}
-          <div className=''>
+          <div className="">
             <div>
-              <h3 className='pt-4 mb-8 text-4xl text-center'>TABATA</h3>
+              <h3 className="pt-4 mb-8 text-4xl text-center">TABATA</h3>
             </div>
-            <div className='flex iten-center justify-center'>
-              <div className='flex flex-col shadow-2xl border-2 border-indigo-600 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'>
-                <h3 className=' pt-2 mb-6 text-4xl text-center'>
+            <div className="flex iten-center justify-center">
+              <div className="flex flex-col shadow-2xl border-2 border-indigo-600 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero">
+                <h3 className=" pt-2 mb-6 text-4xl text-center">
                   {/* {currentTargetText(timerTabata)} */}{" "}
                   {getCurrentTarget(timerTabata)
                     ? getCurrentTarget(timerTabata).text
@@ -250,74 +250,74 @@ export default function ChronometerTabata() {
             </div>
           </div>
 
-          <div className='flex justify-between pt-6 '>
+          <div className="flex justify-between pt-6 ">
             {/* container timer decressive (TOTAL TABATA) */}
-            <div className='container md:container md:mx-auto'>
+            <div className="container md:container md:mx-auto">
               <div>
-                <h3 className=' mb-2 text-2xl text-center'>Total:</h3>
+                <h3 className=" mb-2 text-2xl text-center">Total</h3>
               </div>
 
-              <div className='pb-16 flex iten-center justify-center'>
-                <p className='shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'>
+              <div className="pb-16 flex iten-center justify-center">
+                <p className="shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero">
                   {FormatTabata(timerTabata)}
                 </p>
               </div>
             </div>
 
             {/* container cycles */}
-            <div className=' container md:container md:mx-auto'>
+            <div className=" container md:container md:mx-auto">
               <div>
-                <h3 className=' mb-2 text-2xl text-center'>Cycles:</h3>
+                <h3 className=" mb-2 text-2xl text-center">Cycles</h3>
               </div>
 
-              <div className='pb-16 flex iten-center justify-center'>
-                <p className='shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'>
+              <div className="pb-16 flex iten-center justify-center">
+                <p className="shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero">
                   {getCurrentCycle()}/{options.cycles}
                 </p>
               </div>
             </div>
 
             {/* container tabatas */}
-            <div className='container md:container md:mx-auto'>
+            <div className="container md:container md:mx-auto">
               <div>
-                <h3 className=' mb-2 text-2xl text-center'>Tabatas:</h3>
+                <h3 className=" mb-2 text-2xl text-center">Tabatas</h3>
               </div>
-              <div className='pb-16 flex iten-center justify-center'>
-                <p className='shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'>
+              <div className="pb-16 flex iten-center justify-center">
+                <p className="shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero">
                   {options.tabatas}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className='text-3xl flex justify-around'>
-            <div className=' text-center '>
+          <div className="text-3xl flex justify-around">
+            <div className=" text-center ">
               {!isActive && !isPaused ? (
                 <button
-                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
+                  className="font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700"
                   onClick={handleStartRegressive}
                 >
                   Start
                 </button>
               ) : isPaused ? (
                 <button
-                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
+                  className="font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700"
                   onClick={handlePause}
                 >
                   Pause
                 </button>
               ) : (
                 <button
-                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
+                  className="font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700"
                   onClick={handleResume}
                 >
                   Resume
                 </button>
               )}
             </div>
-            <div className=' '>
+            <div>
               <button
-                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
+                className="font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700"
                 onClick={handleReset}
                 disabled={!isActive}
               >

@@ -62,7 +62,7 @@ function PointsLeaderboard() {
       </div>
       {showLeaderboard ? (
         <>
-          <table className="divide-y divide-gray-200">
+          <table className="w-full divide-y divide-gray-200">
             <thead className="bg-gray-200">
               <tr>
                 <th
