@@ -239,7 +239,6 @@ export default function ChronometerTabata() {
             <div className="flex iten-center justify-center">
               <div className="flex flex-col shadow-2xl border-2 border-indigo-600 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero">
                 <h3 className=" pt-2 mb-6 text-4xl text-center">
-                  {/* {currentTargetText(timerTabata)} */}{" "}
                   {getCurrentTarget(timerTabata)
                     ? getCurrentTarget(timerTabata).text
                     : "end"}

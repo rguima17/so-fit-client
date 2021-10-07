@@ -140,21 +140,23 @@ function ViewPost() {
   }
 
   return (
-    <>
-      <ViewPostCard
-        post={post}
-        exercises={exercises}
-        deletePost={deletePost}
-        handleLike={handleLike}
-      />
+    <div className="flex flex-col items-center">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-x-4 lg:max-w-6xl">
+        <ViewPostCard
+          post={post}
+          exercises={exercises}
+          deletePost={deletePost}
+          handleLike={handleLike}
+        />
 
-      <CommentPost
-        commentList={post.comments}
-        comment={comment}
-        handleChange={handleChange}
-        handleComment={handleComment}
-      />
-    </>
+        <CommentPost
+          commentList={post.comments}
+          comment={comment}
+          handleChange={handleChange}
+          handleComment={handleComment}
+        />
+      </div>
+    </div>
   );
 }
 

@@ -107,7 +107,7 @@ function ProfileDetail() {
         </div>
       </div>
 
-      <div className="lg:w-1/2 md:w-1/2">
+      <div className="lg:w-1/2 md:w-1/2 mt-auto mb-auto">
         <div className="table px-6 py-4 h-60 text-center w-full text-gray-600 dark:text-gray-400">
           <div className="table-row">
             <span className="font-normal table-cell">Level</span>

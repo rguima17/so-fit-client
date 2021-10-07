@@ -1,6 +1,6 @@
 function Pagination(props) {
   return (
-    <div className="flex items-center justify-end mb-4 mt-1">
+    <div className="flex items-center justify-end mb-4 mt-2">
       <button
         className="bg-indigo-600 text-white hover:bg-indigo-300 hover:text-black active:bg-white font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150 rounded-l"
         onClick={() => {
@@ -22,7 +22,7 @@ function Pagination(props) {
         <i className="fas fa-angle-left"></i>
       </button>
       <button
-        className="bg-black text-white font-bold uppercase text-xs px-4 py-2 outline-none mb-1 "
+        className="bg-indigo-900 text-white font-bold uppercase text-xs px-4 py-2 outline-none mb-1"
         onClick={() => {
           props.setCurrentPage(props.currentPage);
           props.setPageChanged(true);
