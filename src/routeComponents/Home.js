@@ -4,12 +4,13 @@ import "./home.css";
 
 import logo from "../assets/img/Logo.png";
 import imgBiking from "../assets/img/slides/Bike.png";
-
-
+import imgRunning from "../assets/img/slides/Running.jpg";
+import imgPullUp from "../assets/img/slides/Pull-Up.jpg";
+import imgExercise from "../assets/img/slides/Exercise.jpg";
 
 function Home() {
   return (
-    <div className='relative bg-white overflow-hidden pb-12 '>
+    <div className='relative bg-white overflow-hidden pb-12  h-auto'>
       <div className='max-w-7xl'>
         <div className='z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32'>
           <svg
@@ -52,9 +53,10 @@ function Home() {
             </div>
           </main>
         </div>
-      </div>
+  
+  </div>
 
-      {/* slider */}
+   {/* slider */}
       <div className='lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:my-8 lg:mx-8 '>
         <div id='slider' className='rounded-lg'>
           <figure>
@@ -71,3 +73,5 @@ function Home() {
 }
 
 export default Home;
+
+

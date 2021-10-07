@@ -5,8 +5,10 @@ import SignupForm from "./SignupForm";
 
 function Signup() {
   const [state, setState] = useState({ name: "", password: "", email: "" });
+  const [error, setError] = useState("");
 
   const history = useHistory();
+
 
   function handleChange(event) {
     setState({
@@ -17,12 +19,14 @@ function Signup() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    setError("");
     try {
       await api.post("/signup", state);
+      setError("");
       history.push("/auth/login");
+     
     } catch (err) {
-      console.error(err.response);
+      setError(err.response.data.msg);
     }
   }
 
@@ -32,6 +36,7 @@ function Signup() {
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         state={state}
+        error={error}
       />
     </div>
   );

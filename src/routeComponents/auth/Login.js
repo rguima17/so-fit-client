@@ -7,6 +7,7 @@ import LoginForm from "./LoginForm";
 
 function Login() {
   const [state, setState] = useState({ password: "", email: "" });
+  const [error, setError] = useState("");
 
   const history = useHistory();
 
@@ -15,9 +16,10 @@ function Login() {
   useEffect(() => {
     // If user is already loggedIn, redirect it to the profile page
     if (loggedInUser.token) {
+    
       history.push("/profile");
     }
-  }, [loggedInUser, history]);
+  }, [loggedInUser, history,error]);
 
   function handleChange(event) {
     setState({
@@ -28,19 +30,21 @@ function Login() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    setError("")
     try {
       const response = await api.post("/login", state);
-      // console.log(response);
+      
 
       setLoggedInUser({ ...response.data });
       localStorage.setItem(
         "loggedInUser",
         JSON.stringify({ ...response.data })
       );
+      
       history.push("/profile");
     } catch (err) {
-      console.error(err.response);
+      
+      setError(err.response.data.msg);
     }
   }
 
@@ -50,6 +54,7 @@ function Login() {
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         state={state}
+        error={error}
       />
     </div>
   );
