@@ -56,7 +56,7 @@ function WorkoutList() {
                 >
                   <i
                     className="fas fa-arrow-circle-left text-indigo-600 text-xl pr-5"
-                    onClick={() => history.push("/profile")}
+                    onClick={() => history.goBack()}
                   ></i>
                   <h5 className="font-medium uppercase tracking-wider">
                     Planned Workouts
@@ -126,12 +126,36 @@ function WorkoutList() {
                   </div>
                 </div>
                 {showDoneList ? (
-                  <WorkoutListTable
-                    workouts={workouts}
-                    history={history}
-                    renderWorkoutStatus={renderWorkoutStatus}
-                    targetStatus={"Done!"}
-                  />
+                  <>
+                    {workouts.reduce((acc, element) => {
+                      if (element.status === "Done!") {
+                        return acc + 1;
+                      }
+                      return acc + 0;
+                    }, 0) === 0 ? (
+                      <div className="bg-gray-100 p-2 rounded-md font-light">
+                        <p className="font-semibold">
+                          To post you first workout:
+                        </p>
+                        <p className="pl-2 text-sm my-1">
+                          1 - You need to plan it. By 'Add a new workout'.
+                        </p>
+                        <p className="pl-2 text-sm my-1">
+                          2 - Open it, and list your exercises.
+                        </p>
+                        <p className="pl-2 text-sm my-1">
+                          3 - Execute it! And finnally mark it as "Done!".
+                        </p>
+                      </div>
+                    ) : (
+                      <WorkoutListTable
+                        workouts={workouts}
+                        history={history}
+                        renderWorkoutStatus={renderWorkoutStatus}
+                        targetStatus={"Done!"}
+                      />
+                    )}
+                  </>
                 ) : null}
               </div>
             </div>

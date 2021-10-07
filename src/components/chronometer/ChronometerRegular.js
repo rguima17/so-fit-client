@@ -73,7 +73,7 @@ export default function ChronometerRegular() {
         </div>
 
         <div className='pb-16 flex iten-center justify-center'>
-          <p className='static shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'>
+          <p className='static shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-60 w-60 flex items-center pl-5 text-4xl slashed-zero'>
             {formatTime(timer)}
           </p>
         </div>

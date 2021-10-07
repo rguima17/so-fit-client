@@ -50,14 +50,21 @@ function LikedPosts() {
           MY LIKED WORKOUTS
         </h5>
       </div>
-
-      {filteredPosts.map((post) => {
-        return (
-          <div key={post._id} className="mb-2">
-            <PostSmallCard id={post._id} post={post} cardCategory="likedPost" />
-          </div>
-        );
-      })}
+      <div className="flex flex-col">
+        <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4">
+          {filteredPosts.map((post) => {
+            return (
+              <div key={post._id} className="mb-2">
+                <PostSmallCard
+                  id={post._id}
+                  post={post}
+                  cardCategory="likedPost"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,4 @@
-import { useHistory } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 import FollowingPosts from "../posting/FollowingPosts";
 
@@ -27,7 +26,12 @@ function UserFeed() {
         </div>
       </div>
       <FollowingPosts />
-      <button className="z-100 bg-gray-700 text-red-400 text-3xl">+</button>
+      <NavLink
+        className=" fixed z-40 right-1 bottom-12 bg-indigo-600 text-white font-bold rounded-full text-4xl px-2 "
+        to="/workout"
+      >
+        +
+      </NavLink>
     </div>
   );
 }

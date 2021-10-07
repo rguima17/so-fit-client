@@ -49,7 +49,7 @@ export default function NavBarOffline() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="font-medium text-white hover:text-gray-900"
+                className="font-medium text-white hover:text-gray-400"
               >
                 {item.name}
               </Link>
@@ -59,14 +59,18 @@ export default function NavBarOffline() {
           <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0 md:flex-grow-0">
             <div className="flex items-center justify-between md:justify-between w-full ">
               <div className="flex items-center md:hidden">
-                <Popover.Button className="bg-gray-800 rounded-md m-2 inline-flex items-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="bg-gray-800 rounded-md m-2 inline-flex items-center text-gray-400 hover:text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Open main menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
               <Link to="/user-feed">
                 <span className="sr-only">SO FIT LOGO</span>
-                <img alt="logo" className=" h-10 w-auto sm:h-10" src={Logo} />
+                <img
+                  alt="logo"
+                  className=" h-10 w-auto sm:h-10 md:pr-20 lg:pr-40 2xl:pr-80"
+                  src={Logo}
+                />
               </Link>
 
               {/*profile notification */}
@@ -78,7 +82,7 @@ export default function NavBarOffline() {
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="mx-auto object-cover lg:mr-5 rounded-full h-8 w-8 "
+                        className="mx-auto object-cover  rounded-full h-8 w-8 "
                         src={profile.pictureUrl} //'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
                         alt={`User ${profile.name}`}
                       />
@@ -164,7 +168,7 @@ export default function NavBarOffline() {
           <div className="rounded-lg shadow-md bg-gray-800 bg-opacity-95 ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="px-4 pt-4 flex items-center justify-between">
               <div className="-mr-2">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Close main menu</span>
                   <XIcon className="h-3 w-3" aria-hidden="true" />
                 </Popover.Button>
@@ -180,7 +184,7 @@ export default function NavBarOffline() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="block px-3 py-2 rounded-md text-left font-medium text-white hover:text-gray-900 hover:bg-gray-500"
+                    className="block px-3 py-2 rounded-md text-left font-medium text-white hover:text-gray-400 hover:bg-gray-300"
                   >
                     {item.name}
                   </Link>

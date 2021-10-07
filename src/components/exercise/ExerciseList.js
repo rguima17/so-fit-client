@@ -1,4 +1,4 @@
-import pickCategoryImage from "../../scripts/pickExerciseCategory";
+import pickCategoryImage from "../../scripts/pickCategoryImage";
 import getUnitByExerciseName from "../../scripts/getUnitByExerciseName";
 
 // This component is used in the WorkoutDetail

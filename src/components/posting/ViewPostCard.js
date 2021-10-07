@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/authContext";
 import likeBtn from "../../assets/icons/likeBtn.png";
 
 import getUnitByExerciseName from "../../scripts/getUnitByExerciseName";
-import pickCategoryImage from "../../scripts/pickExerciseCategory";
+import pickCategoryImage from "../../scripts/pickCategoryImage";
 
 function ViewPostCard(props) {
   const { loggedInUser } = useContext(AuthContext);
@@ -15,13 +15,13 @@ function ViewPostCard(props) {
   const soFitColor = "#6366F1";
 
   return (
-    <div className="max-w-sm mt-2 mx-2 overflow-hidden bg-white shadow-lg dark:bg-gray-800 rounded-2xl">
+    <div className=" mt-2 mx-2 overflow-hidden bg-white shadow-lg dark:bg-gray-800 rounded-2xl">
       <img
         className="object-fill object-top w-full h-56 "
         src={props.post.pictureUrl}
         alt={`User ${props.post.name}`}
       />
-      <div className="px-4 py-4">
+      <div className="px-4 py-4 w-full ">
         <div className="sm:px-6 text-center">
           <div className="flex  justify-center items-center text-lg font-medium text-gray-900">
             <span className="whitespace-nowrap font-medium">

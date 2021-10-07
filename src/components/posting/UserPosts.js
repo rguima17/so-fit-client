@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
@@ -38,14 +38,27 @@ function UserPosts() {
         </span>
         <h5 className="font-medium uppercase tracking-wider">MY POSTS</h5>
       </div>
-
-      {filteredPosts.map((post) => {
-        return (
-          <div key={post._id}>
-            <PostSmallCard id={post._id} post={post} cardCategory="userPost" />
-          </div>
-        );
-      })}
+      <div className="flex flex-col">
+        <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4">
+          {filteredPosts.map((post) => {
+            return (
+              <div key={post._id}>
+                <PostSmallCard
+                  id={post._id}
+                  post={post}
+                  cardCategory="userPost"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <NavLink
+        className=" fixed z-40 right-1 bottom-12 bg-indigo-600 text-white font-bold rounded-full text-4xl px-2 "
+        to="/workout"
+      >
+        +
+      </NavLink>
     </div>
   );
 }

@@ -10,7 +10,7 @@ This repository is only for the client (frontend). To see the backend check: <a 
 
 ## Test it now!
 
-Just follow the live link: <a href="/">So Fit</a>.
+Just follow the live link: <a href="https://github.com/MFAP-1/so-fit-server">So Fit</a>.
 
 ## Installing
 
@@ -24,7 +24,7 @@ This is an open source project, feel free to fork it, make improvements and subm
 
 ## Find more about this project
 
-To see a slide presentation, just follow the link: <a href="......">So Fit presentation</a>.
+To see a slide presentation, just follow the link: <a href="https://so-fit-app.netlify.app">So Fit presentation</a>.
 For an enhanced experience, watch it in the 'presentation mode'. There are important transitions.
 
 ## Disclaimer

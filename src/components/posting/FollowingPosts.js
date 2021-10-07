@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 import api from "../../apis/api";
 import { AuthContext } from "../../contexts/authContext";
@@ -69,20 +70,44 @@ function FollowingPosts() {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <>
-      {filteredPosts.map((post) => {
-        return (
-          <div key={post._id}>
-            <PostSmallCard
-              id={post._id}
-              post={post}
-              handleLike={handleLike}
-              cardCategory="followingPost"
-            />
+    <div>
+      {filteredPosts.length === 0 ? (
+        <NavLink to="/all-users">
+          <div className="flex flex-col my-48 mx-2 items-center bg-white rounded-md p-2 ">
+            <p className="flex items-center">
+              You ain't following nobody.
+              <i className="fas fa-sad-cry text-indigo-600 pl-4 fa-2x animate-ping"></i>
+            </p>
+            <p className="pb-1">Yet!</p>
+            <p>
+              Please, search for{" "}
+              <span className="text-indigo-800 font-bold">So Fit&trade;</span>{" "}
+              friends:
+            </p>
+            <button className="bg-indigo-600 text-white animate-bounce rounded-md p-2 mt-4 w-full hover:bg-indigo-700">
+              Find friends
+            </button>
           </div>
-        );
-      })}
-    </>
+        </NavLink>
+      ) : (
+        <div className="flex flex-col">
+          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4">
+            {filteredPosts.map((post) => {
+              return (
+                <div key={post._id}>
+                  <PostSmallCard
+                    id={post._id}
+                    post={post}
+                    handleLike={handleLike}
+                    cardCategory="followingPost"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
