@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 function LoginForm(props) {
-  const buttonColor = "#4f46e5";
-
   return (
     <div
       className='flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl'

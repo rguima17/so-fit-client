@@ -118,7 +118,9 @@ export default function ChronometerTabata() {
               instantTimeSeconds
           )}`.slice(-2);
         }
-        getSecondsTime <= 3 ? playCounterSound() : stopCounterSound();
+
+        //Play sound timer
+        getSecondsTime <= 3 && isPlay ? playCounterSound() : stopCounterSound();
 
         return `00 : ${getSecondsTime}`;
       } else {
@@ -131,8 +133,8 @@ export default function ChronometerTabata() {
     };
     const stopCounterSound = () => {
       const sound = document.getElementById("countdown");
-      sound.pause();
-      sound.currentTime = 0;
+      //    sound.pause();
+      //    sound.currentTime = 0;
     };
 
     const getCurrentTarget = (timerTabata) => {
