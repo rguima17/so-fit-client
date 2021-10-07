@@ -3,8 +3,8 @@ import imgSignupBackGroud from "../../assets/img/fitness.jpg";
 function SignupForm(props) {
   return (
     <div
-      className='flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl'
-      style={{ maxWidth: "92vw", marginLeft: "auto", marginRight: "auto" }}
+      className='flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto'
+      style={{ maxWidth: "92vw" }}
     >
       <div
         className='hidden bg-cover lg:block lg:w-1/2'
@@ -30,7 +30,7 @@ function SignupForm(props) {
             className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200'
             htmlFor='LoggingEmailAddress'
           >
-            Your username
+            Username
           </label>
           <input
             id='LoggingName'
@@ -69,12 +69,6 @@ function SignupForm(props) {
             >
               Password
             </label>
-            {/* <a
-              href="#"
-              className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
-            >
-              Forget Password?
-            </a> */}
           </div>
 
           <input
@@ -88,8 +82,16 @@ function SignupForm(props) {
           />
         </div>
 
+        {props.error !== "" ? (
+          <div className='mt-8'>
+            <div className='w-full px-4 py-2 text-black bg-red-300 border rounded-md '>
+              {props.error}
+            </div>
+          </div>
+        ) : null}
+
         <div className='mt-8'>
-          <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-gray-600'>
+          <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600'>
             Sign up!
           </button>
         </div>
