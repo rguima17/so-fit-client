@@ -39,6 +39,8 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Prepare (seconds)</span>
                       <input
+                        maxlength='2'
+                        step='5'
                         min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -51,6 +53,7 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Work (seconds)</span>
                       <input
+                        step='5'
                         min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -63,6 +66,7 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Rest (seconds)</span>
                       <input
+                        step='5'
                         min='10'
                         type='number'
                         className='form-input mt-1 block w-full'
@@ -77,7 +81,8 @@ export default function OptionsModal(props) {
                         Cycles (repetitions)
                       </span>
                       <input
-                        min='10'
+                        min='1'
+                        max='20'
                         type='number'
                         className='form-input mt-1 block w-full'
                         placeholder='Cycles Value'
@@ -94,7 +99,6 @@ export default function OptionsModal(props) {
                   <button
                     className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                     type='button'
-                    // onClick={props.handleClose}
                     onClick={() => {
                       setShowModal(false);
                       props.handleClose();

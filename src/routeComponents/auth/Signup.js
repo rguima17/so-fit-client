@@ -27,7 +27,7 @@ function Signup() {
   }
 
   return (
-    <div className="mt-10">
+    <div className='mt-10'>
       <SignupForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}
