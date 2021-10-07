@@ -1,82 +1,81 @@
 import { NavLink } from "react-router-dom";
-
+import imgSignupBackGroud from "../../assets/img/fitness.jpg";
 function SignupForm(props) {
   return (
     <div
-      className="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto"
+      className='flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto'
       style={{ maxWidth: "92vw" }}
     >
       <div
-        className="hidden bg-cover lg:block lg:w-1/2"
+        className='hidden bg-cover lg:block lg:w-1/2'
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80')",
+          backgroundImage: `url(${imgSignupBackGroud})`,
         }}
       ></div>
 
       <form
-        className="w-full px-6 py-8 md:px-8 lg:w-1/2"
+        className='w-full px-6 py-8 md:px-8 lg:w-1/2'
         onSubmit={props.handleSubmit}
       >
-        <h2 className="text-2xl font-semibold text-center text-gray-700 dark:text-white">
+        <h2 className='text-2xl font-semibold text-center text-gray-700 dark:text-white'>
           So Fit
         </h2>
 
-        <p className="text-xl text-center text-gray-600 dark:text-gray-200">
+        <p className='text-xl text-center text-gray-600 dark:text-gray-200'>
           Please, register below:
         </p>
 
-        <div className="mt-4">
+        <div className='mt-4'>
           <label
-            className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-            htmlFor="LoggingEmailAddress"
+            className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200'
+            htmlFor='LoggingEmailAddress'
           >
             Username
           </label>
           <input
-            id="LoggingName"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            type="text"
-            name="name"
-            maxLength="15"
+            id='LoggingName'
+            className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
+            type='text'
+            name='name'
+            maxLength='15'
             value={props.state.name}
             onChange={props.handleChange}
             required
           />
         </div>
-        <div className="mt-4">
+        <div className='mt-4'>
           <label
-            className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-            htmlFor="LoggingEmailAddress"
+            className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200'
+            htmlFor='LoggingEmailAddress'
           >
             Email Address
           </label>
           <input
-            id="LoggingEmailAddress"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            type="email"
-            name="email"
+            id='LoggingEmailAddress'
+            className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
+            type='email'
+            name='email'
             value={props.state.email}
             onChange={props.handleChange}
             required
           />
         </div>
 
-        <div className="mt-4">
-          <div className="flex justify-between">
+        <div className='mt-4'>
+          <div className='flex justify-between'>
             <label
-              className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-              htmlFor="loggingPassword"
+              className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200'
+              htmlFor='loggingPassword'
             >
               Password
             </label>
           </div>
 
           <input
-            id="loggingPassword"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-            type="password"
-            name="password"
+            id='loggingPassword'
+            className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
+            type='password'
+            name='password'
             value={props.state.password}
             onChange={props.handleChange}
             required
@@ -84,30 +83,30 @@ function SignupForm(props) {
         </div>
 
         {props.error !== "" ? (
-          <div className="mt-8">
-            <div className="w-full px-4 py-2 text-black bg-red-300 border rounded-md ">
+          <div className='mt-8'>
+            <div className='w-full px-4 py-2 text-black bg-red-300 border rounded-md '>
               {props.error}
             </div>
           </div>
         ) : null}
 
-        <div className="mt-8">
-          <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600">
+        <div className='mt-8'>
+          <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600'>
             Sign up!
           </button>
         </div>
 
-        <div className="flex items-center justify-between mt-4">
-          <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+        <div className='flex items-center justify-between mt-4'>
+          <span className='w-1/5 border-b dark:border-gray-600 md:w-1/4'></span>
 
           <NavLink
-            to="/auth/login"
-            className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
+            to='/auth/login'
+            className='text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline'
           >
             or Login
           </NavLink>
 
-          <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+          <span className='w-1/5 border-b dark:border-gray-600 md:w-1/4'></span>
         </div>
         <div></div>
       </form>
