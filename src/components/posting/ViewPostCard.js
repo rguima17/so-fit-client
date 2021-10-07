@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/authContext";
 import likeBtn from "../../assets/icons/likeBtn.png";
 
 import getUnitByExerciseName from "../../scripts/getUnitByExerciseName";
-import pickCategoryImage from "../../scripts/pickExerciseCategory";
+import pickCategoryImage from "../../scripts/pickCategoryImage";
 
 function ViewPostCard(props) {
   const { loggedInUser } = useContext(AuthContext);

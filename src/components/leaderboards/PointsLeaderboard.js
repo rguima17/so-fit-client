@@ -15,6 +15,8 @@ function PointsLeaderboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageChanged, setPageChanged] = useState(true);
 
+  const LIMIT_PER_PAGE = 10;
+
   useEffect(() => {
     async function fetchLeaderboardData() {
       try {
@@ -62,30 +64,30 @@ function PointsLeaderboard() {
       </div>
       {showLeaderboard ? (
         <>
-          <table className="w-full divide-y divide-gray-200">
+          <table className="w-full divide-y divide-gray-200 mt-2">
             <thead className="bg-gray-200">
-              <tr>
+              <tr className="bg-indigo-600 text-white font-medium">
                 <th
                   scope="col"
-                  className="px-2 py-2 text-xs font-medium text-gray-600 uppercase tracking-wider text-center"
+                  className="px-2 py-2 text-xs uppercase tracking-wider text-center"
                 >
                   #
                 </th>
                 <th
                   scope="col"
-                  className="px-4 py-3 text-xs font-medium text-gray-600 uppercase tracking-wider text-center"
+                  className="px-4 py-3 text-xs uppercase tracking-wider text-left"
                 >
                   Athlete
                 </th>
                 <th
                   scope="col"
-                  className="px-4 py-3 text-xs font-medium text-gray-600 uppercase tracking-wider text-center"
+                  className="px-4 py-3 text-xs uppercase tracking-wider text-center"
                 >
                   Level
                 </th>
                 <th
                   scope="col"
-                  className="px-4 py-3 text-xs font-medium text-gray-600 uppercase tracking-wider text-center"
+                  className="px-4 py-3 text-xs uppercase tracking-wider text-center"
                 >
                   So Fit Points
                 </th>
@@ -106,16 +108,16 @@ function PointsLeaderboard() {
                     key={user._id}
                     onClick={() => history.push(`user/${user._id}`)}
                   >
-                    <td className="px-4 py-4 whitespace-nowrap text-gray-500">
-                      {index + 1 + (currentPage - 1) * 5}
+                    <td className="px-4 py-3 whitespace-nowrap text-center text-gray-500">
+                      {index + 1 + (currentPage - 1) * LIMIT_PER_PAGE}
                     </td>
-                    <td className="px-4 py-4 whitespace-nowrap text-gray-500">
+                    <td className="px-2 py-3 whitespace-nowrap text-gray-500">
                       {user.name}
                     </td>
-                    <td className="px-4 py-4 whitespace-nowrap text-center text-gray-500">
+                    <td className="px-4 py-3 whitespace-nowrap text-center text-gray-500">
                       {user.level}
                     </td>
-                    <td className="px-4 py-4 whitespace-nowrap text-center text-gray-500">
+                    <td className="px-4 py-3 whitespace-nowrap text-center text-gray-500">
                       {Number(user.soFitPoints.toFixed(0)).toLocaleString(
                         "pt-BR"
                       )}

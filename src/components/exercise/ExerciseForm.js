@@ -21,6 +21,7 @@ function ExerciseForm(props) {
               </option>
               <option value="Walking">Walking</option>
               <option value="Running">Running</option>
+              <option value="Cross country">Cross country</option>
             </select>
           </label>
         );
@@ -39,6 +40,7 @@ function ExerciseForm(props) {
                 Choose here
               </option>
               <option value="Biking">Biking</option>
+              <option value="Mountain bike">Mountain bike</option>
             </select>
           </label>
         );
@@ -59,14 +61,60 @@ function ExerciseForm(props) {
               <option value="Push-up">Push-up</option>
               <option value="Pull-up">Pull-up</option>
               <option value="Chin-up">Chin-up</option>
-              <option value="Abs">Abs</option>
               <option value="Lunges">Lunges</option>
               <option value="Jumping jack">Jumping jack</option>
               <option value="Squat">Squat</option>
               <option value="Single under">Single under</option>
+              <option value="Abs">Abs</option>
+              <option value="Leg raise">Leg raise</option>
+              <option value="Mountain climber">Mountain climber</option>
               <option value="Frontal plank">Frontal plank</option>
               <option value="Back plank">Back plank</option>
               <option value="Side plank">Side plank</option>
+              <option value="Skipping">Skipping</option>
+            </select>
+          </label>
+        );
+      case "Rhythm Sports":
+        return (
+          <label className="block mt-2">
+            <span className="text-gray-700">Exercise name</span>
+            <select
+              className="form-select mt-1 block w-full"
+              name="exerciseName"
+              value={props.exerciseState.exerciseName}
+              onChange={props.handleChange}
+              required
+            >
+              <option value="" disabled hidden>
+                Choose here
+              </option>
+              <option value="Zumba">Zumba</option>
+              <option value="Yoga">Yoga</option>
+              <option value="Spinning">Spinning</option>
+              <option value="Jumping">Jumping</option>
+            </select>
+          </label>
+        );
+      case "Team Sports":
+        return (
+          <label className="block mt-2">
+            <span className="text-gray-700">Exercise name</span>
+            <select
+              className="form-select mt-1 block w-full"
+              name="exerciseName"
+              value={props.exerciseState.exerciseName}
+              onChange={props.handleChange}
+              required
+            >
+              <option value="" disabled hidden>
+                Choose here
+              </option>
+              <option value="Basketball">Basketball</option>
+              <option value="Football">Football</option>
+              <option value="Tennis">Tennis</option>
+              <option value="Handball">Handball</option>
+              <option value="Volleyball">Volleyball</option>
             </select>
           </label>
         );
@@ -118,6 +166,8 @@ function ExerciseForm(props) {
           <option value="Cardio">Cardio</option>
           <option value="Bike">Bike</option>
           <option value="Body-workout">Body workout</option>
+          <option value="Rhythm Sports">Rhythm Sports</option>
+          <option value="Team Sports">Team Sports</option>
         </select>
       </label>
 
