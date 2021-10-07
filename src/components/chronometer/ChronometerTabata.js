@@ -202,7 +202,6 @@ export default function ChronometerTabata() {
     };
 
     const handleChange = async (event) => {
-      console.log(event);
       await setOptions({
         ...options,
         [event.target.name]: parseInt(event.target.value),

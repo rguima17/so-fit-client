@@ -39,7 +39,6 @@ export default function OptionsModal(props) {
                     <label className='block'>
                       <span className='text-gray-700'>Prepare (seconds)</span>
                       <input
-                        maxlength='2'
                         step='5'
                         min='10'
                         type='number'
