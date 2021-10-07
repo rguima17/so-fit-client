@@ -70,7 +70,7 @@ function FollowingPosts() {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <>
+    <div>
       {filteredPosts.length === 0 ? (
         <NavLink to="/all-users">
           <div className="flex flex-col my-48 mx-2 items-center bg-white rounded-md p-2 ">
@@ -90,20 +90,24 @@ function FollowingPosts() {
           </div>
         </NavLink>
       ) : (
-        filteredPosts.map((post) => {
-          return (
-            <div key={post._id}>
-              <PostSmallCard
-                id={post._id}
-                post={post}
-                handleLike={handleLike}
-                cardCategory="followingPost"
-              />
-            </div>
-          );
-        })
+        <div className="flex flex-col">
+          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4">
+            {filteredPosts.map((post) => {
+              return (
+                <div key={post._id}>
+                  <PostSmallCard
+                    id={post._id}
+                    post={post}
+                    handleLike={handleLike}
+                    cardCategory="followingPost"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 
