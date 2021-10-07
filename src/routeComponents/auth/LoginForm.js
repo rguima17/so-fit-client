@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 function LoginForm(props) {
+  const buttonColor = "#4f46e5";
+
   return (
     <div
       className='flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl'
@@ -117,7 +119,7 @@ function LoginForm(props) {
         </div>
 
         <div className='mt-8'>
-          <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
+          <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-gray-600'>
             Login
           </button>
         </div>

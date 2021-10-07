@@ -3,11 +3,11 @@ import OptionsModal from "./OptionsModal";
 import counterDownSound from "../../assets/sound/countdown.wav";
 
 export default function ChronometerTabata() {
-  const soFitColor = "#6366F1";
   const useTimer = (initialState = 0) => {
     const [timerTabata, setTimerTabata] = useState(initialState);
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const [isPlay, setIsPlay] = useState();
     const countRefTabata = useRef(null);
     const [options, setOptions] = useState({
       prepare: 10,
@@ -20,6 +20,7 @@ export default function ChronometerTabata() {
     const handleStartRegressive = () => {
       setIsActive(true);
       setIsPaused(true);
+      setIsPlay(true);
       countRefTabata.current = setInterval(() => {
         setTimerTabata((timerTabata) => timerTabata - 1);
       }, 10);
@@ -28,10 +29,12 @@ export default function ChronometerTabata() {
     const handlePause = () => {
       clearInterval(countRefTabata.current);
       setIsPaused(false);
+      setIsPlay(false);
     };
 
     const handleResume = () => {
       setIsPaused(true);
+      setIsPlay(true);
       countRefTabata.current = setInterval(() => {
         setTimerTabata((timerTabata) => timerTabata - 1);
       }, 10);
@@ -41,6 +44,7 @@ export default function ChronometerTabata() {
       clearInterval(countRefTabata.current);
       setIsActive(false);
       setIsPaused(false);
+      setIsPlay(false);
 
       setTimerTabata(0);
     };
@@ -63,7 +67,7 @@ export default function ChronometerTabata() {
       CalcTabata,
       options,
       setOptions,
-      setIsActive,
+      isPlay,
     };
   };
 
@@ -79,7 +83,7 @@ export default function ChronometerTabata() {
       CalcTabata,
       options,
       setOptions,
-      setIsActive,
+      isPlay,
     } = useTimer(0);
 
     const FormatTabata = (timerTabata) => {
@@ -88,7 +92,6 @@ export default function ChronometerTabata() {
       const getMinutesT = `0${Math.floor(totalTabata / (60 * 100))}`.slice(-2);
       return `${getMinutesT} : ${getSecondsT}`;
     };
-
     const formatTimerTabataDetails = (timerTabata) => {
       if (getCurrentTarget(timerTabata)) {
         let instantTimeSeconds = Math.floor(timerTabata / 100);
@@ -115,9 +118,7 @@ export default function ChronometerTabata() {
               instantTimeSeconds
           )}`.slice(-2);
         }
-        if (getSecondsTime <= 3) {
-          playCounterSound();
-        }
+        getSecondsTime <= 3 ? playCounterSound() : stopCounterSound();
 
         return `00 : ${getSecondsTime}`;
       } else {
@@ -126,7 +127,12 @@ export default function ChronometerTabata() {
     };
     const playCounterSound = () => {
       const sound = document.getElementById("countdown");
-      sound.play();
+      isPlay ? sound.play() : sound.pause();
+    };
+    const stopCounterSound = () => {
+      const sound = document.getElementById("countdown");
+      sound.pause();
+      sound.currentTime = 0;
     };
 
     const getCurrentTarget = (timerTabata) => {
@@ -194,6 +200,7 @@ export default function ChronometerTabata() {
     };
 
     const handleChange = async (event) => {
+      console.log(event);
       await setOptions({
         ...options,
         [event.target.name]: parseInt(event.target.value),
@@ -228,10 +235,7 @@ export default function ChronometerTabata() {
               <h3 className='pt-4 mb-8 text-4xl text-center'>TABATA</h3>
             </div>
             <div className='flex iten-center justify-center'>
-              <div
-                style={{ borderColor: soFitColor }}
-                className='flex flex-col shadow-2xl border-4 bg-gray-700 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'
-              >
+              <div className='flex flex-col shadow-2xl border-2 border-indigo-600 rounded-full h-60 w-60 flex items-center justify-center text-4xl slashed-zero'>
                 <h3 className=' pt-2 mb-6 text-4xl text-center'>
                   {/* {currentTargetText(timerTabata)} */}{" "}
                   {getCurrentTarget(timerTabata)
@@ -252,10 +256,7 @@ export default function ChronometerTabata() {
               </div>
 
               <div className='pb-16 flex iten-center justify-center'>
-                <p
-                  style={{ borderColor: soFitColor }}
-                  className='shadow-2xl border-4 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'
-                >
+                <p className='shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'>
                   {FormatTabata(timerTabata)}
                 </p>
               </div>
@@ -268,10 +269,7 @@ export default function ChronometerTabata() {
               </div>
 
               <div className='pb-16 flex iten-center justify-center'>
-                <p
-                  style={{ borderColor: soFitColor }}
-                  className='shadow-2xl border-4 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'
-                >
+                <p className='shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'>
                   {getCurrentCycle()}/{options.cycles}
                 </p>
               </div>
@@ -283,10 +281,7 @@ export default function ChronometerTabata() {
                 <h3 className=' mb-2 text-2xl text-center'>Tabatas:</h3>
               </div>
               <div className='pb-16 flex iten-center justify-center'>
-                <p
-                  style={{ borderColor: soFitColor }}
-                  className='shadow-2xl border-4  bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'
-                >
+                <p className='shadow-2xl border-2 border-indigo-600 bg-gray-700 rounded-full h-24 w-24 flex items-center justify-center text-2xl slashed-zero'>
                   {options.tabatas}
                 </p>
               </div>
@@ -297,36 +292,21 @@ export default function ChronometerTabata() {
             <div className=' text-center '>
               {!isActive && !isPaused ? (
                 <button
-                  style={{
-                    backgroundColor: soFitColor,
-                    borderColor: soFitColor,
-                  }}
-                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
+                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
                   onClick={handleStartRegressive}
                 >
                   Start
                 </button>
-              ) : // <button className='p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 text-lg rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300'>
-              // Hazard
-              // </button>
-              isPaused ? (
+              ) : isPaused ? (
                 <button
-                  style={{
-                    backgroundColor: soFitColor,
-                    borderColor: soFitColor,
-                  }}
-                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
+                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
                   onClick={handlePause}
                 >
                   Pause
                 </button>
               ) : (
                 <button
-                  style={{
-                    backgroundColor: soFitColor,
-                    borderColor: soFitColor,
-                  }}
-                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
+                  className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
                   onClick={handleResume}
                 >
                   Resume
@@ -335,11 +315,7 @@ export default function ChronometerTabata() {
             </div>
             <div className=' '>
               <button
-                style={{
-                  backgroundColor: soFitColor,
-                  borderColor: soFitColor,
-                }}
-                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-full border-2'
+                className='font-medium w-40 h-16 text-white py-2 px-3 rounded-md bg-indigo-600 hover:bg-indigo-700'
                 onClick={handleReset}
                 disabled={!isActive}
               >
