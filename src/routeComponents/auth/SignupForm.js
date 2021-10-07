@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import imgSignupBackGroud from "../../assets/img/fitness.jepg";
+import imgSignupBackGroud from "../../assets/img/fitness.jpeg";
 function SignupForm(props) {
   return (
     <div
