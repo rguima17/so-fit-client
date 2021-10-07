@@ -55,7 +55,7 @@ function WorkoutList() {
                   }}
                 >
                   <i
-                    className="fas fa-arrow-circle-left text-indigo-600 text-lg pr-5"
+                    className="fas fa-arrow-circle-left text-indigo-600 text-xl pr-5"
                     onClick={() => history.push("/profile")}
                   ></i>
                   <h5 className="font-medium uppercase tracking-wider">

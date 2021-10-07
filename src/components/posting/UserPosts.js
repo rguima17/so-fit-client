@@ -32,7 +32,7 @@ function UserPosts() {
       <div className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center items-center">
         <span className="whitespace-nowrap text-sm font-medium pr-3">
           <i
-            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-lg"
+            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-2xl"
             onClick={() => history.goBack()}
           ></i>
         </span>

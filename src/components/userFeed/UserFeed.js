@@ -8,22 +8,21 @@ function UserFeed() {
 
   return (
     <div className="mb-2">
-      <div className="flex text-center bg-gray-100 justify-between px-2 py-2 text-2xl text-indigo-600 items-center hover:text-indigo-900">
+      <div className="flex text-center bg-gray-700 justify-between px-2 py-2 text-2xl text-white items-center hover:text-indigo-900">
         <span className="pr-6 whitespace-nowrap inline">
           <i
-            className="fas fa-arrow-circle-left"
+            className="fas fa-arrow-circle-left text-indigo-400"
             onClick={() => history.goBack()}
           ></i>
-          <i className="fas fa-arrow-circle-left text-gray-100"></i>
+          <i className="fas fa-arrow-circle-left invisible"></i>
         </span>
-        So Fit
-        {/* <i className="fas fa-dumbbell"></i> */}
+        <span className="text-indigo-400">So Fit</span>
         <div>
           <NavLink to="/liked-posts">
-            <i className="fas fa-heart pr-2"></i>
+            <i className="fas fa-heart mr-4 text-red-500"></i>
           </NavLink>
           <NavLink to="/all-users">
-            <i className="fas fa-search"></i>
+            <i className="fas fa-search text-indigo-400"></i>
           </NavLink>
         </div>
       </div>

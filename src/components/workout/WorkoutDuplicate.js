@@ -89,17 +89,17 @@ function WorkoutDuplicate() {
     }
   }
   return (
-    <div className="bg-white px-1 pt-1">
+    <div className="bg-white px-1 pt-1 mx-2 mt-2 rounded-lg">
       <div className="flex justify-center items-center pr-4">
         <span className="pr-2 py-4 whitespace-nowrap text-sm font-medium inline">
           <NavLink
             to={`/workout/${id}`}
             className="text-indigo-600 hover:text-indigo-900"
           >
-            <i className="fas fa-arrow-circle-left pb-2"></i>
+            <i className="fas fa-arrow-circle-left text-2xl"></i>
           </NavLink>
         </span>
-        <h5 className="inline">Duplicate your workout</h5>
+        <h5 className="inline text-lg">Duplicate your workout</h5>
       </div>
       <WorkoutForm
         handleChange={handleChange}

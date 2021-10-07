@@ -46,7 +46,7 @@ function PostSmallCard(props) {
               />
             </div>
           </div>
-          <div className=" flex flex-col">
+          <div className=" flex flex-col pr-2">
             <span className="text-gray-600 dark:text-white text-lg font-bold text-right">
               {props.post.name}
             </span>
@@ -77,10 +77,10 @@ function PostSmallCard(props) {
         </div>
       </NavLink>
 
-      <div className="flex justify-between border-t-2 border-indigo-600 px-2 pt-2">
+      <div className="flex justify-between border-t border-indigo-600 px-2 pt-2">
         <div className="flex items-center">
           <button
-            className="flex bg-indigo-100 rounded-md p-1 animate-pulse mr-2"
+            className="flex bg-indigo-100 rounded-full p-1 animate-pulse mr-2"
             onClick={() => {
               if (props.cardCategory === "followingPost") {
                 props.handleLike(props.post);
@@ -97,7 +97,7 @@ function PostSmallCard(props) {
             />
           </button>
           <NavLink
-            className="flex bg-indigo-100 rounded-md p-1 animate-pulse items-center"
+            className="flex bg-indigo-100 rounded-full p-1 animate-pulse items-center"
             style={{ color: soFitColor }}
             to={`/post/${props.id}`}
           >
