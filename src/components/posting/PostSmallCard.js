@@ -61,7 +61,9 @@ function PostSmallCard(props) {
               ) : (
                 <>
                   <span className="text-gray-500 text-sm pr-1">
-                    {workoutTotalPoints}
+                    {Number(workoutTotalPoints.toFixed(0)).toLocaleString(
+                      "pt-BR"
+                    )}
                   </span>
                   <img
                     src={soFitLogo}
@@ -76,23 +78,33 @@ function PostSmallCard(props) {
       </NavLink>
 
       <div className="flex justify-between border-t-2 border-indigo-600 px-2 pt-2">
-        <button
-          className="flex bg-indigo-100 rounded-md p-1 animate-pulse"
-          onClick={() => {
-            if (props.cardCategory === "followingPost") {
-              props.handleLike(props.post);
-            }
-          }}
-        >
-          <span className="font-bold pr-1" style={{ color: soFitColor }}>
-            {props.post.likes.length}
-          </span>
-          <img
-            src={likeBtn}
-            className="mx-auto object-cover h-5 w-5"
-            alt="like-btn"
-          />
-        </button>
+        <div className="flex items-center">
+          <button
+            className="flex bg-indigo-100 rounded-md p-1 animate-pulse mr-2"
+            onClick={() => {
+              if (props.cardCategory === "followingPost") {
+                props.handleLike(props.post);
+              }
+            }}
+          >
+            <span className="font-bold pr-1" style={{ color: soFitColor }}>
+              {props.post.likes.length}
+            </span>
+            <img
+              src={likeBtn}
+              className="mx-auto object-cover h-5 w-5"
+              alt="like-btn"
+            />
+          </button>
+          <NavLink
+            className="flex bg-indigo-100 rounded-md p-1 animate-pulse items-center"
+            style={{ color: soFitColor }}
+            to={`/post/${props.id}`}
+          >
+            <span className="font-bold pr-1">{props.post.comments.length}</span>
+            <i className="fas fa-comments"></i>
+          </NavLink>
+        </div>
         <div className="flex">
           <span className="text-light text-gray-600 dark:text-gray-400 pr-2">
             {props.post.postedBy.name}

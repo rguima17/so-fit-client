@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import api from "../../apis/api";
 
@@ -8,6 +9,7 @@ import Pagination from "../structure/pagination/Pagination";
 function PointsLeaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const [showLeaderboard, setShowLeaderboard] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,19 +38,25 @@ function PointsLeaderboard() {
   ) : (
     <div className="mt-5">
       <div
-        className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center pl-10"
+        className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center items-center"
         onClick={() => {
           setShowLeaderboard(!showLeaderboard);
         }}
       >
+        <span className="whitespace-nowrap text-sm font-medium pr-3">
+          <i
+            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-lg"
+            onClick={() => history.goBack()}
+          ></i>
+        </span>
         <h5 className="font-medium uppercase tracking-wider">
           LEADERBOARD: SO FIT POINTS
         </h5>
         <div>
           {showLeaderboard ? (
-            <i className="fas fa-chevron-up px-5 animate-pulse"></i>
+            <i className="fas fa-chevron-up pl-4 animate-pulse"></i>
           ) : (
-            <i className="fas fa-chevron-down px-5 animate-pulse"></i>
+            <i className="fas fa-chevron-down pl-4 animate-pulse"></i>
           )}
         </div>
       </div>

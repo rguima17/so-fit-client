@@ -1,15 +1,16 @@
 import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 import api from "../../apis/api";
-
 import { AuthContext } from "../../contexts/authContext";
 
 import PostSmallCard from "./PostSmallCard";
 
 function LikedPosts() {
-  const { loggedInUser } = useContext(AuthContext);
-
   const [filteredPosts, setfilteredPosts] = useState([]);
+
+  const { loggedInUser } = useContext(AuthContext);
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchPosts() {
@@ -32,7 +33,17 @@ function LikedPosts() {
 
   return (
     <div>
-      <h3>Your Liked Workouts</h3>
+      <div className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center items-center">
+        <span className="whitespace-nowrap text-sm font-medium pr-3">
+          <i
+            className="fas fa-arrow-circle-left text-indigo-600 hover:text-indigo-900 text-lg"
+            onClick={() => history.goBack()}
+          ></i>
+        </span>
+        <h5 className="font-medium uppercase tracking-wider">
+          MY LIKED WORKOUTS
+        </h5>
+      </div>
 
       {filteredPosts.map((post) => {
         return (

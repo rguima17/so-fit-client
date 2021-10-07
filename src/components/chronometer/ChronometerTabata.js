@@ -63,6 +63,7 @@ export default function ChronometerTabata() {
       CalcTabata,
       options,
       setOptions,
+      setIsActive,
     };
   };
 
@@ -78,6 +79,7 @@ export default function ChronometerTabata() {
       CalcTabata,
       options,
       setOptions,
+      setIsActive,
     } = useTimer(0);
 
     const FormatTabata = (timerTabata) => {
@@ -114,14 +116,17 @@ export default function ChronometerTabata() {
           )}`.slice(-2);
         }
         if (getSecondsTime <= 3) {
-          const sound = document.getElementById("countdown");
-          sound.play();
+          playCounterSound();
         }
 
         return `00 : ${getSecondsTime}`;
       } else {
         return "00 : 00";
       }
+    };
+    const playCounterSound = () => {
+      const sound = document.getElementById("countdown");
+      sound.play();
     };
 
     const getCurrentTarget = (timerTabata) => {

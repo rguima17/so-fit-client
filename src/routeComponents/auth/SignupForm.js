@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import GoogleAuth from "./GoogleAuth";
 
 function SignupForm(props) {
   return (
@@ -82,6 +81,7 @@ function SignupForm(props) {
             className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
             type='text'
             name='name'
+            maxLength='15'
             value={props.state.name}
             onChange={props.handleChange}
             required
@@ -150,9 +150,7 @@ function SignupForm(props) {
 
           <span className='w-1/5 border-b dark:border-gray-600 md:w-1/4'></span>
         </div>
-        <div>
-          <GoogleAuth />
-        </div>
+        <div></div>
       </form>
     </div>
   );

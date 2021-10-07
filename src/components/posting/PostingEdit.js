@@ -18,8 +18,6 @@ function PostingEdit() {
 
   function handleChange(event) {
     if (event.target.files) {
-      // console.log("entrou");
-
       return setPosting({
         ...posting,
         [event.target.name]: event.target.files[0],
@@ -57,7 +55,8 @@ function PostingEdit() {
     fetchInitialData();
   }, [id]);
 
-  async function handlePosting() {
+  async function handlePosting(event) {
+    event.preventDefault();
     try {
       if (posting.pictureUrl2) {
         const pictureUrl = await handleUpload(posting.pictureUrl2);
@@ -93,7 +92,7 @@ function PostingEdit() {
         <div className="grid">
           <div className="mb-3">
             <label className="text-gray-700  font-medium dark:text-gray-200">
-              Post Name:
+              Post Name
             </label>
 
             <input
@@ -108,11 +107,10 @@ function PostingEdit() {
           </div>
           <div className="mb-3">
             <label className="text-gray-700  font-mediumdark:text-gray-200">
-              {" "}
               Post Description
             </label>
             <textarea
-              maxLength="500"
+              maxLength="300"
               rows="3"
               className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               name="description"

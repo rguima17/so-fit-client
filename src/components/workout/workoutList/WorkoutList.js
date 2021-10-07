@@ -49,19 +49,23 @@ function WorkoutList() {
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <div
-                  className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center pl-10"
+                  className="bg-gray-100 py-1 rounded mb-1 flex items-center text-gray-500 justify-center pl-10"
                   onClick={() => {
                     setShowPlannedList(!showPlannedList);
                   }}
                 >
+                  <i
+                    className="fas fa-arrow-circle-left text-indigo-600 text-lg pr-5"
+                    onClick={() => history.push("/profile")}
+                  ></i>
                   <h5 className="font-medium uppercase tracking-wider">
                     Planned Workouts
                   </h5>
                   <div>
                     {showPlannedList ? (
-                      <i className="fas fa-chevron-up pl-10 animate-pulse"></i>
+                      <i className="fas fa-chevron-up pl-5 pr-7 animate-pulse"></i>
                     ) : (
-                      <i className="fas fa-chevron-down pl-10 animate-pulse"></i>
+                      <i className="fas fa-chevron-down pl-5 pr-7 animate-pulse"></i>
                     )}
                   </div>
                 </div>

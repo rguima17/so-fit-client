@@ -44,7 +44,7 @@ export default function OptionsModal(props) {
                         className='form-input mt-1 block w-full'
                         placeholder='Prepare Value'
                         name='prepare'
-                        value={props.options.prepare}
+                        value='10'
                         onChange={props.handleChange}
                       />
                     </label>
