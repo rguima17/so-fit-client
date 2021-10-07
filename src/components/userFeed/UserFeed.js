@@ -27,6 +27,7 @@ function UserFeed() {
         </div>
       </div>
       <FollowingPosts />
+      <button className="z-100 bg-gray-700 text-red-400 text-3xl">+</button>
     </div>
   );
 }

@@ -62,7 +62,7 @@ function AllUsers() {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className="min-h-screen bg-gray-300 dark:bg-gray-900 py-6 flex flex-col  sm:py-12">
+        <div className="my-2 flex flex-col sm:py-12">
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 px-4">
             {filteredUsers.map((user) => {
               return (

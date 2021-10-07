@@ -31,7 +31,6 @@ function Login() {
 
     try {
       const response = await api.post("/login", state);
-      // console.log(response);
 
       setLoggedInUser({ ...response.data });
       localStorage.setItem(
@@ -45,7 +44,7 @@ function Login() {
   }
 
   return (
-    <div className='mt-10'>
+    <div className="mt-10">
       <LoginForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}
