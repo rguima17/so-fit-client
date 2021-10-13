@@ -45,7 +45,9 @@ export default function OptionsModal(props) {
                         name='prepare'
                         value={props.options.prepare}
                         onChange={props.handleChange}
+                        max="99"
                         required
+
                       />
                     </label>
                     <label className='block'>
@@ -59,6 +61,7 @@ export default function OptionsModal(props) {
                         name='work'
                         value={props.options.work}
                         onChange={props.handleChange}
+                        max="99"
                         required
                       />
                     </label>
@@ -73,6 +76,7 @@ export default function OptionsModal(props) {
                         name='rest'
                         value={props.options.rest}
                         onChange={props.handleChange}
+                        max="99"
                         required
                       />
                     </label>

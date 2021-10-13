@@ -31,7 +31,7 @@ function Signup() {
   }
 
   return (
-    <div className='mt-10'>
+    <div className='mt-10 lg:max-w-6xl mx-auto'>
       <SignupForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}

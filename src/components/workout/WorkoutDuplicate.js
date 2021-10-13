@@ -20,25 +20,28 @@ function WorkoutDuplicate() {
 
   // Fetching the current workout data and storing it in the state
   useEffect(() => {
+    let isComponentMounted = true;
     async function fetchWorkoutEditData() {
-      setLoading(true);
+      setLoading(false);
       try {
         const response = await api.get(`/workout/filtered-for-dup/${id}`);
-
-        if (workoutState.name === "") {
-          setWorkoutState({
-            ...response.data,
-            status: "Planned",
-            name: response.data.name + " copy",
-          });
+        if (isComponentMounted) {
+          if (workoutState.name === "") {
+            setWorkoutState({
+              ...response.data,
+              status: "Planned",
+              name: response.data.name + " copy",
+            });
+          }
         }
-        setLoading(false);
       } catch (err) {
         console.error(err);
-        setLoading(false);
       }
     }
     fetchWorkoutEditData();
+    return () => {
+      isComponentMounted = false;
+    };
   }, [id, workoutState]);
 
   function handleChange(event) {
@@ -50,7 +53,7 @@ function WorkoutDuplicate() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setLoading(true);
+
     try {
       // Creating a new workout in the database as a copy of the first one
       const { name, description, weekDay, status } = workoutState;
@@ -76,22 +79,20 @@ function WorkoutDuplicate() {
           });
         } catch (err) {
           console.error(err);
-          setLoading(false);
         }
       }
 
       // redirecting
-      setLoading(false);
+
       history.push(`/workout`);
     } catch (err) {
       console.error(err);
-      setLoading(false);
     }
   }
   return (
-    <div className="bg-white px-1 pt-1 mx-2 mt-2 rounded-lg">
-      <div className="flex justify-center items-center pr-4">
-        <span className="pr-2 py-4 whitespace-nowrap text-sm font-medium inline">
+    <div className=" lg:max-w-3xl mx-auto  px-1 pt-1 mx-2 mt-2 rounded-lg">
+      <div className="bg-gray-100 py-1 rounded-md mb-1 flex items-center text-gray-500 justify-center pl-10">
+        <span className="pr-6 whitespace-nowrap inline">
           <NavLink
             to={`/workout/${id}`}
             className="text-indigo-600 hover:text-indigo-900"

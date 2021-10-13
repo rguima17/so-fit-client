@@ -18,6 +18,7 @@ const navigation = [
   { name: "Workouts", href: "/workout", current: false },
   { name: "Leaderboards", href: "/points-leaderboard", current: true },
   { name: "Chronometers", href: "/chronometer", current: false },
+  { name: "About", href: "/about", current: false }
 ];
 
 export default function NavBarOffline() {

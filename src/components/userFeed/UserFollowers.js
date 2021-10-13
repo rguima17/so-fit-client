@@ -5,15 +5,15 @@ import api from "../../apis/api";
 
 import AllUsersCard from "./AllUsersCard";
 
-function UserFollowing() {
-  const [following, setFollowing] = useState([]);
+function UserFollowers() {
+  const [followers, setFollowers] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     async function fetchUsers() {
       try {
         const user = await api.get("/profile");
-        setFollowing([...user.data.followingId]);
+        setFollowers([...user.data.followersId]);
       } catch (err) {
         console.error(err);
       }
@@ -30,11 +30,11 @@ function UserFollowing() {
             onClick={() => history.goBack()}
           ></i>
         </span>
-        <h5 className="font-medium uppercase tracking-wider">People you Follow</h5>
+        <h5 className="font-medium uppercase tracking-wider">Your Followers</h5>
       </div>
       <div className="mx-2 my-2 lg:py-24 lg:pb-32">
         <div className="grid gap-5 row-gap-8 ml-auto mr-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3  ">
-          {following.map((user) => {
+          {followers.map((user) => {
             return (
               <div key={user._id}>
                 <AllUsersCard
@@ -52,4 +52,4 @@ function UserFollowing() {
   );
 }
 
-export default UserFollowing;
+export default UserFollowers;

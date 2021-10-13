@@ -140,22 +140,23 @@ function ViewPost() {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-x-4 lg:max-w-6xl">
+    <div className=" lg:flex  lg:max-w-3xl mx-auto">
+      <div className="lg:w-1/2 max-w-md">
         <ViewPostCard
           post={post}
           exercises={exercises}
           deletePost={deletePost}
           handleLike={handleLike}
         />
-
+</div>
+<div className="lg:w-1/2 max-w-md  ">
         <CommentPost
           commentList={post.comments}
           comment={comment}
           handleChange={handleChange}
           handleComment={handleComment}
         />
-      </div>
+    </div>  
     </div>
   );
 }

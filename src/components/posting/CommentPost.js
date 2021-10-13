@@ -19,6 +19,7 @@ function CommentPost(props) {
             ></i>
           </div>
         </form>
+        <div className="lg:max-h-96 lg:overflow-auto">
         {props.commentList.map((comment, index) => {
           return (
             <div className="flex mt-2 items-center" key={comment + index}>
@@ -36,6 +37,7 @@ function CommentPost(props) {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );

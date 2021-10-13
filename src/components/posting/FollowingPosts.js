@@ -75,10 +75,10 @@ function FollowingPosts() {
         <NavLink to="/all-users">
           <div className="flex flex-col my-48 mx-2 items-center bg-white rounded-md p-2 ">
             <p className="flex items-center">
-              You ain't following nobody.
+              You ain't following nobody...
               <i className="fas fa-sad-cry text-indigo-600 pl-4 fa-2x animate-ping"></i>
             </p>
-            <p className="pb-1">Yet!</p>
+            <p className="pb-1">Or maybe no one you follow has posted any workout</p>
             <p>
               Please, search for{" "}
               <span className="text-indigo-800 font-bold">So Fit&trade;</span>{" "}

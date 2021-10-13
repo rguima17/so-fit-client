@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 function ProfileForm(props) {
   return (
-    <section className="bg-white px-1 pt-1">
-      <div className="flex justify-center items-center pr-6 pt-4 text-lg font-normal">
+    <section className="px-1 pt-1 lg:max-w-3xl mx-auto  lg:mt-2" >
+      <div className="bg-gray-100 py-1 rounded-md mb-1 flex items-center text-gray-500 justify-center pl-10">
         <span className="pr-6 whitespace-nowrap inline">
           <NavLink
             to={`/profile`}
@@ -16,8 +16,8 @@ function ProfileForm(props) {
       </div>
       <form
         onSubmit={props.handleSubmit}
-        className="p-4 shadow-md rounded-md text-left border-gray-200 mx-auto"
-        style={{ maxWidth: "92vw" }}
+        className="p-4 shadow-md bg-white mx-4 max-w-full rounded-md text-left border-gray-200 mx-auto "
+      
       >
         <div className="grid">
           <div className="mb-3">
