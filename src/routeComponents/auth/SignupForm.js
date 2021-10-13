@@ -3,7 +3,7 @@ import imgSignupBackGroud from "../../assets/img/fitness.jpeg";
 function SignupForm(props) {
   return (
     <div
-      className="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto"
+      className="flex  max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto"
       style={{ maxWidth: "92vw" }}
     >
       <div
@@ -78,6 +78,7 @@ function SignupForm(props) {
             name="password"
             value={props.state.password}
             onChange={props.handleChange}
+            autoComplete="on"
             required
           />
         </div>

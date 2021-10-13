@@ -44,12 +44,12 @@ function WorkoutList() {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className="flex flex-col px-1 pt-1">
+        <div className="px-1 pt-1 lg:max-w-3xl mx-auto  lg:mt-2">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <div
-                  className="bg-gray-100 py-1 rounded mb-1 flex items-center text-gray-500 justify-center pl-10"
+                  className="bg-gray-100 py-1 rounded-md mb-1 flex items-center text-gray-500 justify-center pl-10"
                   onClick={() => {
                     setShowPlannedList(!showPlannedList);
                   }}
@@ -81,17 +81,15 @@ function WorkoutList() {
             </div>
           </div>
           <div
-            className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mx-auto"
-            style={{
-              width: "96vw",
-            }}
+            className="my-2  mx-auto overflow-x-auto sm:-mx-6  "
+ 
           >
             <button
               onClick={() => {
                 setShowForm(!showForm);
                 scrollRef.current.scrollIntoView();
               }}
-              className="w-full mt-2 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600 animate-bounce"
+              className=" lg:max-w-3xl  lg:ml-5  w-full mt-2 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600 animate-bounce"
             >
               Add a new workout
             </button>

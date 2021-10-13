@@ -8,6 +8,7 @@ import Home from "../routeComponents/Home";
 import Footer from "./structure/footer/Footer";
 import NavRouter from "./structure/nav/NavRouter";
 import ChronometerPage from "./chronometer/ChronometerPage";
+import About from "../routeComponents/About";
 
 import WorkoutList from "../components/workout/workoutList/WorkoutList";
 import WorkoutDetail from "../components/workout/WorkoutDetail";
@@ -27,6 +28,8 @@ import UserFeed from "./userFeed/UserFeed";
 import ViewUser from "./userFeed/ViewUser";
 import AllUsers from "./userFeed/AllUsers";
 import UserFollowing from "./userFeed/UserFollowing";
+import UserFollowers from "./userFeed/UserFollowers";
+import SpecificUserPosts from "./posting/SpecificUserPosts";
 
 import PointsLeaderboard from "./leaderboards/PointsLeaderboard";
 
@@ -43,6 +46,7 @@ function App() {
 
               {/* chronometers */}
               <Route path="/chronometer" component={ChronometerPage} />
+              <Route path="/about" component={About} />
 
               {/* User related routes */}
               <PrivateRoute exact path="/profile" component={ProfileDetail} />
@@ -59,6 +63,11 @@ function App() {
                 path="/user-following"
                 component={UserFollowing}
               />
+                <PrivateRoute
+                exact
+                path="/user-followers"
+                component={UserFollowers}
+              />
 
               {/* Post related routes */}
               <PrivateRoute
@@ -69,6 +78,7 @@ function App() {
               <PrivateRoute exact path="/post/:id" component={ViewPost} />
               <PrivateRoute exact path="/your-posts" component={UserPosts} />
               <PrivateRoute exact path="/liked-posts" component={LikedPosts} />
+              <PrivateRoute exact path="/posts/users/:id" component={SpecificUserPosts} />
 
               {/* Leaderboard related routes */}
               <Route

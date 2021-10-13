@@ -46,12 +46,9 @@ function ProfileDetail() {
       <LoadingSpinner />
     </div>
   ) : (
-    <div
-      className="lg:flex md:flex my-2 mx-auto overflow-hidden bg-white shadow-lg dark:bg-gray-800 mx-auto"
-      style={{ maxWidth: "96vw" }}
-    >
-      <div className="lg:w-1/2 md:w-1/2">
-        <div className="flex text-center py-3 px-4 bg-indigo-500 justify-between">
+    <div className=" rounded-2xl lg:flex lg:max-w-3xl  md:flex my-2 mx-auto overflow-hidden bg-white shadow-lg dark:bg-gray-800 mx-auto">
+      <div className="lg:w-2/5  md:w-1/2">
+        <div className="flex text-center py-3 px-4 bg-indigo-500 justify-between lg:h-14">
           <h1 className="text-xl font-bold text-white">{profile.name}</h1>
           <NavLink
             to={`/profile/edit/${profile._id}`}
@@ -89,15 +86,11 @@ function ProfileDetail() {
             </svg>
           </NavLink>
         </div>
-        <div className="max-w-lg mx-auto">
+        <div className="w-84  mx-auto">
           <img
-            className="object-top object-cover"
+            className="object-top object-cover lg:object-cover"
             src={profile.pictureUrl}
             alt={`User ${profile.name}`}
-            style={{
-              borderBottom: "1px gray solid",
-              borderTop: "1px gray solid",
-            }}
           />
         </div>
         <div className="text-center py-3 bg-indigo-500">
@@ -107,82 +100,94 @@ function ProfileDetail() {
         </div>
       </div>
 
-      <div className="lg:w-1/2 md:w-1/2 mt-auto mb-auto">
-        <div className="table px-6 py-4 h-60 text-center w-full text-gray-600 dark:text-gray-400">
-          <div className="table-row">
-            <span className="font-normal table-cell">Level</span>
-            <NavLink to="/points-leaderboard">
-              <span className="font-normal table-cell">So Fit Points</span>
-            </NavLink>
-          </div>
-          <div className="table-row">
-            <p className="text-3xl table-cell pl-4">
-              <span className="pr-4">{profile.level}</span>
-              <img
-                src={rankingImg}
-                alt="ranking-icon"
-                style={{ height: "32px", display: "inline" }}
-              />
-            </p>
-            <NavLink to="/points-leaderboard">
-              <p className="text-3xl table-cell pl-2">
-                <span className="pr-2">
-                  {Number(profile.soFitPoints.toFixed(0)).toLocaleString(
-                    "pt-BR"
-                  )}
-                </span>
+      <div className="lg:w-3/5 md:w-1/2 mt-auto mb-auto lg:my-0">
+        <div className="lg:flex lg:flex-col lg:justify-between ">
+          <div
+            className=" lg:h-14"
+            style={{ backgroundColor: soFitColor }}
+          ></div>
+          <div className="table px-6 py-4 h-60 text-center w-full text-gray-600 dark:text-gray-400">
+            <div className="table-row">
+              <span className="font-medium table-cell">Level</span>
+              <NavLink to="/points-leaderboard">
+                <span className="font-medium table-cell ">So Fit Points</span>
+              </NavLink>
+            </div>
+            <div className="table-row">
+              <p className="text-3xl table-cell pl-4">
+                <span className="pr-4">{profile.level}</span>
                 <img
-                  src={soFitLogo}
-                  alt="soFit-icon"
+                  src={rankingImg}
+                  alt="ranking-icon"
                   style={{ height: "32px", display: "inline" }}
                 />
               </p>
-            </NavLink>
+              <NavLink to="/points-leaderboard">
+                <p className="text-3xl table-cell pl-2">
+                  <span className="pr-2">
+                    {Number(profile.soFitPoints.toFixed(0)).toLocaleString(
+                      "pt-BR"
+                    )}
+                  </span>
+                  <img
+                    src={soFitLogo}
+                    alt="soFit-icon"
+                    style={{ height: "32px", display: "inline" }}
+                  />
+                </p>
+              </NavLink>
+            </div>
+            <div className="table-row">
+              <NavLink to="/user-following" className="font-medium table-cell">
+                Following
+              </NavLink>
+              <NavLink to="/user-followers" className="font-medium table-cell">
+                Followers
+              </NavLink>
+            </div>
+            <div className="table-row">
+              <NavLink to="/user-following" className="text-3xl table-cell">
+                <span className="pr-4">{profile.followingId.length}</span>
+                <i
+                  className="fas fa-running fa-flip-horizontal"
+                  style={{ color: soFitColor }}
+                ></i>
+              </NavLink>
+             
+              <NavLink to="/user-followers" className="text-3xl table-cell">
+                  <span className="pr-4">{profile.followersId.length}</span>
+                  <i
+                    className="fas fa-running"
+                    style={{ color: soFitColor }}
+                  ></i>
+                
+              </NavLink>
+            </div>
           </div>
-          <div className="table-row">
-            <NavLink to="/user-following" className="font-normal table-cell">
-              Following
-            </NavLink>
-            <span className="font-normal table-cell">Followers</span>
-          </div>
-          <div className="table-row">
-            <NavLink to="/user-following" className="text-3xl table-cell">
-              <span className="pr-4">{profile.followingId.length}</span>
-              <i
-                className="fas fa-running fa-flip-horizontal"
-                style={{ color: soFitColor }}
-              ></i>
-            </NavLink>
 
-            <p className="text-3xl table-cell">
-              <span className="pr-4">{profile.followersId.length}</span>
-              <i className="fas fa-running" style={{ color: soFitColor }}></i>
-            </p>
-          </div>
-        </div>
-
-        <div className="flex mx-2">
-          <NavLink
-            to={`/workout`}
-            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center mr-2"
-          >
-            Your workouts
-          </NavLink>
-          <NavLink
-            to={`/your-posts`}
-            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center 
+          <div className="flex mx-2">
+            <NavLink
+              to={`/workout`}
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center mr-2"
+            >
+              Your workouts
+            </NavLink>
+            <NavLink
+              to={`/your-posts`}
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 animate-bounce text-center 
             ml-2"
-          >
-            Your posts
-          </NavLink>
-        </div>
-        <div className="flex mx-2 mt-4">
-          <NavLink
-            to={`/user-feed`}
-            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600 animate-bounce text-center"
-          >
-            Go to your feed
-          </NavLink>
+            >
+              Your posts
+            </NavLink>
+          </div>
+          <div className="flex mx-2 mt-4">
+            <NavLink
+              to={`/user-feed`}
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:bg-indigo-600 animate-bounce text-center"
+            >
+              Go to your feed
+            </NavLink>
+          </div>
         </div>
       </div>
     </div>

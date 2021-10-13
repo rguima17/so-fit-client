@@ -57,12 +57,12 @@ function WorkoutEdit() {
       });
   }
   return (
-    <div className="bg-white px-1 pt-1 mx-2 mt-2 rounded-lg">
-      <div className="flex justify-center items-center pr-6 pt-4 text-lg font-normal">
+    <div className="px-1 pt-1 lg:max-w-3xl mx-auto  lg:mt-2">
+      <div className="bg-gray-100 py-1 rounded-md mb-1 flex items-center text-gray-500 justify-center pl-10">
         <span className="pr-6 whitespace-nowrap inline">
           <NavLink
             to={`/workout/${id}`}
-            className="text-indigo-600 hover:text-indigo-900"
+            className="text-indigo-600 hover:text-indigo-900 "
           >
             <i className="fas fa-arrow-circle-left text-2xl"></i>
           </NavLink>

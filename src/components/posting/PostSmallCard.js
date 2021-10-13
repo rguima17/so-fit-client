@@ -14,7 +14,7 @@ function PostSmallCard(props) {
   // Calculating this workout total points
   useEffect(() => {
     let totalPoints = 0;
-
+   
     async function fetchWorkoutPoints() {
       const cloneArr = [...props.post.workoutId.exercisesId];
 
@@ -26,11 +26,17 @@ function PostSmallCard(props) {
           console.error(err);
         }
       }
+
+     
       if (workoutTotalPoints === 0) {
         setWorkoutTotalPoints(totalPoints);
-      }
+      
+    }
     }
     fetchWorkoutPoints();
+       return () => {
+    
+    }
   }, [workoutTotalPoints, props.post.workoutId.exercisesId]);
 
   return (

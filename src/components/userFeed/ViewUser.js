@@ -24,14 +24,17 @@ function ViewUser() {
 
   const [followingPictureArr, setFollowingPictureArr] = useState([]);
   const [followerPictureArr, setFollowerPictureArr] = useState([]);
+  
 
   const { id } = useParams();
 
   useEffect(() => {
+    let isComponentMounted = true
     async function fetchUser() {
+      
       try {
         const response = await api.get(`/user/view/${id}`);
-        setUser({ ...response.data });
+        
 
         const profile = await api.get(`/user/view/${loggedInUser.user._id}`);
 
@@ -43,7 +46,9 @@ function ViewUser() {
         // Check if already follow user
         for (let i = 0; i < followingArray.length; i++) {
           if (followingArray[i]._id === id) {
+            if(isComponentMounted) {
             setbuttonClick(true);
+            }
           }
         }
 
@@ -56,15 +61,21 @@ function ViewUser() {
         for (let i = 0; i < response.data.followersId.length; i++) {
           followersPictures.push(response.data.followersId[i].pictureUrl);
         }
-
+        
+      if(isComponentMounted) {
+        setUser({ ...response.data });
         setFollowingPictureArr([...followingPictures]);
         setFollowerPictureArr([...followersPictures]);
+      }
       } catch (err) {
         console.error(err);
       }
     }
 
     fetchUser();
+    return () => {
+      isComponentMounted = false;
+    }
   }, [id, loggedInUser, buttonClick]);
 
   //Follow user
@@ -99,6 +110,7 @@ function ViewUser() {
   }
 
   return (
+   
     <ViewUserCard
       name={user.name}
       followersNumber={user.followersId.length}
@@ -111,7 +123,10 @@ function ViewUser() {
       buttonClick={buttonClick}
       followingPictures={followingPictureArr}
       followerPictures={followerPictureArr}
+      id={id}
+
     />
+
   );
 }
 

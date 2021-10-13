@@ -4,8 +4,8 @@ import imgLoginBackGround from "../../assets/img/fitness2.jpg";
 function LoginForm(props) {
   return (
     <div
-      className="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto"
-      style={{ maxWidth: "92vw" }}
+      className="flex lg:max-w-6xl max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mx-auto"
+      
     >
       <div
         className="hidden bg-cover lg:block lg:w-1/2"
@@ -60,6 +60,7 @@ function LoginForm(props) {
             className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
             type="password"
             name="password"
+            autoComplete="on"
             value={props.state.password}
             onChange={props.handleChange}
             required

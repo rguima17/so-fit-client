@@ -18,27 +18,34 @@ function PointsLeaderboard() {
   const LIMIT_PER_PAGE = 10;
 
   useEffect(() => {
+    let isComponentMounted = true;
     async function fetchLeaderboardData() {
       try {
         setLoading(true);
         const response = await api.get(`/users-leaderboard/pg/${currentPage}`);
-        if (pageChanged) {
-          setLeaderboard([...response.data]);
-          setPageChanged(false);
+        if (isComponentMounted) {
+          if (pageChanged) {
+            setLeaderboard([...response.data]);
+            setPageChanged(false);
+          }
+
+          setLoading(false);
         }
-        setLoading(false);
       } catch (err) {
         console.error(err);
         setLoading(false);
       }
     }
     fetchLeaderboardData();
+    return () => {
+      isComponentMounted = false;
+    };
   }, [leaderboard, currentPage, pageChanged]);
 
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <div className="mt-2 mx-2">
+    <div className="mt-2 mx-auto lg:max-w-5xl">
       <div
         className="bg-gray-100 py-1 rounded mb-1 flex text-gray-500 justify-center items-center"
         onClick={() => {

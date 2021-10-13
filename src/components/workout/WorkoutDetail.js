@@ -112,8 +112,8 @@ function WorkoutDetail() {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg rounded-lg">
-          <div className="px-4 py-3 sm:px-6 text-center">
+        <div className=" lg:max-w-3xl mx-auto  lg:mt-2 bg-white shadow overflow-hidden sm:rounded-lg rounded-lg">
+          <div className="px-4 sm:px-6 text-center">
             <h3 className="flex items-center justify-center text-lg leading-6 font-medium text-gray-900">
               <span className="py-4 whitespace-nowrap text-right text-sm font-medium">
                 <NavLink

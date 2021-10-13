@@ -34,7 +34,7 @@ function WorkoutListTable(props) {
                   props.history.push(`/workout/${workoutObj._id}`);
                 }}
               >
-                <td className="px-4 py-4 whitespace-nowrap">
+                <td className="text-center py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-500">{workoutObj.name}</div>
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap text-center">
